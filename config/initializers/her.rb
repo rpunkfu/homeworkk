@@ -1,5 +1,4 @@
-# config/initializers/her.rb
-Her::API.setup url: "https://api.example.com" do |c|
+Her::API.setup url: "https://api.motion.ai/" do |c|
   # Request
   c.use Faraday::Request::UrlEncoded
 

@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'her', '~> 0.8.1'
+gem 'request_store', '~> 1.3', '>= 1.3.1'
 
 group :development, :test do
   gem 'byebug'
