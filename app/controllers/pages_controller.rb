@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-  	#@messageHuman = Messagehuman.data
+  	@messageHuman = Messagehuman.data
   end
 end
