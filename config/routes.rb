@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
+  scope '/hooks', :controller => :hooks do
+   post :survey_created_callback
+  end
 
-    post 'pages/receive' => 'pages#receive'
+  post 'pages/receive' => 'pages#receive'
 
 
 
