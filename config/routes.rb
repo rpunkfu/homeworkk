@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  constraints subdomain: "hooks" do
-    post '/:motionai' => 'pages#receive', as: :receive_webhooks
-  end
+
+    post 'pages/receive' => 'pages#receive'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -6,6 +6,6 @@ class Messagehuman
 	end
 
 	def self.data
-		Messagehuman.post("http://christoper.christoper.ultrahook.com")
+		Messagehuman.post("https://christopherbot.herokuapp.com/pages/receive")
 	end
 end
