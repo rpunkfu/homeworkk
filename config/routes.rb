@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-constraints subdomain: "hooks" do
-  post '/:motion_callback' => 'webhooks#receive', as: :receive_webhooks
+scope '/hooks', :controller => :hooks do
+  post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
