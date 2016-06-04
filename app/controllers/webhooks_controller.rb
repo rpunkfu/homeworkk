@@ -13,6 +13,6 @@ class WebhooksController < ApplicationController
 
     render nothing: true
 
-    $data = data
   end
+
 end
