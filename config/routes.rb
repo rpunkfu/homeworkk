@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  post 'pages/receive' => 'pages#receive'
+
+  scope '/hooks', :controller => :hooks do
+    post :motion_created_callback
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
