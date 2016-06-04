@@ -12,5 +12,7 @@ class WebhooksController < ApplicationController
     Webhook::Received.save(data: data, integration: params[:motion_callback])
 
     render nothing: true
+
+    $data = data
   end
 end
