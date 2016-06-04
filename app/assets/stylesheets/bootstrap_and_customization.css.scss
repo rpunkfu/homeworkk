@@ -1,0 +1,16 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.center {
+	text-align: center
+}
+
+.left {
+	float: left;
+	width: 50%;
+}
+
+.right {
+	float: right;
+	width: 50%;
+}
