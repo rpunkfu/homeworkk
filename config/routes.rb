@@ -5,8 +5,6 @@ scope '/hooks', :controller => :hooks do
   post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
 end
 
-get 'hooks/test' => 'hooks#test'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
