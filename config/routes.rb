@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 scope '/hooks', :controller => :hooks do
   post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
+  get '/test' => 'hooks#test'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -6,6 +6,6 @@ class Messagehuman
 	end
 
 	def self.data
-		Messagehuman.post("https://christopherbot.herokuapp.com/pages/receive")
+		Messagehuman.post("https://christopherbot.herokuapp.com/hooks/motion_callback"
 	end
 end
