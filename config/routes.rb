@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   scope '/hooks', :controller => :hooks do
-  post '/:motion_callback' => 'webhooks#receive', as: :receive_webhooks
-end
+    post '/:motion_callback' => 'webhooks#receive', as: :receive_webhooks
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
