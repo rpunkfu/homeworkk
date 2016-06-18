@@ -14,12 +14,7 @@ class HooksControllerTest < ActionController::TestCase
 
 	  let(:received_params) do
 	    {
-	      moduleID: 5423
-			  reply: "no"
-				direction: "in"
-				from: "134381003642835"
 				botID: 775
-				to: "1135063803224611"
 	    }
 	  end
 
