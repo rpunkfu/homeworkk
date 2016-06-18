@@ -6,27 +6,25 @@ class HooksControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-	context "Heroku types, sending params" do
+  context "Busnag types, JSON received" do
 
-	  before(:each) do
-	    request.headers['Content-Type'] = "application/x-www-form-urlencoded"
-	  end
+    before(:each) do
+      request.headers['Content-Type'] = "application/json"
+    end
 
-	  let(:received_params) do
-	    {
-	      reply: "yes"
-	    }
-	  end
+    let(json_file) { "#{Rails.root}/spec/fixtures/webhooks/bugsnag/exception.json" }
+    let(subject) { post :receive, {integration_name: "motion_callback"} }
 
-	  let(subject) { post :receive, {integration_name: "motion_callback"}.merge(received_params) }
+    # what to write for the following line
+    describe "#receive #{event_type}" do
 
-	  describe "#receives a deploy hook" do
-	    it "calls the Webhook::Received service" do
-	      expect(Webhooks::Received).to receive(:save).with(data: {integration_name: "motion_callback"}.merge(received_params), integration: "motion_callback").and_return(true)
-
-	      subject
-	    end
-  	  end
-
+      it "creates a new BugsnagWebhook submission" do
+        request.env['RAW_POST_DATA'] = File.read(json_file)
+        data = JSON.parse(File.read(json_file))
+        expect(Webhooks::Received).to receive(:save).with(data: data, integration: "motion_callback").and_return(true)
+        subject
+      end
+    end
 	end
+
 end
