@@ -14,12 +14,7 @@ class HooksControllerTest < ActionController::TestCase
 
 	  let(:received_params) do
 	    {
-	      app: "motionai",
-	      user: "nicolas@cookieshq.co.uk",
-	      head: "1234",
-	      head_long: "12345678",
-	      url: "https://applicationName.com",
-	      git_log: "  * My push"
+	      reply: "yes"
 	    }
 	  end
 
@@ -27,7 +22,7 @@ class HooksControllerTest < ActionController::TestCase
 
 	  describe "#receives a deploy hook" do
 	    it "calls the Webhook::Received service" do
-	      expect(Webhooks::Received).to receive(:save).with(data: {integration_name: "motion_callback"}.merge(received_params), integration: "heroku").and_return(true)
+	      expect(Webhooks::Received).to receive(:save).with(data: {integration_name: "motion_callback"}.merge(received_params), integration: "motion_callback").and_return(true)
 
 	      subject
 	    end

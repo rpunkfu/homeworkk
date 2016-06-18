@@ -2,7 +2,6 @@ class HooksController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def receive
-  	
 		puts "hello"
 		puts request
   	if request.headers['Content-Type'] == 'application/json'
