@@ -10,7 +10,7 @@ class HooksController < ApplicationController
       # application/x-www-form-urlencoded
       data = params.as_json
     end
-    #puts data
+    puts data
 
     Webhook::Received.save(data: data, integration: params[:motion_callback])
     render nothing: true
