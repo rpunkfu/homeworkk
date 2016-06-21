@@ -3,7 +3,6 @@ class HooksController < ApplicationController
 
   def receive
 		puts "hello"
-		puts request
   	if request.headers['Content-Type'] == 'application/json'
       data = JSON.parse(request.body.read)
     else
