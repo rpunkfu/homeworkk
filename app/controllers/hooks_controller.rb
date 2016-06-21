@@ -3,7 +3,7 @@ class HooksController < ApplicationController
 
   def receive
 		puts "hello"
-		puts request
+		puts "request" + request
   	if request.headers['Content-Type'] == 'application/json'
       data = JSON.parse(request.body.read)
     else
@@ -13,8 +13,11 @@ class HooksController < ApplicationController
 
     Webhook::Received.save(data: data, integration: params[:motion_callback])
     render nothing: true
-
-    puts data
-
+    $data = data
 	end
+
+	def test
+		@data = $data
+	end
+	
 end
