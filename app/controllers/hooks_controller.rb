@@ -14,9 +14,10 @@ class HooksController < ApplicationController
     Webhook::Received.save(data: data, integration: params[:motion_callback])
     render nothing: true
 
-    $data = data
-    puts "data"
-    puts $data
+    $tester = 1
 	end
 	
+  def test
+    @test = $tester
+  end
 end
