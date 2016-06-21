@@ -17,7 +17,6 @@ class HooksController < ApplicationController
     $tester = 1
 	end
 	
-  def test
-    @test = $tester
+  def tests
   end
 end
