@@ -12,7 +12,7 @@ class HooksController < ApplicationController
       # application/x-www-form-urlencoded
       data = params.as_json
     end
-
+    
     @dataArray.push(data)
   end
 	
