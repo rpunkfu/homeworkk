@@ -9,7 +9,7 @@ class HooksController < ApplicationController
       data = JSON.parse(request.body.read)
     else
       # application/x-www-form-urlencoded
-      data = "alecjonesy"
+      data = request.raw_post
     end
 
 =begin
