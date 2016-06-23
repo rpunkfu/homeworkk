@@ -9,7 +9,11 @@ class HooksController < ApplicationController
       data = JSON.parse(request.body.read)
     else
       # application/x-www-form-urlencoded
-      data = params.as_json
+      data = request.raw_post
+    end
+
+    if params[:motion_callback].present?
+      @dataArray.push("alec")
     end
 
 =begin
