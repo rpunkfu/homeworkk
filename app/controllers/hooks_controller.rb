@@ -4,7 +4,6 @@ class HooksController < ApplicationController
   def receive
     # application/x-www-form-urlencoded
     data = request.raw_post
-
     $DATA = data
   end
 	
