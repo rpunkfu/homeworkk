@@ -2,17 +2,14 @@ class HooksController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def receive
-    if request.raw_post.empty?
-      puts "hello"
-    end
-  	
     # application/x-www-form-urlencoded
     data = request.raw_post
 
+    $DATA = data
   end
 	
   def test
-
+    @test = $DATA
   end
 
 end
