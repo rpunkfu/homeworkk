@@ -3,13 +3,15 @@ class HooksController < ApplicationController
   before_filter :receive
   skip_before_filter :verify_authenticity_token
 
+  require 'cgi'
+
   def receive
     puts "hello"
   	if request.headers['Content-Type'] == 'application/json'
       data = JSON.parse(request.body.read)
     else
       # application/x-www-form-urlencoded
-      data = params["from"]
+      data = CGI::parse(URI::parse(url).query)
     end
 
 =begin
