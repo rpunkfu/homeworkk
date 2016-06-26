@@ -2,7 +2,7 @@ class HooksController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def receive
-    if request.raw_post.nil?
+    if request.raw_post.empty?
       puts "hello"
     end
   	
