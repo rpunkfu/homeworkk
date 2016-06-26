@@ -10,8 +10,8 @@ class HooksController < ApplicationController
       data = request.raw_post
     end
 
-    puts data
-    
+    puts data.inspect
+
   end
 	
   def test
