@@ -9,10 +9,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'her', '~> 0.8.1'
 gem 'request_store', '~> 1.3', '>= 1.3.1'
 gem 'byebug'
+
+# the styling behind the application
 gem 'bootstrap-sass', '~> 3.3.6'
+# user authentication: signup, sign in, delete account
+gem 'devise'
+# her gem is what allows me to send get requests to motion.ai
+gem 'her', '~> 0.8.1'
 
 group :production, :test do
   gem 'pg'
