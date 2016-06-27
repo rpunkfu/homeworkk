@@ -4,7 +4,7 @@ class HooksController < ApplicationController
   def receive
     # application/x-www-form-urlencoded
     data = request.raw_post
-    $webhook_data = data[:reply]
+    $webhook_data = data
   end
 	
   def test
