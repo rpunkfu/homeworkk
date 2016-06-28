@@ -4,12 +4,11 @@ class HooksController < ApplicationController
   def receive
     # application/x-www-form-urlencoded
     data = request.raw_post
-    raw_webhook_data = data
-    $webhook_data = URI::decode_www_form(raw_webhook_data)
+    $webhook_data = URI::decode_www_form(data)
   end
 	
   def test
-    @test = $webhook_data
+    @test = $webhook_data[2][1]
   end
 
 end
