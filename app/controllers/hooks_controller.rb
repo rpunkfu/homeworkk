@@ -8,7 +8,7 @@ class HooksController < ApplicationController
   end
 	
   def test
-    @test = $webhook_data[2][1]
+    @test = $webhook_data
   end
 
 end
