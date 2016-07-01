@@ -8,8 +8,9 @@ class HooksController < ApplicationController
   end
 	
   def 
-    # write if statement for if the variable is set
-    @test = $webhook_data[0][1]
+    if !$webhook_data.nil?
+      @test = $webhook_data[0][1]
+    end
   end
 
 end
