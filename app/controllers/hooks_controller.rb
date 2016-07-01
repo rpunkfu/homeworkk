@@ -7,7 +7,8 @@ class HooksController < ApplicationController
     $webhook_data = URI::decode_www_form(data)
   end
 	
-  def test
+  def 
+    # write if statement for if the variable is set
     @test = $webhook_data[0][1]
   end
 
