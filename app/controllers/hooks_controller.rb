@@ -7,7 +7,7 @@ class HooksController < ApplicationController
     $webhook_data = URI::decode_www_form(data)
   end
 	
-  def 
+  def test
     if !$webhook_data.nil?
       @test = $webhook_data[0][1]
     end
