@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
   	#@messageHuman = Messagehuman.data
-  	@tester = @user
+  	@user_data = request.env["omniauth.auth"]
   end
   
 end
