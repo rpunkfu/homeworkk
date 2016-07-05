@@ -200,7 +200,6 @@ DEPENDENCIES
   her (~> 0.8.1)
   jbuilder (~> 2.0)
   jquery-rails
-  omniauth
   omniauth-facebook
   pg
   rails (= 4.2.4)
