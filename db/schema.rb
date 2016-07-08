@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701210334) do
+ActiveRecord::Schema.define(version: 20160708020737) do
 
   create_table "classes", force: :cascade do |t|
     t.integer "fb_id"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160701210334) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
-    t.string   "fb_id"
     t.string   "provider"
     t.string   "uid"
   end
