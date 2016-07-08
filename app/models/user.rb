@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if data = session["devise.facebook_data"]
         user.first_name = data["info"]["first_name"] if user.first_name.blank?
+        user.uid = data["uid"] if user.uid.blank?
       end
     end
   end
