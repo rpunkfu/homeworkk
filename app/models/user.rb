@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
         user.uid = data["uid"] if user.uid.blank?
         user.provider = data["provider"]
         user.password = Devise.friendly_token[0,20]
+        user.password_confirmation = user.password
       end
     end
   end
