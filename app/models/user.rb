@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
       if data = session["devise.facebook_data"]
         user.first_name = data["info"]["first_name"] if user.first_name.blank?
         user.uid = data["uid"] if user.uid.blank?
+        user.provider = data["provider"]
+        user.password = Devise.friendly_token[0,20]
       end
     end
   end
