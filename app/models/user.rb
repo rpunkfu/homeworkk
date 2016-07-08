@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if data = session["devise.facebook_data"]
         user.first_name = data["info"]["first_name"] if user.first_name.blank?
-        user.last_name = data["info"]["last_name"] if user.last_name.blank?
-        user.address = data["info"]["location"] if user.address.blank?
-        user.sex = data["extra"]["raw_info"]["gender"] if user.sex.blank?
-        user.picture_url = data["info"]["image"]
       end
     end
   end
