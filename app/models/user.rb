@@ -4,23 +4,12 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
+    puts auth
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.uid = auth.uid
+      user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.first_name = auth.info.first_name
     end
   end
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"]
-        user.first_name = data["info"]["first_name"] if user.first_name.blank?
-        user.uid = data["uid"] if user.uid.blank?
-        user.provider = data["provider"]
-        user.password = Devise.friendly_token[0,20]
-        user.password_confirmation = user.password
-      end
-    end
-  end
-
 end
