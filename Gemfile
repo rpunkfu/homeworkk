@@ -18,6 +18,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 # her gem is what allows me to send get requests to motion.ai
 gem 'her', '~> 0.8.1'
+#simple form for simple forms
+gem 'simple_form'
 
 group :production, :test do
   gem 'pg'

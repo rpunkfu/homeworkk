@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/test' => 'hooks#test'
   end
 
+  get 'classes/monday' => 'classes#monday'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

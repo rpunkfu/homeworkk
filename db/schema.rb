@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708020737) do
+ActiveRecord::Schema.define(version: 20160708195707) do
 
-  create_table "classes", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.integer "fb_id"
-    t.integer "class_num"
-    t.string  "class_day"
+    t.integer "group_num"
+    t.string  "group_day"
     t.time    "end_time"
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
