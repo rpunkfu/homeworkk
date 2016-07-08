@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   	@test4 = request.env["omniauth.auth"]
   	@test5 = session["devise.facebook_data"]
   	@test6 = session["facebook_data"]
+    @test7 = env["omnauth.auth"]
   end
   
 end
