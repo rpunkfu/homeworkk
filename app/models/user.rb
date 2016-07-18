@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :groups
+
+  accepts_nested_attributes_for :groups
 =begin 
          :omniauthable, :omniauth_providers => [:facebook]
 

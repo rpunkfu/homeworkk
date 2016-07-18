@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :groups
+  get 'groups/monday'
+
   devise_for :users, :controllers => {registrations: 'registrations'}
   root 'pages#home'
 
@@ -6,8 +9,8 @@ Rails.application.routes.draw do
     post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
     get '/test' => 'hooks#test'
   end
-
-  get 'classes/monday' => 'classes#monday'
+  
+  get 'classes/monday' => 'groups#monday'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

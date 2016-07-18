@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708195707) do
+ActiveRecord::Schema.define(version: 20160717003439) do
 
   create_table "groups", force: :cascade do |t|
     t.integer "fb_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20160708195707) do
     t.time    "end_time"
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
+    t.string  "name"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160708195707) do
     t.string   "first_name"
     t.string   "provider"
     t.string   "uid"
+    t.string   "class_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

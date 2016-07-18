@@ -1,0 +1,15 @@
+<%= simple_form_for(@group) do |f| %>
+  <%= f.error_notification %>
+
+<% current_user.class_number.to_i.times do %>
+	<%= f.text_field :name, name: "group[][name]" %>
+
+	<%= f.time_field :end_time, name: "group[][end_time]"%>
+
+	<br>
+<% end %>
+	
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

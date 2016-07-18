@@ -18,6 +18,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :class_number %><br />
+        <%= f.number_field :class_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
