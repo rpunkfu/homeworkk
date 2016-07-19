@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   def create
     counter = 0
     params[:group].each do |group|
+      break if group[:name].blank?
       @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time])
       counter += 1
       @group.save
