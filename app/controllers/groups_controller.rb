@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = current_user.groups.build
+    @sign_up_day = "monday"
   end
 
   # GET /groups/1/edit
@@ -26,11 +27,12 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     counter = 0
+    # for each class created, loop through it and enter it into the database, increment counter as well
     params[:group].each do |group|
-      break if group[:name].blank?
-      @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time])
-      counter += 1
+      next if group[:name].blank? || group[:end_time].blank?
+      @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
       @group.save
+      counter += 1
     end
     if @group.save
       redirect_to groups_path, notice: "Class was successfully created"

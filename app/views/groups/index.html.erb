@@ -2,7 +2,7 @@
 
 
     <% current_user.groups.each do |group| %>
-	      <%= group.name %>
+	      <%= group.name %> - <%= group.group_day %>
         <%= link_to 'Show', group %>
         <%= link_to 'Edit', edit_group_path(group) %>
         <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -12,4 +12,4 @@
     <br>
 
 <%= link_to 'New Class Day', new_group_path %>
-<br><br>
+<br><br> 
