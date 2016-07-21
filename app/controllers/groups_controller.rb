@@ -15,12 +15,29 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = current_user.groups.build
     @sign_up_day = "monday"
+    @group = current_user.groups.build
+    @groups = current_user.groups
+    @groups.each do |group|
+      case group.group_day
+        when "monday"
+          @sign_up_day = "tuesday"
+        when "tuesday"
+          @sign_up_day = "wednesday"
+        when "wednesday"
+          @sign_up_day = "thursday"
+        when "thursday"
+          @sign_up_day = "friday"
+        when "friday"
+          redirect_to groups_path, notice: "You have already set up all your classes, edit them instead"
+        else
+      end
+    end 
   end
 
   # GET /groups/1/edit
   def edit
+    @groups = current_user.groups.where("group_day = ?", @group.group_day)
   end
 
   # POST /groups
@@ -44,11 +61,14 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    if @group.update(group_params)
-      redirect_to groups_path, notice: 'Class was successfully updated'
-    else 
-      render :edit
+    counter = 0
+    params[:group].each do |group|
+      next if group[:name].blank? || group[:end_time].blank?
+      @group.update(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+      counter += 1
     end
+
+    redirect_to groups_path, notice: "Successfully Updated"
   end
 
   # DELETE /groups/1
