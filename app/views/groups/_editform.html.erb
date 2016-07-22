@@ -7,11 +7,11 @@
 	<% if @groups[counter].nil? %>
 		<%= f.text_field :name, name: "group[][name]", value: "" %>
 		<%= f.time_field :end_time, name: "group[][end_time]", value: "" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]" %>
 	<% else %>
 		<%= f.text_field :name, name: "group[][name]", value: @groups[counter]["name"] %>
 		<%= f.time_field :end_time, name: "group[][end_time]" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]" %>
 	<% end %>
 	<% counter += 1 %>
 	<br>

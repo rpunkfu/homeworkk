@@ -38,6 +38,7 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @groups = current_user.groups.where("group_day = ?", @group.group_day)
+    $groupUpdateNumber = @groups.count
   end
 
   # POST /groups
@@ -62,10 +63,17 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     counter = 0
+    groupCounter = 1
     params[:group].each do |group|
+      if groupCounter > $groupUpdateNumber
+        break if group[:name].blank? || group[:end_time].blank?
+        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+        @group.save
+      end
       next if group[:name].blank? || group[:end_time].blank?
       @group.update(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
       counter += 1
+      groupCounter += 1
     end
 
     redirect_to groups_path, notice: "Successfully Updated"
