@@ -20,6 +20,8 @@ gem 'devise'
 gem 'her', '~> 0.8.1'
 #simple form for simple forms
 gem 'simple_form'
+# whenever gem, which performs the cron jobs
+gem 'whenever', require: false
 
 group :production, :test do
   gem 'pg'
