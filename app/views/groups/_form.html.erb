@@ -1,14 +1,26 @@
 <%= simple_form_for(@group) do |f| %>
   <%= f.error_notification %>
 
-<% current_user.class_number.to_i.times do %>
-	<%= f.text_field :name, name: "group[][name]" %>
+<% counter = 0 %>
 
-	<%= f.time_field :end_time, name: "group[][end_time]"%>
-	
-	<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+<% current_user.class_number.to_i.times do %>
+	<% if @sign_up_day == "monday" || @yesterday_groups[counter].nil? %>
+		<%= f.text_field :name, name: "group[][name]", value: "" %>
+		<%= f.time_field :end_time, name: "group[][end_time]", value: "" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+	<% else %>
+		<%= f.text_field :name, name: "group[][name]", value: @yesterday_groups[counter]["name"] %>
+		<%= f.time_field :end_time, name: "group[][end_time]" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+	<% end %>
+	<% counter += 1 %>
 	<br>
 <% end %>
+
+
+
+
+
 	
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary" %>
