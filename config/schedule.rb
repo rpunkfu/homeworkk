@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every :day, :at => '10:30am' do
+every :day, :at => '10:35am' do
 	runner "Messagehuman.message"
 end
 
