@@ -20,6 +20,8 @@ gem 'devise'
 gem 'her', '~> 0.8.1'
 #simple form for simple forms
 gem 'simple_form'
+# facebook authentication with devise
+gem 'omniauth-facebook'
 
 group :production, :test do
   gem 'pg'
