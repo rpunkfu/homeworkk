@@ -39,6 +39,7 @@ class GroupsController < ApplicationController
       end
     end 
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterday)
+
   end
 
   # GET /groups/1/edit

@@ -1,28 +1,35 @@
-<%= simple_form_for(@group) do |f| %>
-  <%= f.error_notification %>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<%= simple_form_for @group, html: { class: "form-inline"} do |f| %>
+		  <%= f.error_notification %>
 
-<% counter = 0 %>
+		<% counter = 0 %>
 
-<% current_user.class_number.to_i.times do %>
-	<% if @sign_up_day == "monday" || @yesterday_groups[counter].nil? %>
-		<%= f.text_field :name, name: "group[][name]", value: "" %>
-		<%= f.time_field :end_time, name: "group[][end_time]", value: "" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
-	<% else %>
-		<%= f.text_field :name, name: "group[][name]", value: @yesterday_groups[counter]["name"] %>
-		<%= f.time_field :end_time, name: "group[][end_time]" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @sign_up_day, name: "group[][group_day]" %>
+		<% current_user.class_number.to_i.times do %>
+			<% if @sign_up_day == "monday" || @yesterday_groups[counter].nil? %>
+				<div class="form-group">
+					<label for="group_name"> Class Name </label>
+					<%= f.text_field :name, name: "group[][name]", value: "", class: "form-control" %>
+					<label for="group_end_time"> Class End Time </label>
+					<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
+					<%= f.hidden_field :group_day, :value => @sign_up_day, name: "group[][group_day]", class: "form-control" %>
+				</div>
+			<% else %>
+				<div class="form-group">
+					<label for="group_name"> Class Name </label>
+					<%= f.text_field :name, name: "group[][name]", value: @yesterday_groups[counter]["name"], class: "form-control" %>
+					<label for="group_end_time"> Class End Time </label>
+					<%= f.time_field :end_time, name: "group[][end_time]", value: @yesterday_groups[counter]["end_time"].strftime('%H:%M:%S'), class: "form-control" %>
+					<%= f.hidden_field :group_day, :value => @sign_up_day, name: "group[][group_day]", class: "form-control" %>
+				</div>
+			<% end %>
+			<% counter += 1 %>
+			<br>
+		<% end %>
+	</div>
+
+	<div class="form-actions">
+	    <%= f.button :submit, class: "btn btn-primary" %>
+	  </div>
 	<% end %>
-	<% counter += 1 %>
-	<br>
-<% end %>
-
-
-
-
-
-	
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
