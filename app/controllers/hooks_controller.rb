@@ -11,7 +11,9 @@ class HooksController < ApplicationController
 	
   def test
     if !$webhook_data.nil?
-      @test = $webhook_data[0][1]
+      @test = $webhook_data
+
+
     end
   end
 
