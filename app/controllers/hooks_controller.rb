@@ -13,7 +13,7 @@ class HooksController < ApplicationController
     if !$webhook_data.nil?
       @test = $webhook_data
 
-
+      @user_exist = User.where("conversation_id = ?", @test[0][1])
     end
   end
 
