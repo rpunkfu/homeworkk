@@ -12,7 +12,7 @@ class HooksController < ApplicationController
   def test
     if !$webhook_data.nil?
       @webhook = $webhook_data
-      @user_exist = User.where("conversation_id = ?", @webhook[0][1])
+      @does_user_exist = User.where("conversation_id = ?", @webhook[0][1])
 
       if 3 > 2
         Messagehuman.message(@webhook[0][1], "Sign up at https://christopherbot.herokuapp.com/?id=#{@webhook[0][1]}")

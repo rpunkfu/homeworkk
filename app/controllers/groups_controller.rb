@@ -15,37 +15,36 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @sign_up_day = "monday"
-    @group = current_user.groups.build
-    @groups = current_user.groups
-    @groups.each do |group|
+    @classSignUpDay = "monday" # day your class is for
+    @group = current_user.groups.build  # so you can create new classes
+    @groups = current_user.groups # list of the user's groups
+    @groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
       case group.group_day
         when "monday"
-          @yesterday = "monday"
-          @sign_up_day = "tuesday"
+          @yesterdayClassDay = "monday"
+          @classSignUpDay = "tuesday"
         when "tuesday"
-          @yesterday = "tuesday"
-          @sign_up_day = "wednesday"
+          @yesterdayClassDay = "tuesday"
+          @classSignUpDay = "wednesday"
         when "wednesday"
-          @yesterday = "wednesday"
-          @sign_up_day = "thursday"
+          @yesterdayClassDay = "wednesday"
+          @classSignUpDay = "thursday"
         when "thursday"
-          @yesterday = "thursday"
-          @sign_up_day = "friday"
+          @yesterdayClassDay = "thursday"
+          @classSignUpDay = "friday"
         when "friday"
           redirect_to groups_path, notice: "You have already set up all your classes, edit them instead"
           break
         else
       end
     end 
-    @yesterday_groups = current_user.groups.where("group_day = ?", @yesterday)
-
+    @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay) # groups for set from yesterday
   end
 
   # GET /groups/1/edit
   def edit
-    @groups = current_user.groups.where("group_day = ?", @group.group_day)
-    $groupUpdateNumber = @groups.count
+    @groups = current_user.groups.where("group_day = ?", @group.group_day) # edit all the groups from the selected group day
+    $groupUpdateNumber = @groups.count # amount of original groups in update page
   end
 
   # POST /groups
