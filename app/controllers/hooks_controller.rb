@@ -7,9 +7,7 @@ class HooksController < ApplicationController
     # application/x-www-form-urlencoded
     data = request.raw_post
     $webhook_data = URI::decode_www_form(data)
-  end
-	
-  def test
+
     if !$webhook_data.nil?
       @webhook = $webhook_data
       @does_user_exist = User.where("conversation_id = ?", @webhook[0][1])
@@ -18,6 +16,10 @@ class HooksController < ApplicationController
         Messagehuman.message(@webhook[0][1], "Sign up at https://christopherbot.herokuapp.com/?id=#{@webhook[0][1]}")
       end
     end
+  end
+	
+  def test
+     @webhook = $webhook_data
   end
 
 end
