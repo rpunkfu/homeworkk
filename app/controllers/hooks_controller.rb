@@ -11,13 +11,13 @@ class HooksController < ApplicationController
     if 3 > 2
       @webhook = $webhook_data
       #$doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
-      Messagehuman.message(@webhook[0][1], "Sign up here")
+      Messagehuman.message(@webhook[0][1], "Sign up <a href='https://christopherbot.herokuapp.com'>here</a>")
     end
   end
 	
   def test
      @webhook = $webhook_data # used to inspect the webhook data 
-     
+  
   end
 
 end

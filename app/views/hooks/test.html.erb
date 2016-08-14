@@ -1,4 +1,4 @@
-<%= @webhook[0][1].inspect %>
+<%= @webhook[0][1].inspect if !@webhook.nil? %>
 <br> <br>
 <%= $doesUserExist.nil? %>
 <%= @webhook.nil? %>
