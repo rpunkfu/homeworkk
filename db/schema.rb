@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20160814161052) do
     t.time    "end_time"
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
-    t.string  "name"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
