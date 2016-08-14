@@ -20,6 +20,7 @@ class HooksController < ApplicationController
 	
   def test
      @webhook = $webhook_data # used to inspect the webhook data
+     
   end
 
 end
