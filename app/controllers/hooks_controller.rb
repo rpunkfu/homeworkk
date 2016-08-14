@@ -10,17 +10,13 @@ class HooksController < ApplicationController
 
     if !$webhook_data.nil?
       @webhook = $webhook_data
-      $doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
-
-      if 3 > 2
-        Messagehuman.message(@webhook[0][1], "Sign up here")
-      end
+      #$doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
+      Messagehuman.message(@webhook[0][1], "Sign up here")
     end
   end
 	
   def test
-     @webhook = $webhook_data # used to inspect the webhook data
-     
+     @webhook = $webhook_data # used to inspect the webhook data 
   end
 
 end
