@@ -13,7 +13,7 @@ class HooksController < ApplicationController
       $doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
 
       if 3 > 2
-        Messagehuman.message(@webhook[0][1], "Sign up <a href='https://christopherbot.herokuapp.com/?id=#{@webhook[0][1]}'> here </a>")
+        Messagehuman.message(@webhook[0][1], "Sign up here")
       end
     end
   end
