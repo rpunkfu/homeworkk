@@ -7,8 +7,6 @@ class AddTableGroups < ActiveRecord::Migration
     t.time    "end_time"
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
-    t.string  "name"
-    t.integer "user_id"
   end
   end
 end
