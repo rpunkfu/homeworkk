@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.first_name = data["first_name"] if user.first_name.blank?
+        user.first_name = session["devise.facebook_data"]["first_name"] if user.first_name.blank?
         user.password = Devise.friendly_token[0,20]
-        user.provider = data["provider"]
-        user.uid = data["uid"]
+        user.provider = session["devise.facebook_data"]["provider"]
+        user.uid = session["devise.facebook_data"]["uid"]
     end
   end
 end
