@@ -8,7 +8,7 @@ class HooksController < ApplicationController
     data = request.raw_post
     $webhook_data = URI::decode_www_form(data)
 
-    if !$webhook_data.nil?
+    if 3 > 2
       @webhook = $webhook_data
       #$doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
       Messagehuman.message(@webhook[0][1], "Sign up here")
