@@ -6,6 +6,9 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    if !user_signed_in?
+      redirect_to pages_home_path
+    end
   end
 
   # GET /groups/1
