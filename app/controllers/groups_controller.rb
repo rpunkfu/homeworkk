@@ -1,14 +1,11 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   # GET /groups
   # GET /groups.json
   def index
     @groups = Group.all
-    if !user_signed_in?
-      redirect_to pages_home_path
-    end
   end
 
   # GET /groups/1
