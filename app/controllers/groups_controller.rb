@@ -64,11 +64,11 @@ class GroupsController < ApplicationController
         @group.save
         counter += 1
       end
-    end
-    if @group.save
-      redirect_to groups_path, notice: "Class was successfully created"
-    else
-      render :new
+      if @group.save
+        redirect_to groups_path, notice: "Class was successfully created"
+      else
+        render :new
+      end
     end
   end
 
@@ -90,7 +90,6 @@ class GroupsController < ApplicationController
         groupCounter += 1
       end
     end
-
     redirect_to groups_path, notice: "Successfully Updated"
   end
 
