@@ -2,10 +2,6 @@
 	<%= render 'pages/home' %>
 <% else %>
 
-	<% if user_signed_in? %>
-		<% current_user.conversation_id = $conversation_id %>
-	<% end %>
-
 	<h1>Listing Classes</h1>
 
 
@@ -21,5 +17,5 @@
 
 	<%= link_to 'New Class Day', new_group_path %>
 	<br><br> 
-
+	<%= $conversation_id.inspect %>
 <% end %>
