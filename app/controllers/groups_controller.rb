@@ -6,9 +6,11 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
-    @user = current_user
-    @user.update(conversation_id: $conversation_id)
-    @user.save
+    if user_signed_in? && current_user.conversation_id.nil?
+      @user = current_user
+      @user.update(conversation_id: $conversation_id)
+      @user.save
+    end
   end
 
   # GET /groups/1
