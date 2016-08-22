@@ -6,9 +6,9 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
-    if !$conversation_id.nil?
-      current_user.send(:conversation_id, $conversation_id)
-    end
+    @user = current_user
+    @user.update(conversation_id: $conversation_id)
+    @user.save
   end
 
   # GET /groups/1
