@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     if !$conversation_id.nil?
-      current_user.write_attribute(:conversation_id, $conversation_id)
+      current_user.send(:conversation_id, $conversation_id)
     end
   end
 
