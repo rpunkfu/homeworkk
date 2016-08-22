@@ -6,11 +6,13 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+=begin
     if !$conversation_id.nil?
       @user = User.where("id = ?", current_user.id)
       @user.update(:conversation_id = $conversation_id)
       @user.save
     end
+=end
   end
 
   # GET /groups/1
