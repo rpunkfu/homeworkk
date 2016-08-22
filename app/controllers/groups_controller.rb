@@ -57,11 +57,13 @@ class GroupsController < ApplicationController
   def create
     counter = 0
     # for each class created, loop through it and enter it into the database, increment counter as well
-    params[:group].each do |group|
-      next if group[:name].blank? || group[:end_time].blank?
-      @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
-      @group.save
-      counter += 1
+    if !params[:group.nil?
+      params[:group].each do |group|
+        next if group[:name].blank? || group[:end_time].blank?
+        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+        @group.save
+        counter += 1
+      end
     end
     if @group.save
       redirect_to groups_path, notice: "Class was successfully created"
@@ -75,16 +77,18 @@ class GroupsController < ApplicationController
   def update
     counter = 0
     groupCounter = 1
-    params[:group].each do |group|
-      if groupCounter > $groupUpdateNumber
-        break if group[:name].blank? || group[:end_time].blank?
-        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
-        @group.save
+    if !params[:group].nil?
+      params[:group].each do |group|
+        if groupCounter > $groupUpdateNumber
+          break if group[:name].blank? || group[:end_time].blank?
+          @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+          @group.save
+        end
+        next if group[:name].blank? || group[:end_time].blank?
+        @group.update(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+        counter += 1
+        groupCounter += 1
       end
-      next if group[:name].blank? || group[:end_time].blank?
-      @group.update(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
-      counter += 1
-      groupCounter += 1
     end
 
     redirect_to groups_path, notice: "Successfully Updated"
