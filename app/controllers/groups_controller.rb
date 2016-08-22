@@ -7,7 +7,9 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     if !$conversation_id.nil?
-      current_user.update_attributes(:conversation_id = $conversation_id)
+      @user = User.where("id = ?", current_user.id)
+      @user.conversation_id = $conversation_id)
+      @user.save
     end
   end
 
