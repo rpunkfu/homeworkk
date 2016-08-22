@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
     if !$conversation_id.nil?
       @user = User.where("id = ?", current_user.id)
-      @user = User.update(conversation_id = $conversation_id)
+      @user.update(conversation_id = $conversation_id)
     end
   end
 
