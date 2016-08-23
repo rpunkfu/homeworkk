@@ -1,5 +1,7 @@
 <% if !user_signed_in? %>
 	<%= render 'pages/home' %>
+<% if current_user.class_number.nil? %>
+	<%= render 'pages/user_class_number' %>
 <% else %>
 
 	<h1>Listing Classes</h1>
