@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		 <%= form_for(@user, :url => {:action => "index"}) do |f| %>
+		 <%= form_for(@user, :url => {:action => root_path}) do |f| %>
 		  <%= devise_error_messages! %>
 
 		  <div class="form-group">
