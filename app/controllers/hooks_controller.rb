@@ -12,7 +12,7 @@ class HooksController < ApplicationController
       @webhook = $webhook_data
       $doesUserExist = User.where("conversation_id = ?", @webhook[0][1])
 
-      if $doesUserExist.nil?
+      if $doesUserExist.empty?
        Messagehuman.message(@webhook[0][1], "Sign up at https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{@webhook[0][1]}")
       end
     end
