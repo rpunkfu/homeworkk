@@ -5,6 +5,10 @@ $btn-primary-bg: #3498db;
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+.p-tight {
+	width: 80;
+}
+
 .center {
 	text-align: center
 }
@@ -16,10 +20,19 @@ $btn-primary-bg: #3498db;
 
 .left {
 	float: left;
-	width: 50%;
+	width: 40%;
+	padding-left: 1%;
 }
 
 .right {
 	float: right;
-	width: 50%;
+	width: 40%;
+	padding-right: 1%;
+}
+
+.mac-screenshot {
+  height: auto; 
+  width: auto; 
+	max-width: 80%; 
+  max-height: 800px;
 }
