@@ -18,7 +18,7 @@ class HooksController < ApplicationController
       end
     end
 =end
-  uri = URI($webhook[0][1])
+  uri = URI("https://christopherbot.herokuapp.com/hooks/:motion_callback")
   req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
   req.body = {value1: 'alecjones', value2: 'mr.awesome'}.to_json
   res = Net::HTTP.start(uri.hostname, uri.port) do |http|
