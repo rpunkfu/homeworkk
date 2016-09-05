@@ -19,7 +19,6 @@ class HooksController < ApplicationController
     end
 =end
 
-{value1: 'alecjones', value2: 'mr.awesome'}.to_json
 
 end
   end
