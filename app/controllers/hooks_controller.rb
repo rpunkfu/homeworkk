@@ -17,11 +17,8 @@ class HooksController < ApplicationController
        Messagehuman.message(@webhook[0][1], "Sign up at https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{@webhook[0][1]}")
       end
     end
-
-
-
 end
-  end
+
 end
 	
   def test
