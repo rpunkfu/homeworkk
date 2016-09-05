@@ -18,7 +18,7 @@ class HooksController < ApplicationController
       end
     end
 =end
-  uri = URI("https://api.motion.ai/fbwebhook")
+  uri = URI("https://christopherbot.herokuapp.com/api/v1/resource")
   req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
   req.body = {value1: 'alecjones', value2: 'mr.awesome'}.to_json
   res = Net::HTTP.start(uri.hostname, uri.port) do |http|
