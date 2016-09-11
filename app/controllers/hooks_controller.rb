@@ -10,7 +10,7 @@ class HooksController < ApplicationController
     @webhook = $webhook_data
 
     respond_to do |format|
-      format.json { { "value1": "alec", "value2": "jones" } }
+      format.json { "value1": "alec", "value2": "jones" }
     end
 =begin
     if !$webhook_data.nil?
