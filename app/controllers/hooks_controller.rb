@@ -4,13 +4,13 @@ class HooksController < ApplicationController
   require 'uri'
   
   def receive
-    
+
     data = request.raw_post
     $webhook_data = URI::decode_www_form(data)
     @webhook = $webhook_data
 
     respond_to do |format|
-      msg = { :value1 => "alec", :value2 => "jones" }
+      msg = {"value1" => "alec", "value2" => "jones" }
       format.json  { render :json => msg } # don't do msg.to_json
     end
 =begin
