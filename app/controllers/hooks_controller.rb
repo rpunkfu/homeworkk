@@ -12,7 +12,7 @@ class HooksController < ApplicationController
 
     respond_to do |format|
       msg = { :subject => "math" }
-      format.json  { render :json => msg } # don't do msg.to_json
+      format.json  { render :json => msg, :content_type => 'application/json' } # don't do msg.to_json
     end
 =begin
     if !$webhook_data.nil?
