@@ -9,8 +9,8 @@ class HooksController < ApplicationController
     $webhook_data = URI::decode_www_form(data)
     @webhook = $webhook_data
 
-    respond_with(@webhook) do |format|
-      msg = {"value1" => "alec", "value2" => "jones" }
+    respond_to do |format|
+      msg = { :subject => "math" }
       format.json  { render :json => msg } # don't do msg.to_json
     end
 =begin
