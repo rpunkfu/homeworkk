@@ -2,7 +2,6 @@ class HooksController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   require 'uri'
-  require 'json'
   
   def receive
 
@@ -11,7 +10,7 @@ class HooksController < ApplicationController
     @webhook = $webhook_data
 
     respond_to do |format|
-      msg = { :subject => "math" }
+      msg = { "subject": "math" }
       format.json  { render :json => msg, :content_type => 'application/json' } # don't do msg.to_json
     end
 =begin
