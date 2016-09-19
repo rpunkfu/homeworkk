@@ -22,6 +22,8 @@ gem 'her', '~> 0.8.1'
 gem 'simple_form'
 # facebook authentication with devise
 gem 'omniauth-facebook'
+# gem to build facebook messenger bot
+gem 'messenger-ruby'
 
 group :production, :test do
   gem 'pg'

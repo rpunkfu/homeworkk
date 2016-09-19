@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: 'registrations', sessions: "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks"}
   root 'groups#index'
 
+  mount Messenger::Engine, at: "/messenger"
+
   scope '/hooks', :controller => :hooks do
     post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
     get '/test' => 'hooks#test'
