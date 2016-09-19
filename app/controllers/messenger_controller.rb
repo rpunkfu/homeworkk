@@ -1,7 +1,8 @@
 # YOUR_APP/app/controllers/messenger_controller.rb
 class MessengerController < Messenger::MessengerController
+	require 'json'
   def webhook
-  	$webhook = URI::decode_www_form(request.raw_post)
+  	$webhook = JSON.parse(request.raw_post)
     #logic here
     render nothing: true, status: 200
   end
