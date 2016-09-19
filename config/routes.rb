@@ -5,11 +5,7 @@ Rails.application.routes.draw do
   root 'groups#index'
 
   mount Messenger::Engine, at: "/messenger"
-
-  scope '/hooks', :controller => :hooks do
-    post '/:motion_callback' => 'hooks#receive', as: :receive_webhooks
-    get '/test' => 'hooks#test'
-  end
+  get 'messenger/inspect' => 'messenger#webhook_inspect'
 
   get 'pages/home' => 'pages#home'
 
