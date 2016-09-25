@@ -8,7 +8,7 @@ class MessengerController < Messenger::MessengerController
   Messenger::Client.send(
     Messenger::Request.new(
       Messenger::Elements::Text.new(text: 'some text'),
-      134381003642835
+      1135063803224611
     )
   )
 
