@@ -1,4 +1,4 @@
 Messenger.configure do |config|
   config.verify_token      = '1234' #will be used in webhook verifiction
-  config.page_access_token = 'EAAZAjj9YZAiZC0BAOh0lbMOaxHTOOP3dZCZBA0zsTe3YZCiZBVegQuHXp4NQN37QGCUGZAZAEO8ZBXH2muVe8uGl4hzjWQRAoa5uBwNZAGYVplFnfyEs96hECxlGAjOMBzAAM8y1ayFe03zMynj9F4kOXR7ZARydsZBb6OI2k4qb1PsgpuwZDZD'
+  config.page_access_token = 'EAAZAjj9YZAiZC0BACZB9rTOVlMEk1MrjTJ3xqZCCjYcTLKayBfonTAZC7JaZB9dJoNxGr5w0cyOALL5VzQ7zMREbZBFxd3xQ6lqtDm1vY2g3kzVUcsv8EjPtQRjlpYC36gnEVWpzF5kgqLfBGBctvyrZAs9keJKqGwy7cwPCZBa6v7ZCgZDZD'
 end
