@@ -1,11 +1,11 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<!-- need to figure out how to edit the following line properly -->
-		  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+		  <%= form_for(resource, as: resource_name, html: { method: :put }) do |f| %>
 		  <%= devise_error_messages! %>
 
 		  <div class="form-group">
-		    <% f.label :class_number %>How many <b>classes</b> do you have in a day (don't count breaks)?<br />
+		    <% f.label :class_number %>How many <b>classes</b> do you have in a day?<br />
 		    <%= f.text_field :class_number, class: "form-control" %>
 		  </div>
 	</div>
