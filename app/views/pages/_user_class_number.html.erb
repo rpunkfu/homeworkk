@@ -1,18 +1,8 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<!-- need to figure out how to edit the following line properly -->
-		  <%= form_for(current_user, url: root_path)  do |f| %>
-		  <%= devise_error_messages! %>
-
-		  <div class="form-group">
-		    <% f.label :class_number %>How many <b>classes</b> do you have in a day?<br />
-		    <%= f.text_field :class_number, class: "form-control" %>
-		  </div>
-	</div>
-	<%= f.button :submit, class: "btn btn-primary" %>
-	<% end %>
+	
 </div>
 
 <%= current_user.id %>
-<%= user = User.where("uid = ?", current_user.id) %>
-<%= user.inspect %>
+<%= @uxser.inspect %>
