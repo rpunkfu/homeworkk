@@ -12,3 +12,7 @@
 	<%= f.button :submit, class: "btn btn-primary" %>
 	<% end %>
 </div>
+
+<%= current_user.id %>
+<%= user = User.where("uid = ?", current_user.id) %>
+<%= user.inspect %>
