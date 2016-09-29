@@ -4,7 +4,11 @@ module GroupsHelper
   end
 
   def resource
-    @resource ||= User.new
+  	if user_signed_in?
+  		@resource ||= User.where("uid = ?", current_user.id)
+  	else
+    	@resource ||= User.new
+  	end
   end
 
   def devise_mapping
