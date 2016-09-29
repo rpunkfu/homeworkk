@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<!-- need to figure out how to edit the following line properly -->
-		  <%= form_for(current_user)  do |f| %>
+		  <%= form_for(current_user, url: root_path)  do |f| %>
 		  <%= devise_error_messages! %>
 
 		  <div class="form-group">
