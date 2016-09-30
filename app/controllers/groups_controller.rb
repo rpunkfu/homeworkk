@@ -11,8 +11,8 @@ class GroupsController < ApplicationController
       @user = current_user
       @user.update(conversation_id: $conversation_id)
       @user.save
-      @uxser = User.where("uid = ?", current_user.uid)
     end
+     @uxser = User.where("uid = ?", current_user.uid)
   end
 
   # GET /groups/1
