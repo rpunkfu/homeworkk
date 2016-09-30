@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @class_number_user = User.where("uid = ?", current_user.uid) if user_signed_in?
+    @class_number_user = User.find_by_id(current_user.id) if user_signed_in?
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
