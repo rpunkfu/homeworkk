@@ -1,9 +1,14 @@
 <div class="panel panel-default">
 	<div class="panel-body"
-		<%= form_for @current_user do |f|%>
-			<%= f.text_field :class_number, class: "form-control" %>
-			<%= f.submit :submit, class: "btn btn-primary" %>
-		<% end %>
+		<%= form_for(@class_number_user) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :class_number, class: "form-label" %><br />
+        <%= f.email_field :class_number, autofocus: true, class: "form-control" %>
+      </div>
+      <%= f.submit "sign up", :class => "btn btn-primary" %>
+     <% end %>
 
 		<!-- need to figure out how to edit the following line properly -->
 		<%= current_user.inspect %>
