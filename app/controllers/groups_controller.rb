@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def index
     def setUserClassNumber(class_number)
-      @theuser = User.where("id = ?", current_user.id)
+      @theuser = User.where("id = ?", current_user.id).to_hash
       @user = User.new(@theuser, name: class_number)
       @user.save
     end
