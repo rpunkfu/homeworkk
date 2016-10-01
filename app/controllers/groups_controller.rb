@@ -6,14 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
-    def setUserClassNumber(class_number)
-      @theuser = User.where("id = ?", current_user.id)
-      @theuser = User.edit(class_number: class_number)
-      @theuser.save
-    end
-
-    @set_user_class_number = User.where("id = ?", current_user.id)
-    @class_number_user = setUserClassNumber(5) if user_signed_in?
+    @params = params
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
