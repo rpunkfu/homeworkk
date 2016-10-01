@@ -5,13 +5,13 @@
 
 <% current_user.class_number.to_i.times do %>
 	<% if @groups[counter].nil? %>
-		<%= f.text_field :name, name: "group[][name]", value: "" %>
-		<%= f.time_field :end_time, name: "group[][end_time]", value: "" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]" %>
+		<%= f.text_field :name, name: "group[][name]", value: "", class: "form-control" %>
+		<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
 	<% else %>
-		<%= f.text_field :name, name: "group[][name]", value: @groups[counter]["name"] %>
-		<%= f.time_field :end_time, name: "group[][end_time]" %>
-		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]" %>
+		<%= f.text_field :name, name: "group[][name]", value: @groups[counter]["name"], class: "form-control" %>
+		<%= f.time_field :end_time, name: "group[][end_time]", class: "form-control" %>
+		<%= f.text_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
 	<% end %>
 	<% counter += 1 %>
 	<br>
