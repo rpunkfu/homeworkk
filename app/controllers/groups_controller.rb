@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def index
     @params = params
-    @class_number_user = Array.new
+    @class_number_user = Hash.new(:class_number => params)
 
 
     @groups = Group.all
