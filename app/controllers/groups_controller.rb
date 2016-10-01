@@ -7,6 +7,13 @@ class GroupsController < ApplicationController
 
   def index
     @params = params
+    @setuser = User.where("id = ?", current_user.id)
+    @setuser.class_number = 5
+    @setuser.save
+
+
+
+
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
