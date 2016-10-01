@@ -1,8 +1,16 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		
-    <%= @set_user_class_number.inspect %>
+    <%= form_for(@class_number_user, url: groups_path, method: 'get') do |f| %>
+
+      <div class="form-group">
+        <%= f.label :class_number, class: "form-label" %><br />
+        <%= f.text_field :class_number, autofocus: true, class: "form-control" %>
+      </div>
+      <%= f.submit "sign up", :class => "btn btn-primary" %>
+    <% end %>
 
 		<!-- need to figure out how to edit the following line properly -->
 		<%= current_user.inspect %>
+    <%= params.inspect %>
 </div>
