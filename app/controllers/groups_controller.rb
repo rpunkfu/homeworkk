@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @class_number_user = setUserClassNumber(5)
+    @class_number_user = setUserClassNumber(5) if user_signed_in?
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
