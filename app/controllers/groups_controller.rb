@@ -7,9 +7,6 @@ class GroupsController < ApplicationController
 
   def index
     @params = params
-    @class_number_user = Array.new("form-value")
-
-
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
