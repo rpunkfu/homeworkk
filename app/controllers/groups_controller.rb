@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def index
     @params = params
     @setuser = User.where("id = ?", current_user.id)
-    @setuser.update_attribute(:class_number, "5")
+    @setuser.update_attribute(:first_name, "Alec")
     @setuser.save
 
 
