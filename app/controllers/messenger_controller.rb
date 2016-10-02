@@ -1,5 +1,6 @@
 class MessengerController < Messenger::MessengerController
 	require 'json'
+
   def webhook
   	$webhook = JSON.parse(request.raw_post)
 
@@ -9,7 +10,7 @@ class MessengerController < Messenger::MessengerController
   			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
   		end
   		
-  	  sendUserMessage(text, user)
+  	  sendUserMessage(text, fb_params.first_entry.sender_id)
 		end
 
     render nothing: true, status: 200
