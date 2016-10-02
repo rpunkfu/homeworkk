@@ -1,5 +1,15 @@
 class MessengerController < Messenger::MessengerController
 	require 'json'
+
+  def sendUserMessage(text, user)
+    Messenger::Client.send(
+        Messenger::Request.new(
+          Messenger::Elements::Text.new(text: text),
+          user
+        )
+      )
+  end
+  
   def webhook
   	$webhook = JSON.parse(request.raw_post)
 
