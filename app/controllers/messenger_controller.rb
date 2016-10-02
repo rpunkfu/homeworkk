@@ -9,7 +9,7 @@ class MessengerController < Messenger::MessengerController
         )
       )
   end
-  
+
   def webhook
   	$webhook = JSON.parse(request.raw_post)
 
@@ -19,7 +19,7 @@ class MessengerController < Messenger::MessengerController
   			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
   		end
   		
-  		sendUserMessage(text, fb_params.first_entry.sender_id)
+  		sendUserMessage(text, fb_params.first_entry.sender_id) if !fb_params.first_entry.nil?
 		end
 
     render nothing: true, status: 200
