@@ -7,14 +7,11 @@ class MessengerController < Messenger::MessengerController
   	if fb_params.first_entry.callback.message?
   		if User.where("conversation_id = ?", fb_params.first_entry.sender_id).empty?
   			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
+      else
+        text = "hi, how are you?"
   		end
   		
-  		Messenger::Client.send(
-    		Messenger::Request.new(
-      		Messenger::Elements::Text.new(text: text),
-      		fb_params.first_entry.sender_id
-    		)
-  		)
+  		sendUserMessage(text, fb_params.first_entry.sender_id)
 		end
 
     render nothing: true, status: 200
