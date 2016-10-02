@@ -6,9 +6,11 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
-    @setUserClassNumber = User.find_by(id: current_user.id)
-    @setUserClassNumber.update(class_number: "5")
-    @setUserClassNumber.save
+    if user_signed_in? && current_user.class_number.nil?
+      @setUserClassNumber = User.find_by(id: current_user.id)
+      @setUserClassNumber.update(class_number: "5")
+      @setUserClassNumber.save
+    end
 
     @groups = Group.all
     @user = current_user
