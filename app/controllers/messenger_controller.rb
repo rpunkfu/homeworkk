@@ -3,13 +3,7 @@ class MessengerController < Messenger::MessengerController
   def webhook
   	$webhook = JSON.parse(request.raw_post)
 
-    #logic here
-  	if fb_params.first_entry.callback.message?
-  		if User.where("conversation_id = ?", fb_params.first_entry.sender_id).empty?
-  			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
-  		end
-		end
-
+    $inspect = fb_params.first_entry
     render nothing: true, status: 200
   end
 
