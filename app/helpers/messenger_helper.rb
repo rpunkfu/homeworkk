@@ -1,4 +1,4 @@
-module HooksHelper
+module MessengerHelper
 	def resource_name
     :user
   end
