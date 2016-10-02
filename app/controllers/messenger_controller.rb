@@ -12,7 +12,12 @@ class MessengerController < Messenger::MessengerController
         text = "hello, you've already signed up, can't wait to show you what I can do in the future"
   		end
     
-    sendUserMessage(text, fb_params.first_entry.sender_id)
+    Messenger::Client.send(
+      Messenger::Request.new(
+        Messenger::Elements::Text.new(text: text),
+        fb_params.first_entry.sender_id
+      )
+    )
 
 		end
 
