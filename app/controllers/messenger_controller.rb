@@ -6,7 +6,7 @@ class MessengerController < Messenger::MessengerController
 
     #logic here
   	if fb_params.first_entry.callback.message?
-      $userthing = User.find_by(id: fb_params.first_entry.sender_id)
+      $userthing = User.find_by(conversation_id: fb_params.first_entry.sender_id)
   		if User.find_by(id: fb_params.first_entry.sender_id).nil?
   			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
   		end
