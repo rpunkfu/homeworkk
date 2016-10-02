@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
 
   def sendUserMessage(text, user)
   	Messenger::Client.send(
-    		Messenger::Request.new(
-      		Messenger::Elements::Text.new(text: text),
-      		user
-    		)
-  		)
+    	Messenger::Request.new(
+      	Messenger::Elements::Text.new(text: text),
+      	user
+    	)
+  	)
   end
 
 end
