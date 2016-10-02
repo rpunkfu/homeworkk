@@ -8,15 +8,11 @@ class MessengerController < Messenger::MessengerController
   	if fb_params.first_entry.callback.message?
   		if User.find_by(conversation_id: fb_params.first_entry.sender_id).nil?
   			text = "https://christopherbot.herokuapp.com/users/sign_in?conversation_id=#{fb_params.first_entry.sender_id}"
+      else
+        text = "hello, you've already signed up, can't wait to show you what I can do in the future"
   		end
-  		
-  	  
-      Messenger::Client.send(
-        Messenger::Request.new(
-          Messenger::Elements::Text.new(text: "hi"),
-          fb_params.first_entry.sender_id
-        )
-      )
+    
+    sendUserMessage(text, fb_params.first_entry.sender_id)
 
 		end
 
