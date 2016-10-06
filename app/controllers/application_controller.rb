@@ -8,5 +8,12 @@ class ApplicationController < ActionController::Base
     RequestStore.store[:my_api_token] = current_user.api_token # or something similar based on `session`
   end
 
-
+  def sendMessage
+		Messenger::Client.send(
+	  	Messenger::Request.new(
+	    	Messenger::Elements::Text.new(text: "hi"),
+	    	134381003642835
+	  	)
+		)
+	end
 end
