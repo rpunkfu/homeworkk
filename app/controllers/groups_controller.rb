@@ -10,12 +10,6 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: "5")
       @setUserClassNumber.save
-      Messenger::Client.send(
-      Messenger::Request.new(
-        Messenger::Elements::Text.new(text: 'hi hello'),
-        134381003642835
-      ) 
-    )
     end
 
     @groups = Group.all
