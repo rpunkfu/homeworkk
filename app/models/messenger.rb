@@ -1,4 +1,4 @@
-class Messenger
+class Messenger < Messenger::MessengerModel
 	def sendMessage
 		Messenger::Client.send(
       Messenger::Request.new(
