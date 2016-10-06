@@ -1,4 +1,4 @@
-class Messenger < Messenger::MessengerModel
+class Messenger < ActiveRecord::Base
 	def sendMessage
 		Messenger::Client.send(
       Messenger::Request.new(
