@@ -9,13 +9,4 @@ class ApplicationController < ActionController::Base
   def set_user_api_token
     RequestStore.store[:my_api_token] = current_user.api_token # or something similar based on `session`
   end
-
-  def sendMessage
-  	 Messenger::Client.send(
-      Messenger::Request.new(
-        Messenger::Elements::Text.new(text: text),
-        fb_params.first_entry.sender_id
-      )
-    )
-  end
 end
