@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: 'registrations', sessions: "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks"}
   root 'groups#index'
 
-  post 'messenger/webhook' => 'messenger#receive_webhook'
-  get 'messenger/webhook' => 'messenger#webhook'
-  
+  post 'messenger/webhook' => 'messenger#webhook'
   get 'messenger/inspect' => 'messenger#webhook_inspect'
 
   get 'pages/home' => 'pages#home'
