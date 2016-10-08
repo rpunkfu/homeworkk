@@ -16,8 +16,6 @@ gem 'byebug'
 gem 'bootstrap-sass', '~> 3.3.6'
 # user authentication: signup, sign in, delete account
 gem 'devise'
-# her gem is what allows me to send get requests to motion.ai
-gem 'her', '~> 0.8.1'
 #simple form for simple forms
 gem 'simple_form'
 # facebook authentication with devise
