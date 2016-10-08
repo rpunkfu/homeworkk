@@ -4,7 +4,7 @@ class MessengerController < ApplicationController
   def webhook
   	$webhook = JSON.parse(request.raw_post)
 
-   if params[‘hub.verify_token’] == “1234”
+   if params[‘hub.verify_token’] == “123456789”
      render text: params[‘hub.challenge’] and return
    else
      render text: ‘error’ and return
