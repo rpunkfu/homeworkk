@@ -7,7 +7,7 @@ class MessengerController < ApplicationController
      render text: params['hub.challenge'] and return
    else
    	puts "this is not good"
-     render text: 'error' and return
+     render text: 'ahhhhhhh, error' and return
    end
  end
 
