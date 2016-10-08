@@ -10,7 +10,19 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: "5")
       @setUserClassNumber.save
-      sendMessage()
+      body = {
+        recipient: {
+          id: 134381003642835
+        },
+        message: {
+          text: 'how you doin alec'
+        }
+      }.to_json
+      response = HTTParty.post(
+        "https://graph.facebook.com/v2.6/me/messages?access_token=EAAZAjj9YZAiZC0BABB5cqlWJOGGKI4bVs18v8bbhEIHqFITBvi04BEHsVwSkeC3XL6Pmszs9HGRYAdd4jOSgF0V6GQ6pSA1gsScGnmxRqSx8jXwpMiy0rz0uQ9uZCiynp2Cy8fFvNS3TvIrKkCEJTLpHOjGgELOrHwlKXvtgmwZDZD",
+        body: body,
+        headers: { 'Content-Type' => 'application/json' }
+      )   
     end
 
     @groups = Group.all
