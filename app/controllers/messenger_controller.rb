@@ -3,8 +3,10 @@ class MessengerController < ApplicationController
 
   def webhook
    if params[‘hub.verify_token’] == “123456789”
+   		puts "this is successful"
      render text: params[‘hub.challenge’] and return
    else
+   	puts "this is not good"
      render text: ‘error’ and return
    end
  end
