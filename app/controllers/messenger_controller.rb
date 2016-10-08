@@ -2,7 +2,7 @@ class MessengerController < ApplicationController
 	require 'json'
 
   def webhook
-   if params['hub.verify_token'] == "123456789"
+   if params['hub.verify_token'] == 123456789
    		puts "this is successful"
      render text: params['hub.challenge'] and return
    else
