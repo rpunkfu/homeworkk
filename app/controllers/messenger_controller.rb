@@ -10,7 +10,7 @@ class MessengerController < ApplicationController
  end
 
  def receive_message
- 	$webhook = params
+ 	$webhook = request.raw_post
  end
 
  def webhook_inspect
