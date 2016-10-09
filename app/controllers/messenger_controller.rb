@@ -1,16 +1,9 @@
 class MessengerController < ApplicationController
 	require 'json'
-
-
+	include MessengerHelper
 
  def receive_message
- 	if params['hub.verify_token'] == '123456789'
-   		puts "this is successful"
-     render text: params['hub.challenge'] and return
-   else
-   	puts "this is not good"
-     render text: 'ahhhhhhh, error' and return
-   end
+ 	checkFacebookToken() # checks to make sure that the token from facebook is correct
  	$webhook = request.raw_post
  end
 
