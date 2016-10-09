@@ -5,6 +5,7 @@ class MessengerController < ApplicationController
  def receive_message
  	checkFacebookToken() # checks to make sure that the token from facebook is correct
  	$webhook = request.raw_post
+ 	$webhook1 = params
  end
 
  def webhook_inspect
