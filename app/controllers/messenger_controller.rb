@@ -7,6 +7,9 @@ class MessengerController < ApplicationController
  	$webhook = JSON.parse(request.raw_post)
  	page_access_token = 'EAAZAjj9YZAiZC0BAFZCao4ZADSMy9o60qDLr2y8zvB14OElmfuXyNq6LbjRwwSPAptK9eNGcHI73VLKaTrk5R6nanUa7mFJPD0Rp5p0p0ZBPOanIRkZABOX9ZC590Q5WfNAABPlRwf1GmWRhhtxnMgeOZBcylDMCrpwjXOS1NBaTDwwZDZD'
 
+ 	if !$webhook.nil?
+ 		sendUserMessage('134381003642835', "hi alec")
+ 	end
  end
 
  def webhook_inspect
