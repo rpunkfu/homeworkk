@@ -3,11 +3,8 @@ class MessengerController < ApplicationController
 	include MessengerHelper
 
 	def receive_message
+		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
- 	end
-
- 	def webhook
- 		checkFacebookToken()
  	end
 
  	def webhook_inspect
