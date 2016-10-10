@@ -70,11 +70,6 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.4)
-    her (0.8.2)
-      activemodel (>= 3.0.0, <= 6.0.0)
-      activesupport (>= 3.0.0, <= 6.0.0)
-      faraday (>= 0.8, < 1.0)
-      multi_json (~> 1.7)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
@@ -202,7 +197,6 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
-  her
   httparty
   jbuilder (~> 2.0)
   jquery-rails
