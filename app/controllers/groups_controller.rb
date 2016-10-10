@@ -11,7 +11,6 @@ class GroupsController < ApplicationController
       @setUserClassNumber.update(class_number: "5")
       @setUserClassNumber.save 
     end
-sendUserMessage('134381003642835', "hi alec")
     @groups = Group.all
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?

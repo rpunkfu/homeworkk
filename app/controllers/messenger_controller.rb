@@ -5,10 +5,8 @@ class MessengerController < ApplicationController
 	def webhook
  		checkFacebookToken() # checks to make sure that the token from facebook is correct
  		$webhook = JSON.parse(request.raw_post)
-
- 		if !$webhook.nil?
- 			#sendUserMessage('134381003642835', "hi alec")
- 		end
+ 		puts "webhook page has loaded"
+ 		# sendUserMessage('134381003642835', "hi alec")
  	end
 
  	def webhook_inspect
