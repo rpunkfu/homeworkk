@@ -15,6 +15,7 @@ module MessengerHelper
  			body: body,
  			headers: { 'Content-Type' => 'application/json' }
 		)
+	end
 
 end
 
