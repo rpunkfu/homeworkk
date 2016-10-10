@@ -21,6 +21,7 @@ gem 'simple_form'
 # facebook authentication with devise
 gem 'omniauth-facebook'
 gem 'httparty'
+gem 'her'
 
 group :production, :test do
   gem 'pg'
