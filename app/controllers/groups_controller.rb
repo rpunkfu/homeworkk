@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
-
+  include MessengerHelper
   # GET /groups
   # GET /groups.json
 
@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: "5")
       @setUserClassNumber.save 
+      sendUserMessage('134381003642835', "hi alec")
     end
 
     @groups = Group.all
