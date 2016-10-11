@@ -1,7 +1,7 @@
 <%= $webhook.inspect %>
 <br><br><br>
 1.
-<%= $webhook['entry']['messaging']['sender']['id'].inspect %>
+<%= $webhook['entry']['messaging']['sender']['id'].inspect if !$webhook['entry']['messaging']['sender']['id'].nil? %>
 2.
 <br><br><br>
-<%= $webhook[:entry][:messaging][:sender][:id].inspect %>
+<%= $webhook[:entry][:messaging][:sender][:id].inspect if !$webhook[:entry][:messaging][:sender][:id].nil? %>
