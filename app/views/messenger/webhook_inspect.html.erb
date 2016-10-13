@@ -1,1 +1,5 @@
-<%= $webhook.inspect if !$webhook.nil?%>
+<% @test[1][1].each do |key, value| %>
+	<% key["messaging"].each do |key, value| %>
+		<%= key["sender"]["id"].inspect %>
+	<% end %>
+<% end %>
