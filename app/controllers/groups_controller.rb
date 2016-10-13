@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
-    if user_signed_in? && current_user.class_number.nil?
+    if user_signed_in? && current_user.class_number.to_i.nil?
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: "5")
       @setUserClassNumber.save 
