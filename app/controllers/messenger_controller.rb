@@ -6,8 +6,7 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
- 		#sendUserMessage('134381003642835', "alec still rules all")
- 		putsOutput("this is the OUTPUT")
+ 		sendUserMessage('134381003642835')
  	end
 
  	def webhook_inspect
