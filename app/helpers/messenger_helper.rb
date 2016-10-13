@@ -9,15 +9,15 @@ module MessengerHelper
 	end
 
 	def sendUserMessage()
-		ACCESS_TOKEN = "EAAZAjj9YZAiZC0BAHofK78pYfkKG7DRUvKnGraNZAHmVi8vzq9NdGSZBbO15rgvu0ubZAu7YXGCHpoGeUqcmtKFDT3OYOZCFSIVAWmylmGmxriUts1DVtMzpXmVMJeSZAshRRoIy293BwnLkLqz8d0Owq4nhLB0oKvMbyaDqeMZBHnwZDZD"
-		url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + ACCESS_TOKEN
-		SENDER_ID = 134381003642835
-		MESSAGE = "connor eats pizza"
+		access_token = "EAAZAjj9YZAiZC0BAHofK78pYfkKG7DRUvKnGraNZAHmVi8vzq9NdGSZBbO15rgvu0ubZAu7YXGCHpoGeUqcmtKFDT3OYOZCFSIVAWmylmGmxriUts1DVtMzpXmVMJeSZAshRRoIy293BwnLkLqz8d0Owq4nhLB0oKvMbyaDqeMZBHnwZDZD"
+		url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + access_token
+		sender_id = 134381003642835
+		message = "connor eats pizza"
 
 		options = {
         body: {
-          recipient: {id: SENDER_ID},
-          message: {text: MESSAGE}
+          recipient: {id: sender_id},
+          message: {text: message}
         }
 		}
 
