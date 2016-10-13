@@ -27,6 +27,10 @@ module MessengerHelper
 		end
 	end
 
+	def putsOutput(string)
+		puts string
+	end
+
 end
 
 # 134381003642835
