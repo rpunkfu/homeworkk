@@ -13,6 +13,7 @@
 					<label for="group_end_time"> Class End Time </label>
 					<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>
+					<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "conversation_id" %>
 				</div>
 			<% else %>
 				<div class="form-group">
@@ -21,6 +22,7 @@
 					<label for="group_end_time"> Class End Time </label>
 					<%= f.time_field :end_time, name: "group[][end_time]", value: @yesterday_groups[counter]["end_time"].strftime('%H:%M:%S'), class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>
+					<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "conversation_id" %>
 				</div>
 			<% end %>
 			<% counter += 1 %>

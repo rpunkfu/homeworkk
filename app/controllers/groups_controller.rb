@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       params[:group].each do |group|
         next if group[:name].blank? || group[:end_time].blank?
-        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day], conversation_id: params[:group][:conversation_id])
         @group.save
         counter += 1
       end
@@ -115,6 +115,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.permit(group: [:group, :name, :fb_id, :group_num, :group_day, :end_time, :homework_assigned, :homework_assignment]).require(:group)
+      params.permit(group: [:group, :name, :fb_id, :group_num, :group_day, :end_time, :homework_assigned, :homework_assignment, :conversation_id]).require(:group)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001171115) do
+ActiveRecord::Schema.define(version: 20161013141343) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20161001171115) do
     t.time    "end_time"
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
+    t.string  "conversation_id"
   end
 
   create_table "users", force: :cascade do |t|
