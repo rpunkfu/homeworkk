@@ -8,13 +8,21 @@ module MessengerHelper
   	end
 	end
 
-	def sendUserMessage(user, text)
-		body = {recipient:{id: user}, message:{text: text}}.to_json
-		response = HTTParty.post(
- 			"https://graph.facebook.com/v2.6/me/messages?access_token=EAAZAjj9YZAiZC0BAHofK78pYfkKG7DRUvKnGraNZAHmVi8vzq9NdGSZBbO15rgvu0ubZAu7YXGCHpoGeUqcmtKFDT3OYOZCFSIVAWmylmGmxriUts1DVtMzpXmVMJeSZAshRRoIy293BwnLkLqz8d0Owq4nhLB0oKvMbyaDqeMZBHnwZDZD",
- 			body: body,
- 			headers: { 'Content-Type' => 'application/json' }
-		)
+	def sendUserMessage()
+		ACCESS_TOKEN = "EAAZAjj9YZAiZC0BAHofK78pYfkKG7DRUvKnGraNZAHmVi8vzq9NdGSZBbO15rgvu0ubZAu7YXGCHpoGeUqcmtKFDT3OYOZCFSIVAWmylmGmxriUts1DVtMzpXmVMJeSZAshRRoIy293BwnLkLqz8d0Owq4nhLB0oKvMbyaDqeMZBHnwZDZD"
+		url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + ACCESS_TOKEN
+		SENDER_ID = 134381003642835
+		MESSAGE = "connor eats pizza"
+
+		options = {
+        body: {
+          recipient: {id: SENDER_ID},
+          message: {text: MESSAGE}
+        }
+		}
+
+		result = HTTParty.post(url, options)
+		print result
 	end
 
 end
