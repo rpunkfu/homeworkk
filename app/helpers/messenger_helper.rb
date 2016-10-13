@@ -10,7 +10,7 @@ module MessengerHelper
 
 	def sendUserMessage(senderId, definedMessage)
 		if !$webhook.nil?
-			access_token = "EAAZAjj9YZAiZC0BAHofK78pYfkKG7DRUvKnGraNZAHmVi8vzq9NdGSZBbO15rgvu0ubZAu7YXGCHpoGeUqcmtKFDT3OYOZCFSIVAWmylmGmxriUts1DVtMzpXmVMJeSZAshRRoIy293BwnLkLqz8d0Owq4nhLB0oKvMbyaDqeMZBHnwZDZD"
+			access_token = "EAAZAjj9YZAiZC0BAHJ2zRhGWF8FgzAu8NTWCwD7tQ3IsrH1gVsDiMzJgFD6kyFHY6BuCK5XyorlFGHg3H3tvZBiNRUuAJg3ZCtYDMTts2ZC4leEcYhZC6rBuGc6rZCTxckz0xUOPSqIQn6fxHvJJxMiyk7mbGvP4KoAIOXwgZA6hCkwZDZD"
 			url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + access_token
 			sender = senderId
 			message = definedMessage
