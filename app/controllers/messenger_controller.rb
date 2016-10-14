@@ -13,7 +13,7 @@ class MessengerController < ApplicationController
 	     id: '134381003642835'
 	   },
 	   message: {
-	     text: 'hi alec'
+	     text: 'this is webhook'
 	   }
 	  }.to_json
 	  
