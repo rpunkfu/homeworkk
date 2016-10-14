@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
       @user.update(conversation_id: $conversation_id)
       @user.save
     end
-    Messagehuman.sendMessage
   end
 
   # GET /groups/1
