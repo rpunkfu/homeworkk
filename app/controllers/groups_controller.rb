@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       params[:group].each do |group|
         next if group[:name].blank? || group[:end_time].blank?
-        @group = current_user.groups.build(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day], conversation_id: params[:group][:conversation_id])
+        @group = current_user.groups.build(name: group[:name], end_time: group[:end_time], group_day: group[:group_day])
         @group.save
         counter += 1
       end

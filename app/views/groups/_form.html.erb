@@ -12,8 +12,7 @@
 					<%= f.text_field :name, name: "group[][name]", value: "", class: "form-control" %>
 					<label for="group_end_time"> Class End Time </label>
 					<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
-					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>
-					
+					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>		
 				</div>
 			<% else %>
 				<div class="form-group">
@@ -22,7 +21,6 @@
 					<label for="group_end_time"> Class End Time </label>
 					<%= f.time_field :end_time, name: "group[][end_time]", value: @yesterday_groups[counter]["end_time"].strftime('%H:%M:%S'), class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>
-				
 				</div>
 			<% end %>
 			<% counter += 1 %>
