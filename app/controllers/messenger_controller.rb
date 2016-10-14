@@ -5,7 +5,7 @@ class MessengerController < ApplicationController
 
 	def receive_message
  		$webhook = JSON.parse(request.raw_post)
- 		page_access_token = 'EAAZAjj9YZAiZC0BAC5Od9ZCwqeVIRMJe0cWgys7ZA8vEbtlCNNyqpfhZBJN8a1WjZBoLow5ZBZAI0sbOagP3YQgPbWL3qCchCmUK7aodkHlmhfs9PmdQueNLpK0Nvib9IkZBEdkrLzksxSA4qn7zWnFJazP4eS8l16u6eqxAmI1FpTMAZDZD'
+ 		page_access_token = 'EAAZAjj9YZAiZC0BALdZB6lBltZAenVPyLZBDN5ZBD0NecQBZCBHYIkH2eF7MvGgomp8ZB4ZCqgnZAqqZAYIpRqsWf0HT8H1MHjgAGUZAsK45r6GAqgBb5jZA33BGBEZBTNhJND880K76nafD4AtmuZBNPF0yzZAN1MUZCjL7fGZCzLBkoL02jlX4gZDZD'
 
 	  body = {
 	   recipient: {
