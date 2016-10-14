@@ -6,7 +6,7 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
- 		page_access_token = 'EAAZAjj9YZAiZC0BAMAQ5ZCebCvomc1uET1dns9KbhNleTZChhsKyo5WAD0fXvdZAj5RbZBEUbADcTactqxkleZB3XmmeEH348xdk4dibeQzMhaDxNQtF51ZA0Vf8ZAqnlCSgzhpl286TwFoPK3gFGpPK4Rdk0rvmp0hh5gmpfPWbOJCwZDZD'
+ 		page_access_token = 'EAAZAjj9YZAiZC0BAC5Od9ZCwqeVIRMJe0cWgys7ZA8vEbtlCNNyqpfhZBJN8a1WjZBoLow5ZBZAI0sbOagP3YQgPbWL3qCchCmUK7aodkHlmhfs9PmdQueNLpK0Nvib9IkZBEdkrLzksxSA4qn7zWnFJazP4eS8l16u6eqxAmI1FpTMAZDZD'
 
 	  body = {
 	   recipient: {
