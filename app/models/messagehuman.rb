@@ -1,6 +1,6 @@
 class Messagehuman
 	def self.sendMessage
-			access_token = "EAAZAjj9YZAiZC0BAHJ2zRhGWF8FgzAu8NTWCwD7tQ3IsrH1gVsDiMzJgFD6kyFHY6BuCK5XyorlFGHg3H3tvZBiNRUuAJg3ZCtYDMTts2ZC4leEcYhZC6rBuGc6rZCTxckz0xUOPSqIQn6fxHvJJxMiyk7mbGvP4KoAIOXwgZA6hCkwZDZD"
+			access_token = "EAAZAjj9YZAiZC0BAKcEcxiHW1pVVTv1AdwLBJTp65YqtZBxK7Rk60Y8iZACnm2ePSThDRrUW4qiD0f3P3dCg4GM9fWXLaKqD1Seicclhx9eRokj8ZBwrpOepGcSmRDXweI2lvXTjEgcY3OeBPwJmT2NjbvsC4ZApeZBWTBSGyoFsHAZDZD"
 			url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + access_token
 			sender = 134381003642835
 			message = 'how you doin'
