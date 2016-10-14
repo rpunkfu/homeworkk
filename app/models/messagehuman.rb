@@ -3,7 +3,7 @@ class Messagehuman
 	require 'httparty'
 
 	def self.sendMessage
-		page_access_token = 'EAAZAjj9YZAiZC0BAKcEcxiHW1pVVTv1AdwLBJTp65YqtZBxK7Rk60Y8iZACnm2ePSThDRrUW4qiD0f3P3dCg4GM9fWXLaKqD1Seicclhx9eRokj8ZBwrpOepGcSmRDXweI2lvXTjEgcY3OeBPwJmT2NjbvsC4ZApeZBWTBSGyoFsHAZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAMAQ5ZCebCvomc1uET1dns9KbhNleTZChhsKyo5WAD0fXvdZAj5RbZBEUbADcTactqxkleZB3XmmeEH348xdk4dibeQzMhaDxNQtF51ZA0Vf8ZAqnlCSgzhpl286TwFoPK3gFGpPK4Rdk0rvmp0hh5gmpfPWbOJCwZDZD'
 
 	  body = {
 	   recipient: {
