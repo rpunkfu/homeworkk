@@ -1,15 +1,23 @@
 class Messagehuman
+	require 'json'
+	require 'httparty'
+
 	def self.sendMessage
-			access_token = "EAAZAjj9YZAiZC0BAKcEcxiHW1pVVTv1AdwLBJTp65YqtZBxK7Rk60Y8iZACnm2ePSThDRrUW4qiD0f3P3dCg4GM9fWXLaKqD1Seicclhx9eRokj8ZBwrpOepGcSmRDXweI2lvXTjEgcY3OeBPwJmT2NjbvsC4ZApeZBWTBSGyoFsHAZDZD"
-			url = "https://graph.facebook.com/v2.6/me/messages?access_token=" + access_token
-			sender = 134381003642835
-			message = 'how you doin'
+		page_access_token = 'EAAZAjj9YZAiZC0BAKcEcxiHW1pVVTv1AdwLBJTp65YqtZBxK7Rk60Y8iZACnm2ePSThDRrUW4qiD0f3P3dCg4GM9fWXLaKqD1Seicclhx9eRokj8ZBwrpOepGcSmRDXweI2lvXTjEgcY3OeBPwJmT2NjbvsC4ZApeZBWTBSGyoFsHAZDZD'
 
-	    options = body: {
-	          recipient: {id: sender},
-	          message: {text: message}
-	        }
-
-			result = HTTParty.post(url, options)
+	  body = {
+	   recipient: {
+	     id: '134381003642835'
+	   },
+	   message: {
+	     text: 'no looping'
+	   }
+	  }.to_json
+	  
+	  response = HTTParty.post(
+	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+	   body: body,
+	   headers: { 'Content-Type' => 'application/json' }
+	  )
 	end
 end
