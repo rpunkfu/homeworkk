@@ -19,5 +19,6 @@ class Messagehuman
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json' }
 	  )
+	  render json: nil, status: :ok
 	end
 end

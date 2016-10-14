@@ -19,7 +19,6 @@ class GroupsController < ApplicationController
       @user.save
     end
     Messagehuman.sendMessage
-    render :nothing => true, :status => 200
   end
 
   # GET /groups/1

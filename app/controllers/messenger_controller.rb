@@ -7,7 +7,6 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		Messagehuman.sendMessage
- 		render :nothing => true, :status => 200
  	end
 
  	def webhook_inspect
