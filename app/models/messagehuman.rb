@@ -5,14 +5,11 @@ class Messagehuman
 			sender = 134381003642835
 			message = 'how you doin'
 
-			options = {
-	        body: {
+	    options = body: {
 	          recipient: {id: sender},
 	          message: {text: message}
 	        }
-			}
 
 			result = HTTParty.post(url, options)
-			print result
 	end
 end
