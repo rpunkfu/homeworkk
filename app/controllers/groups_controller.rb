@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
      body: body,
      headers: { 'Content-Type' => 'application/json' }
     )
-    render nothing => true, status: 200
+    render :nothing => true, status: 200
   end
 
   # GET /groups/1
