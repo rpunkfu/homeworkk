@@ -10,7 +10,7 @@ class Messagehuman
 	     id: '134381003642835'
 	   },
 	   message: {
-	     text: 'no looping'
+	     text: 'hi alec'
 	   }
 	  }.to_json
 	  
