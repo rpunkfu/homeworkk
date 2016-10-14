@@ -18,6 +18,8 @@ class GroupsController < ApplicationController
       @user.update(conversation_id: $conversation_id)
       @user.save
     end
+    Messagehuman.sendMessage
+    render :nothing => true, :status => 200
   end
 
   # GET /groups/1

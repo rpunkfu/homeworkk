@@ -19,6 +19,5 @@ class Messagehuman
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json' }
 	  )
-	  head 200
 	end
 end
