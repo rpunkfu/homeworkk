@@ -19,6 +19,6 @@ class Messagehuman
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json' }
 	  )
-	  head :ok, status: 200
+	  status: 200
 	end
 end
