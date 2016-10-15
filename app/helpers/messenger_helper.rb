@@ -1,7 +1,7 @@
 module MessengerHelper
 
 	def checkFacebookToken
-		logger.debug params["hub.verify_token"]
+		puts 'hub.verify_token' + params["hub.verify_token"]
 		if params["hub.verify_token"] == "123456789"
     	render text: params['hub.challenge'] and return
   	else
