@@ -19,9 +19,10 @@ class MessengerController < ApplicationController
 	  response = HTTParty.post(
 	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
 	   body: body,
-	   headers: { 'Content-Type' => 'application/json'}
+	   headers: { 'Content-Type' => 'application/json'},
+	   status: 'ok'
 	  )
-	  render :nothing => true, status: 200
+	  render status: 'ok'
  	end
 
  	def sendtoken
