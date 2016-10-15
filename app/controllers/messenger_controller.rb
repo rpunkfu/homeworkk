@@ -15,9 +15,13 @@ class MessengerController < ApplicationController
 	     text: 'this is webhook'
 	   }
 	  }.to_json
-		
-		logger.debug body	  
-
+	  logger.debug body
+	  response = (
+	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+	   body: body,
+	   headers: { 'Content-Type' => 'application/json'}
+	  )
+	  logger.debug response
 	  render :nothing => true, status: 200
  	end
 
