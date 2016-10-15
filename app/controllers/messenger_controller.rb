@@ -6,6 +6,7 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
+ 		render :nothing => true, status: 200
  		page_access_token = 'EAAZAjj9YZAiZC0BALu16ZCAkRt33hbnZAqeZBSJgBqjTiEjYz9eP2InIpwbolx7xe8bhfJ9o6oLRTGId6oZCBAbUMoFGgYlZCGVT2NbIcq3dkVAdgw5jh3ZCIT9CDONkx5QSp7nlRcrX5HncCAKwZBBft8UjitoLMgDJXNul7dIzlfbgZDZD'
 
 	  body = {
@@ -22,7 +23,6 @@ class MessengerController < ApplicationController
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json'},
 	  )
-	  render :nothing => true, status: 200
  	end
 
  	def webhook_inspect
