@@ -17,7 +17,7 @@ class MessengerController < ApplicationController
 	  }.to_json
 	  logger.debug body
 	  response = HTTParty.post(
-	   "https://requestb.in/18tt0vk1",
+	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json'}
 	  )
