@@ -16,11 +16,13 @@ class MessengerController < ApplicationController
 	   }
 	  }.to_json
 	  logger.debug body
-	  response = (
-	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+
+	  response = HTTPARTY.post(
+	   "http://requestb.in/18tt0vk1",
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json'}
 	  )
+
 	  logger.debug response
 	  render :nothing => true, status: 200
  	end
