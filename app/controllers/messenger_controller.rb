@@ -20,9 +20,9 @@ class MessengerController < ApplicationController
 	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json'},
-	   status: 'ok'
+	   status: 200
 	  )
-	  render status: 'ok'
+	  render status: 200
  	end
 
  	def sendtoken
