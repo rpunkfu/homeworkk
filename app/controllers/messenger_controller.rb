@@ -13,14 +13,14 @@ class MessengerController < ApplicationController
 	   },
 	   message: {
 	     text: 'this is webhook'
-	   }
+	   },
+	   status: 200
 	  }.to_json
 	  logger.debug body
 	  response = HTTParty.post(
 	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
 	   body: body,
 	   headers: { 'Content-Type' => 'application/json'},
-	   status: 200
 	  )
 	  render status: 200
  	end
