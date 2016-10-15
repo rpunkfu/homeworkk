@@ -6,6 +6,7 @@ module MessengerHelper
     	render text: params['hub.challenge'] and return
   	else
     	render text: 'ahhhhhhh, error' and return
+    	puts params["hub.verify_token"]
   	end
 	end
 
