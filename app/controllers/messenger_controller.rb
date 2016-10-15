@@ -19,7 +19,7 @@ class MessengerController < ApplicationController
 	  response = HTTParty.post(
 	   "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
 	   body: body,
-	   headers: { 'Content-Type' => 'application/json', 'status' => 200}
+	   headers: { 'Content-Type' => 'application/json'}
 	  )
 	  render :nothing => true, status: 200
  	end
