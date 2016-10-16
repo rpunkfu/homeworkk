@@ -2,11 +2,11 @@ module MessengerHelper
 
 	def checkFacebookToken
 		verify_token = params["hub.verify_token"]
-		puts "params inspect " + params.inspect if !params.nil?
+		puts "params inspect " + params.inspect
 		if verify_token == "123456789"
     	render text: params['hub.challenge'] and return
   	else
-    	render text: params.inspect + verify_token if !verify_token.nil?
+    	render text: params.inspect + verify_token.inspect
   	end
 	end
 
