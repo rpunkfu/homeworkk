@@ -17,8 +17,8 @@ class MessengerController < ApplicationController
 
  	def webhook_inspect
  		def returnName(thename)
- 			stuffy = "the name is " + thename
- 			return stuffy
+ 			@stuffy = "the name is " + thename
+ 			return @stuffy
  		end
  		returnName('alec')
  	end
