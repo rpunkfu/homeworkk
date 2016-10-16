@@ -20,17 +20,17 @@ class Messagehuman
 		case userText
 		when 'Getting Started'
 			@messageText = 'Hi, I am Christopher Bot'
-			return @messageText
+			@messageText
 		else 
 			@messageText = 'Sorry, error'
-			return @messageText
+			@messageText
 		end
 	end
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient.to_s).nil?
  			@messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=#{recipient}'
- 			return @messageText
+ 			@messageText
  		end
  	end
 			
