@@ -7,7 +7,8 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		checkKeyWords('Getting Started')
+ 		@result = checkKeyWords('Getting Started')
+ 		puts 'result: ' + @result
  		Messagehuman.sendMessage(recipient, @messageText)
  	end
 
