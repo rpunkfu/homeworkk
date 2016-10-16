@@ -1,12 +1,12 @@
 class Messagehuman
-	def self.sendMessage()
+	def self.sendMessage(recipient, message)
 		page_access_token = 'EAAZAjj9YZAiZC0BALu16ZCAkRt33hbnZAqeZBSJgBqjTiEjYz9eP2InIpwbolx7xe8bhfJ9o6oLRTGId6oZCBAbUMoFGgYlZCGVT2NbIcq3dkVAdgw5jh3ZCIT9CDONkx5QSp7nlRcrX5HncCAKwZBBft8UjitoLMgDJXNul7dIzlfbgZDZD'
  		body = {
  			recipient: {
-   			id: '134381003642835'
+   			id: recipient
  			},
  			message: {
-   			text: 'heyo aleco'
+   			text: message
  			}
 		}.to_json
 		response = HTTParty.post(
