@@ -15,4 +15,23 @@ class Messagehuman
  			headers: { 'Content-Type' => 'application/json' }
 		)
 	end
+
+	def self.checkKeyWords(userText)
+		case userText
+		when "Getting Started"
+			messageText = 'Hi, I am Christopher Bot'
+			return messageText
+		else 
+			messageText = 'Sorry, error'
+			return messageText
+		end
+	end
+
+	def self.checkUserExists(recipient)
+		if User.find_by(conversation_id: recipient.to_s).nil?
+ 			messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=#{recipient}'
+ 			return messageText
+ 		end
+ 	end
+			
 end
