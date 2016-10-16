@@ -18,7 +18,7 @@ class Messagehuman
 
 	def self.checkKeyWords(userText)
 		case userText
-		when "Getting Started"
+		when 'Getting Started'
 			@messageText = 'Hi, I am Christopher Bot'
 			return @messageText
 		else 
