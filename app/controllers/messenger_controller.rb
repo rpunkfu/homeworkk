@@ -8,8 +8,8 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		Messagehuman.checkUserExists(recipient)
- 		$stuffy = @messageText
- 		Messagehuman.sendMessage(recipient, @messageText)
+ 		$stuffy = messageText
+ 		Messagehuman.sendMessage(recipient, messageText)
  	end
 
  	def check_token
