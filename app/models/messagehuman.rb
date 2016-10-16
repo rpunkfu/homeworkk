@@ -33,7 +33,7 @@ class Messagehuman
  		else
  			@messageText = 'you are already signed up'
  		end
- 		return @messageText
+ 		puts 'message text' + @messageText
  	end
 			
 end
