@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root 'groups#index'
 
   post '/messenger/webhook' => 'messenger#receive_message'
-  get '/messenger/webhook' => 'messenger#check_token'
 
   get 'messenger/inspect' => 'messenger#webhook_inspect'
 
