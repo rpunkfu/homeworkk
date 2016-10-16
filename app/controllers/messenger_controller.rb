@@ -7,7 +7,9 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		Messagehuman.sendMessage(recipient, 'hellooooo')
+ 		results = checkUserExists(recipient)
+ 		puts 'hi' + results.inspect
+ 		#Messagehuman.sendMessage(recipient, 'hellooooo')
  	end
 
  	def check_token
