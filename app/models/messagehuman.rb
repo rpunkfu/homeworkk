@@ -29,11 +29,11 @@ class Messagehuman
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient.to_s).nil?
- 			$stuffy = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=#{recipient}'
- 			return $stuffy
+ 			@messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=#{recipient}'
+ 			return @messageText
  		else
- 			$stuffy = 'you are already signed up'
- 			return $stuffy
+ 			@messageText = 'you are already signed up'
+ 			return @messageText
  		end
  	end
 			
