@@ -9,7 +9,7 @@ class MessengerController < ApplicationController
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@result = checkKeyWords('Getting Started')
  		puts 'result: ' + @result
- 		Messagehuman.sendMessage(recipient, @messageText)
+ 		#Messagehuman.sendMessage(recipient, @messageText)
  	end
 
  	def check_token
