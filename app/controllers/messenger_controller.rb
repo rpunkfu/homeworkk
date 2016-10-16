@@ -8,7 +8,6 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		result = Messagehuman.checkUserExists(recipient)
- 		puts result
  		#Messagehuman.sendMessage(recipient, 'hellooooo')
  	end
 

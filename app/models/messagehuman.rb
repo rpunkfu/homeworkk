@@ -1,6 +1,6 @@
 class Messagehuman
 	def self.sendMessage(recipient, message)
-		page_access_token = 'EAAZAjj9YZAiZC0BALu16ZCAkRt33hbnZAqeZBSJgBqjTiEjYz9eP2InIpwbolx7xe8bhfJ9o6oLRTGId6oZCBAbUMoFGgYlZCGVT2NbIcq3dkVAdgw5jh3ZCIT9CDONkx5QSp7nlRcrX5HncCAKwZBBft8UjitoLMgDJXNul7dIzlfbgZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAEd4jlX7pUkQ975BA9e1NNfdjZBRxGxJ8n3NbndZCXCNqmMCGDyh3ZBjxXxS6PXgw8uZCWNrddK2PtOJMSp1bPlADE6KwgUAc7RmwyvTDlT1p8MACQzyXs65uA9dzhQmdE8IoT6xxbFth3mIabx6XgxJqZAAx4AZDZD'
  		body = {
  			recipient: {
    			id: recipient
@@ -30,7 +30,7 @@ class Messagehuman
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient.to_s).nil?
  			@messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=#{recipient}'
- 			@messageText
+ 			puts @messageText
  		end
  	end
 			
