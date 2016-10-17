@@ -6,9 +6,9 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
-    if user_signed_in? && current_user.class_number.nil?
+    if user_signed_in? && current_user.class_number.nil? && params["user"]["class_number"].defined?
       @setUserClassNumber = User.find_by(id: current_user.id)
-      @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i) if !params["user"]["class_number"].to_i.nil?
+      @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save 
     end
     @groups = Group.all
