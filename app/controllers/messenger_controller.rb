@@ -7,8 +7,9 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		messageText = Messagehuman.checkUserExists(recipient)
- 		
+ 		messageText = Messagehuman.checkUserExists(recipient) # grabs message to send from function
+ 		# write if statement so if there is a text outputted, it will send that text and then break from the if statement
+
  		Messagehuman.sendMessage(recipient, messageText)
  	end
 
