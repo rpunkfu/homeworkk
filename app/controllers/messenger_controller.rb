@@ -7,8 +7,8 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		Messagehuman.checkUserExists(recipient)
- 		puts 'second + ' @@messageText.inspect
+ 		$stuffy = Messagehuman.checkUserExists(recipient)
+
  		#Messagehuman.sendMessage(recipient, MessageHuman::MessageText)
  	end
 
