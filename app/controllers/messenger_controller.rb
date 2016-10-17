@@ -8,7 +8,7 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		Messagehuman.checkUserExists(recipient)
- 		puts 'second + ' @@messageText
+ 		puts 'second + ' @@messageText.inspect
  		#Messagehuman.sendMessage(recipient, MessageHuman::MessageText)
  	end
 
