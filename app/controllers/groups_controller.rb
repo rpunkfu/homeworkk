@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def index
     if user_signed_in? && current_user.class_number.to_i.nil?
       @setUserClassNumber = User.find_by(id: current_user.id)
-      @setUserClassNumber.update(class_number: params["class_number"])
+      @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save 
     end
     @groups = Group.all
