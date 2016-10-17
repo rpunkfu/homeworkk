@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save 
+      redirect_to groups_path
     end
     @groups = Group.all
     @user = current_user
