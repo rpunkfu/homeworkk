@@ -5,7 +5,7 @@
 	t = Time.now
 	timeten = 10.minutes.from_now
 	@groups.each do |group|
-		if group.end_time.strftime("%H:%M:%S") >= t.utc.strftime("%H:%M:%S") && group.end_time.strftime("%H:%M:%S") <= timeten.utc.strftime("%H:%M:%S")
+		if group.end_time.utc.strftime("%H:%M:%S") >= t.utc.strftime("%H:%M:%S") && group.end_time.utc.strftime("%H:%M:%S") <= timeten.utc.strftime("%H:%M:%S")
 			Messagehuman.sendMessage(group.conversation_id, group.name)
 			puts "trying the heroku scheduler"
 		end
