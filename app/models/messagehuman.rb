@@ -17,11 +17,11 @@ class Messagehuman
 	end
 
 	def self.checkKeyWords(userText)
-		case userText
-		when "Getting Started"
+		case userText.downcase
+		when "getting started"
 			@messageText = 'Hi, I am Christopher Bot'
 			return @messageText
-		when "Hi" || "hi"
+		when "hi"
 			@messageText = "Hi, I'm Christopher; the coolest bot around"
 			return @messageText
 		else 
