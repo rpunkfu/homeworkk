@@ -1,6 +1,6 @@
 class Messagehuman
 	def self.sendMessage(recipient, message)
-		page_access_token = 'EAAZAjj9YZAiZC0BAEd4jlX7pUkQ975BA9e1NNfdjZBRxGxJ8n3NbndZCXCNqmMCGDyh3ZBjxXxS6PXgw8uZCWNrddK2PtOJMSp1bPlADE6KwgUAc7RmwyvTDlT1p8MACQzyXs65uA9dzhQmdE8IoT6xxbFth3mIabx6XgxJqZAAx4AZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
  		body = {
  			recipient: {
    			id: recipient
