@@ -1,10 +1,11 @@
 <%= $webhook.inspect %>
-<%= Time.now.utc.strftime("%H:%M:%S") %>
+<%= Time.now.utc.strftime("%H:%M:%S")+(10*60) %>
 <%
 
 	@groups = Group.all
+	t = Time.now
 	@groups.each do |group|
-		if group.end_time.strftime("%H:%M:%S") >= Time.now.utc.strftime("%H:%M:%S")
+		if group.end_time.strftime("%H:%M:%S") >= t.utc.strftime("%H:%M:%S") && group.end_time.strftime("%H:%M:%S") <= t.utc.strftime("%H:%M:%S")+(10*60)
 			Messagehuman.sendMessage(group.conversation_id, group.name)
 			puts "trying the heroku scheduler"
 		end
