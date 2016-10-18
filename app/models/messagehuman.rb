@@ -25,7 +25,7 @@ class Messagehuman
 			@messageText = "Hi, I'm Christopher; the coolest bot around"
 			return @messageText
 		else 
-			@messageText = 'Sorry, error'
+			@messageText = "Sorry, I don't understand; I have a small vocabulary right now"
 			return @messageText
 		end
 	end
