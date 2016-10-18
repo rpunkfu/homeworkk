@@ -1,1 +1,10 @@
 <%= $webhook.inspect %>
+
+<%
+@groups = Group.all
+@t = Time.now.utc.strftime("%H:%M:%S")
+@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
+
+@groups.each do |group| %>
+<%= group.end_time.utc.strftime("%H:%M:%S") %>
+<% end %>
