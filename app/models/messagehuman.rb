@@ -22,11 +22,11 @@ class Messagehuman
 			@messageText = 'Hi, I am Christopher Bot'
 			return @messageText
 		when 'Hi' || 'hi'
-			@messageText = "Hi, I'm Christopher, the coolest bot around"
+			@messageText = "Hi, I'm Christopher; the coolest bot around"
 			return @messageText
 		else 
 			@messageText = 'Sorry, error'
-			@messageText
+			return @messageText
 		end
 	end
 
