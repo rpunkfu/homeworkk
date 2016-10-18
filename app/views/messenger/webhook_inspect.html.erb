@@ -1,17 +1,13 @@
 <%= $webhook.inspect %>
 <%
-
 	@groups = Group.all
 	t = Time.now
 	timeten = 10.minutes.from_now
 	@groups.each do |group|
-		if 1 == 1
 %>
-			<%= "stuff: " + group.end_time.utc.strftime("%H:%M:%S") %> 
+	<%= "stuff: " + group.end_time.utc.strftime("%H:%M:%S").to_s %> 
 <%
-		end
 	end
-
 %>
 <%= timeten.utc.strftime("%H:%M:%S") %> <br><br>
 
