@@ -1,5 +1,7 @@
 <%= $webhook.inspect %>
+<%= Time.now+10*60.utc %>
 <%
+=begin
 @groups = Group.all
 @groups.each do |group|
 		if group.end_time >= Time.now
@@ -7,4 +9,5 @@
 			puts "trying the heroku scheduler"
 		end
 	end
+=end
 %>
