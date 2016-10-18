@@ -5,6 +5,10 @@
 @t = Time.now.utc.strftime("%H:%M:%S")
 @timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
 
-@groups.each do |group| %>
-<%= group.end_time.utc.strftime("%H:%M:%S") %>
-<% end %>
+@groups.each do |group| 
+ 	if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten
+ 		Messagehuman.sendMessage(group.conversation_id, 'hello')
+	end
+end
+
+%>
