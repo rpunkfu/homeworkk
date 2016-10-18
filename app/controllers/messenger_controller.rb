@@ -9,10 +9,10 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
 
- 		#@messageText = Messagehuman.checkKeyWords(userText) # grabs message to send from function
+ 		@messageText = Messagehuman.checkKeyWords(@userText) # grabs message to send from function
  		# write if statement so if there is a text outputted, it will send that text and then break from the if statement
 
- 		Messagehuman.sendMessage(@recipient, @userText)
+ 		Messagehuman.sendMessage(@recipient, @messageText)
  	end
 
  	def check_token
