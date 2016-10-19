@@ -1,14 +1,26 @@
 <%= $webhook.inspect %>
-
+<br>
 <%
-@groups = Group.all
+@groups = Group.all 
 @t = Time.now.utc.strftime("%H:%M:%S")
 @timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
-
+%>
+<%= @t %><br>
+<%= @timeten %> <br>
+<%
 @groups.each do |group| 
- 	if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten
- 		
-	end
+%>
+<%= group.end_time.utc.strftime("%H:%M:%S") %> <br>
+<% if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten %>
+	<%= "is true" %>
+<% else %>
+	<%= "not true" %>
+<% end %>
+
+<%
 end
 
+# if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten
+ 		
+	#end
 %>
