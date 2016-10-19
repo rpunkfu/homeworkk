@@ -7,7 +7,7 @@
 
 @groups.each do |group| 
  	if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten
- 		Messagehuman.sendMessage(group.conversation_id, 'hello')
+ 		
 	end
 end
 

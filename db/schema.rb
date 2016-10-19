@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013141343) do
+ActiveRecord::Schema.define(version: 20161019152620) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161013141343) do
     t.boolean "homework_assigned"
     t.string  "homework_assignment"
     t.string  "conversation_id"
+    t.string  "group_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 20161013141343) do
     t.string   "first_name"
     t.string   "provider"
     t.string   "uid"
-    t.integer  "class_number"
+    t.string   "class_number"
     t.string   "conversation_id"
   end
 
