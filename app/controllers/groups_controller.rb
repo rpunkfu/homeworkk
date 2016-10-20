@@ -66,9 +66,10 @@ class GroupsController < ApplicationController
     counter = 0
     # for each class created, loop through it and enter it into the database, increment counter as well
     if !params[:group].nil?
+      $paramsstuff = params[:group]
       params[:group].each do |group|
-        next if group[counter][:name].blank? || group[counter][:end_time].blank?
-        @group = current_user.groups.build(name: group[counter][:name], end_time: group[counter][:end_time], group_day: group[counter][:group_day], conversation_id: group[counter][:conversation_id])
+        next if group[:name].blank? || group[:end_time].blank?
+        @group = current_user.groups.build(name: group[:name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id])
         @group.save
         counter += 1
       end
