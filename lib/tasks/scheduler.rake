@@ -8,7 +8,8 @@ task :message_task => :environment do
 	@groups.each do |group|
 		if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten
 			Messagehuman.sendMessage(group.conversation_id.to_s, group.group_name.to_s)
-			puts "it worked"
+			puts "conversatio_id: " + group.conversation_id.inspect
+			puts "group name: " + group.group_name.inspect
 		end
 	end
 
