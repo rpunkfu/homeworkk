@@ -2,16 +2,16 @@
 <br>
 <%
 @groups = Group.all 
-@t = Time.now.strftime("%H:%M:%S")
-@timeten = 10.minutes.from_now.strftime("%H:%M:%S")
+@t = Time.now.utc.strftime("%H:%M:%S")
+@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
 %>
 <%= @t %><br>
 <%= @timeten %> <br>
 <%
 @groups.each do |group| 
 %>
-<%= group.end_time.strftime("%H:%M:%S") %> <br>
-<% if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten %>
+<%= group.end_time.utc.strftime("%H:%M:%S") %> <br>
+<% if group.end_time.utc.strftime("%H:%M:%S") >= @t && group.end_time.utc.strftime("%H:%M:%S") <= @timeten %>
 	<%= "is true" %>
 <% else %>
 	<%= "not true" %>
