@@ -67,8 +67,8 @@ class GroupsController < ApplicationController
     # for each class created, loop through it and enter it into the database, increment counter as well
     if !params[:group].nil?
       params[:group].each do |group|
-        next if group[:group_name].blank? || group[:end_time].blank?
-        @group = current_user.groups.build(name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id])
+        next if group[:name].blank? || group[:end_time].blank?
+        @group = current_user.groups.build(name: group[:name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id])
         @group.save
         counter += 1
       end
@@ -88,12 +88,12 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
-          break if group[:group_name].blank? || group[:end_time].blank?
-          @group = current_user.groups.build(name: group[:group_name], end_time: group[:end_time].utc, group_day: group[:group_day], conversation_id: group[:conversation_id])
+          break if group[:name].blank? || group[:end_time].blank?
+          @group = current_user.groups.build(name: group[:name], end_time: group[:end_time].utc, group_day: group[:group_day], conversation_id: group[:conversation_id])
           @group.save
         end
         next if group[:group_name].blank? || group[:end_time].blank?
-        @group.update(name: params[:group][counter][:group_name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
+        @group.update(name: params[:group][counter][:name], end_time: params[:group][counter][:end_time], group_day: params[:group][counter][:group_day])
         counter += 1
         groupCounter += 1
       end
