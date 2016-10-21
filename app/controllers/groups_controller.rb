@@ -93,8 +93,7 @@ class GroupsController < ApplicationController
           @group.save
         end
         next if group[:group_name].blank? || group[:end_time].blank?
-        $inspectparams = params
-        @group.update(name: params[:group][:group_name], end_time: params[:group][:end_time], group_day: params[:group][:group_day])
+        @group.update(name: group[:name], end_time: group[:end_time], group_day: group[:group_day])
         counter += 1
         groupCounter += 1
       end
