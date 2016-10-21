@@ -89,11 +89,11 @@ class GroupsController < ApplicationController
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
           break if group[:group_name].blank? || group[:end_time].blank?
-          @group = current_user.groups.build(name: group[counter][:group_name], end_time: group[counter][:end_time].utc, group_day: group[counter][:group_day], conversation_id: group[counter][:conversation_id])
+          @group = current_user.groups.build(name: group[counter][:group_name], end_time: group[counter][:end_time], group_day: group[counter][:group_day], conversation_id: group[counter][:conversation_id])
           @group.save
         end
         next if group[:group_name].blank? || group[:end_time].blank?
-        @group.update(name: group[:name], end_time: group[:end_time], group_day: group[:group_day])
+        @group.update(name: group[counter][:group_name], end_time: group[counter][:end_time])
         counter += 1
         groupCounter += 1
       end
