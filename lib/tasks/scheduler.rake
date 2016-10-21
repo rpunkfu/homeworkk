@@ -7,9 +7,9 @@ task :message_task => :environment do
 
 	@groups.each do |group|
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
-			Messagehuman.sendMessage(group.conversation_id, group.name)
+			Messagehuman.sendMessage(group.conversation_id, group.group_name)
 			puts "conversatio_id: " + group.conversation_id.inspect
-			puts "group name: " + group.name.inspect
+			puts "group name: " + group.group_name.inspect
 		end
 	end
 
