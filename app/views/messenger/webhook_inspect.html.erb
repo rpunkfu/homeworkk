@@ -25,4 +25,7 @@ end
 	#end
 %>
 <br><br>
-<%= $inspectparams.inspect %>
+<% $inspectparams.each do |group| %>
+	<%= group.inspect %>
+	<br>
+<% end %>

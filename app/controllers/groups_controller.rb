@@ -86,6 +86,7 @@ class GroupsController < ApplicationController
     counter = 0
     groupCounter = 1
     if !params[:group].nil?
+      $inspectparams = params[:group]
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
           break if group[:group_name].blank? || group[:end_time].blank?
