@@ -2,8 +2,8 @@
 <br>
 <%
 @groups = Group.all 
-@t = Time.now.utc.strftime("%H:%M:%S")
-@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
+@t = Time.now.strftime("%H:%M:%S")
+@timeten = 10.minutes.from_now.strftime("%H:%M:%S")
 %>
 <%= @t %><br>
 <%= @timeten %> <br>
