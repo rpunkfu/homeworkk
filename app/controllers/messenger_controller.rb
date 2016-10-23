@@ -6,10 +6,11 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
+ 		currentClasses = Messagehuman::CURRENT_CLASSES
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
 
- 		$currentClasses.each do |group|
+ 		currentClasses.each do |group|
  			if group.conversation_id == @recipient
  				if @userText == "Yes"
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
