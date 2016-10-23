@@ -26,12 +26,12 @@ class Messagehuman
    			text: message,
    			quick_replies: [
       	{
-        	"content_type":"text",
-        	"title":"Yes", 	
+        	content_type: "text",
+        	title: "Yes", 	
       	},
       	{
-        		"content_type":"text",
-        		"title":"No",
+        		content_type: "text",
+        		title: "No",
       		}
    			]
  			}

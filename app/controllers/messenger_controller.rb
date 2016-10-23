@@ -11,7 +11,7 @@ class MessengerController < ApplicationController
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
  		@messageText = "do you have homework for math"
 
- 		Messagehuman.sendMessage(@recipient, @messageText)
+ 		Messagehuman.sendBinaryMessage(@recipient, @messageText)
  	end
 
  	def check_token
