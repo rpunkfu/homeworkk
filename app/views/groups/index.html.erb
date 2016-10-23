@@ -6,7 +6,6 @@
 
 	<h1>Listing Classes</h1>
 
-
 	    <% current_user.groups.each do |group| %>
 		      <%= group.group_name %> - <%= group.end_time %> - <%= group.group_day %>
 	        <%= link_to 'Show', group %>
