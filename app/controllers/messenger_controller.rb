@@ -6,7 +6,6 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
- 		$currentClasses = Array.new
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
 
