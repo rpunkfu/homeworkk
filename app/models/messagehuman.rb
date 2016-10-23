@@ -16,6 +16,33 @@ class Messagehuman
 		)
 	end
 
+	def self.sendBinaryMessage(recipient, message)
+		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
+ 		body = {
+ 			recipient: {
+   			id: recipient
+ 			},
+ 			message: {
+   			text: message,
+   			quick_replies: [
+      	{
+        	"content_type":"text",
+        	"title":"Yes", 	
+      	},
+      	{
+        		"content_type":"text",
+        		"title":"No",
+      		}
+   			]
+ 			}
+		}.to_json
+		response = HTTParty.post(
+ 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+ 			body: body,
+ 			headers: { 'Content-Type' => 'application/json' }
+		)
+	end
+
 	def self.checkKeyWords(userText)
 		case userText.downcase
 		when "getting started"
