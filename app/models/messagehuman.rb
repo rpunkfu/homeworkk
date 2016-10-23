@@ -27,11 +27,13 @@ class Messagehuman
    			quick_replies: [
       	{
         	content_type: "text",
-        	title: "Yes", 	
+        	title: "Yes", 
+        	payload: 'Yes'	
       	},
       	{
         		content_type: "text",
         		title: "No",
+        		payload: 'No'
       		}
    			]
  			}
