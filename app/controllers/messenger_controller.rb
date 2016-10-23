@@ -16,6 +16,8 @@ class MessengerController < ApplicationController
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
  				elsif @userText == "No"
  					Messagehuman.sendMessage(group.conversation_id, "thats good")
+ 				else
+ 					Messagehuman.sendMessage(group.conversation_id, "failed")
  				end
  			end
  		end
