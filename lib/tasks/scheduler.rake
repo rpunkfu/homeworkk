@@ -13,7 +13,7 @@ task :message_task => :environment do
 			puts "conversation_id: " + group.conversation_id.inspect
 			puts "group name: " + group.group_name.inspect
 		end
-		puts "currentClasses: " + currentClasses
+		puts "currentClasses: " + currentClasses.inspect
 	end
 
 end
