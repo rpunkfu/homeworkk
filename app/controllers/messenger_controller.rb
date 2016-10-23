@@ -9,9 +9,17 @@ class MessengerController < ApplicationController
  		$currentClasses = Array.new
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
- 		@messageText = "do you have homework for math"
 
- 		Messagehuman.sendBinaryMessage(@recipient, @messageText)
+ 		$currentClasses.each do |group|
+ 			if group.conversation_id == @recipient
+ 				if @userText == "Yes"
+ 					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
+ 				elsif @userText == "No"
+ 					Messagehuman.sendMessage(group.conversation_id, "thats good")
+ 				end
+ 			end
+ 		end
+
  	end
 
  	def check_token
