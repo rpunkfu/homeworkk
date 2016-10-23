@@ -12,8 +12,8 @@ task :message_task => :environment do
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			puts "conversation_id: " + group.conversation_id.inspect
 			puts "group name: " + group.group_name.inspect
-			puts "currentClasses: " + currentClasses
 		end
+		puts "currentClasses: " + currentClasses
 	end
 
 end
