@@ -29,7 +29,10 @@ class MessengerController < ApplicationController
  	end
 
  	def webhook_inspect
-
+ 		#@group = Group.first.as_json
+ 		#@group["id"] = nil
+ 		#@grouparray = Grouparray.new(@group)
+ 		#@grouparray.save
  	end
  
 end

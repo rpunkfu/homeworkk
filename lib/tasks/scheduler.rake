@@ -6,13 +6,12 @@ task :message_task => :environment do
 	@timeten = 10.minutes.from_now.strftime("%H:%M:%S")
 
 
-	@groups.each do |group|
 
+	@groups.each do |group|
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			puts "conversation_id: " + group.conversation_id.inspect
 			puts "group name: " + group.group_name.inspect
 		end
 	end
-
 end
