@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
       @setUserClassNumber.save 
       redirect_to groups_path
     end
-    @groups = Group.all
+    @groups = current_user.groups(:order => 'CASE Day WHEN "Monday" THEN 1 WHEN "Tuesday" THEN 2 WHEN "Wednesday" THEN 3 WHEN "Thursday" THEN 4 WHEN "Friday" THEN 5 WHEN "Saturday" THEN 6 WHEN "Sunday" THEN 7 END')
     @user = current_user
     if user_signed_in? && current_user.conversation_id.nil?
       @user = current_user
