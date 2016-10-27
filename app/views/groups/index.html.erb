@@ -7,7 +7,7 @@
 	<h1>Listing Classes</h1>
 
 	    <% current_user.groups.each do |group| %>
-		      <%= group.group_name %> - <%= group.end_time %> - <%= group.group_day %>
+		      <%= group.group_name %> - <%= group.end_time %> - <%= 'assigned: ' + group.homework_assigned %> - <%= group.group_day %>
 	        <%= link_to 'Show', group %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
