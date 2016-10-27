@@ -7,21 +7,23 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
+ 		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
 
  		currentClasses.each do |group|
  			if group.conversation_id == @recipient
- 				if @userText == "Yes"
+ 				if @userText == "yes"
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name)
  					@group.update(homework_assigned: true)
- 				elsif @userText == "No"
+ 				elsif @userText == "no"
  					Messagehuman.sendMessage(group.conversation_id, "thats good")
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
+ 					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name)
+ 					@group.update(homework_assigned: false)
  				else
  					Messagehuman.sendMessage(group.conversation_id, "failed logic")		
  				end
