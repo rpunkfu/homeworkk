@@ -6,7 +6,7 @@
 
 	<h1>Listing Classes</h1>
 
-	    <% @groups.each do |group| %>
+	    <% current_user.groups.order("created_at desc").each do |group| %>
 		      <%= group.group_name %> - <%= group.end_time %> - <%= 'assigned: ' + group.homework_assigned.to_s %> - <%= group.group_day %>
 	        <%= link_to 'Show', group %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
