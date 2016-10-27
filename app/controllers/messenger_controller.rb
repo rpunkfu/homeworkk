@@ -12,14 +12,19 @@ class MessengerController < ApplicationController
 
  		currentClasses.each do |group|
  			if group.conversation_id == @recipient
+ 				puts 'it was equal to recipient'
  				if @userText == "Yes"
+ 					puts 'text was yes'
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
  				elsif @userText == "No"
  					Messagehuman.sendMessage(group.conversation_id, "thats good")
+ 					puts 'text was no'
  				else
  					Messagehuman.sendMessage(group.conversation_id, "failed logic")
+ 					puts 'else'
  				end
  			end
+ 			puts 'the end of the each statement'
  		end
 
  	end
@@ -29,10 +34,7 @@ class MessengerController < ApplicationController
  	end
 
  	def webhook_inspect
- 		#@group = Group.first.as_json
- 		#@group["id"] = nil
- 		#@grouparray = Grouparray.new(@group)
- 		#@grouparray.save
+ 		]
  	end
  
 end
