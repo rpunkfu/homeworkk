@@ -14,7 +14,7 @@ class MessengerController < ApplicationController
  			if group.conversation_id == @recipient
  				if @userText == "Yes"
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
- 					group.update(homework_assigned: true)
+ 					puts group.update(homework_assigned: true)
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  				elsif @userText == "No"
