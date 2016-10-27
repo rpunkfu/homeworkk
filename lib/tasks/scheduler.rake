@@ -12,6 +12,7 @@ task :message_task => :environment do
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			@group = group.as_json
 			@group["id"] = nil
+			@group.delete("name")
 			groupArrayNew = Grouparray.new(@group)
 			groupArrayNew.save
 		end
