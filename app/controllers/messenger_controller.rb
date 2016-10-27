@@ -12,19 +12,18 @@ class MessengerController < ApplicationController
 
  		currentClasses.each do |group|
  			if group.conversation_id == @recipient
- 				puts 'it was equal to recipient'
  				if @userText == "Yes"
- 					puts 'text was yes'
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
+ 					@groupArrayGroup = Grouparray.find_by(id: group.id)
+ 					@groupArrayGroup.destroy
  				elsif @userText == "No"
  					Messagehuman.sendMessage(group.conversation_id, "thats good")
- 					puts 'text was no'
+ 					@groupArrayGroup = Grouparray.find_by(id: group.id)
+ 					@groupArrayGroup.destroy
  				else
- 					Messagehuman.sendMessage(group.conversation_id, "failed logic")
- 					puts 'else'
+ 					Messagehuman.sendMessage(group.conversation_id, "failed logic")		
  				end
  			end
- 			puts 'the end of the each statement'
  		end
 
  	end
