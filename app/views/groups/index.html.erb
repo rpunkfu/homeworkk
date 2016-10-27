@@ -6,7 +6,7 @@
 
 	<h1>Listing Classes</h1>
 
-	    <% current_user.groups.order("group_day asc").each do |group| %>
+	    <% current_user.groups.order('CASE Day WHEN "Monday" THEN 1 WHEN "Tuesday" THEN 2 WHEN "Wednesday" THEN 3 WHEN "Thursday" THEN 4 WHEN "Friday" THEN 5 END').each do |group| %>
 		      <%= group.group_name %> - <%= group.end_time %> - <%= 'assigned: ' + group.homework_assigned.to_s %> - <%= group.group_day %>
 	        <%= link_to 'Show', group %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
