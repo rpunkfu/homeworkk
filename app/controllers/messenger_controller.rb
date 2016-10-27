@@ -16,7 +16,7 @@ class MessengerController < ApplicationController
  					Messagehuman.sendMessage(group.conversation_id, "that's too bad")
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
- 					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name)
+ 					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
  					@group.update(homework_assigned: true)
  				elsif @userText == "no"
  					Messagehuman.sendMessage(group.conversation_id, "thats good")
