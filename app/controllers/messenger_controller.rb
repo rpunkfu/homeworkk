@@ -9,7 +9,7 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"]
  		currentClasses = Grouparray.all
-
+ 		
  		currentClasses.each do |group|
  			if group.conversation_id == @recipient
  				puts 'it was equal to recipient'
