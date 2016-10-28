@@ -60,9 +60,10 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.where("group_day = ?", @group.group_day).to_a # edit all the groups from the selected group day
     $groupUpdateNumber = @groups.count # amount of original groups in update page
     $groupsId = Array.new
-    current_user.groups.each do |group|
+    current_user.groups.where("group_day = ?", @group.group_day).each do |group|
       group = group.as_json
       $groupsId.push(group["id"])
+      $groupsId.push(group["group_name"])
     end
   end
 
