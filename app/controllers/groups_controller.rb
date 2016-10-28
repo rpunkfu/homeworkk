@@ -63,7 +63,6 @@ class GroupsController < ApplicationController
     current_user.groups.where("group_day = ?", @group.group_day).each do |group|
       group = group.as_json
       $groupsId.push(group["id"])
-      $groupsId.push(group["group_name"])
     end
   end
 
@@ -101,9 +100,11 @@ class GroupsController < ApplicationController
           @group.save
         end
         next if group[:group_name] == "" || group[:end_time] == ""
-        @group.update(group_name: group[:group_name], end_time: group[:end_time])
+        @groupUpdate = Group.find_by(id: $groupsId[counter])
+        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time])
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
+        counter += 1
       end
     end
     redirect_to groups_path, notice: "Successfully Updated"
