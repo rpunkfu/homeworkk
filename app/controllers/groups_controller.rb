@@ -94,8 +94,8 @@ class GroupsController < ApplicationController
           @group.save
         end
         next if group[:group_name] == "" || group[:end_time] == ""
-        @updateGroup = Group.find_by(id: group.group_id)
-        @updateGroup.update(group_name: group[:group_name], end_time: group[:end_time])
+        @group.update(group_name: group[:group_name], end_time: group[:end_time])
+        puts "this is @group: " + @group.to_s.inspect
         groupCounter += 1
       end
     end
