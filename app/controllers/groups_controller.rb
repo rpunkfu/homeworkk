@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
+  require 'json'
   include MessengerHelper
   # GET /groups
   # GET /groups.json
@@ -59,8 +60,9 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.where("group_day = ?", @group.group_day).to_a # edit all the groups from the selected group day
     $groupUpdateNumber = @groups.count # amount of original groups in update page
     $groupsId = Array.new
-    current_user.groups.id.each do |id|
-      $groupsId.push(id)
+    current_user.groups.each do |group|
+      group = group.as_json
+      $groupsId.push(group.["id"])
     end
   end
 
