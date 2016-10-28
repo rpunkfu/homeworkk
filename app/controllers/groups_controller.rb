@@ -58,6 +58,10 @@ class GroupsController < ApplicationController
   def edit
     @groups = current_user.groups.where("group_day = ?", @group.group_day).to_a # edit all the groups from the selected group day
     $groupUpdateNumber = @groups.count # amount of original groups in update page
+    $groupsId = Array.new
+    current_user.groups.id.each do |id|
+      $groupsId.push(id)
+    end
   end
 
   # POST /groups
@@ -95,7 +99,7 @@ class GroupsController < ApplicationController
         end
         next if group[:group_name] == "" || group[:end_time] == ""
         @group.update(group_name: group[:group_name], end_time: group[:end_time])
-        puts "this is @group: " + @group.to_s.inspect
+        puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
       end
     end
