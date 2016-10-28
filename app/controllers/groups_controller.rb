@@ -96,7 +96,7 @@ class GroupsController < ApplicationController
         next if group[:group_name] == "" || group[:end_time] == ""
         @group.update(group_name: group[:group_name], end_time: group[:end_time])
         groupCounter += 1
-        puts "this is @group: " + @group
+        puts "this is @group: " + @group.to_s
       end
     end
     redirect_to groups_path, notice: "Successfully Updated"
