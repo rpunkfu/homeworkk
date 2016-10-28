@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
     $groupsId = Array.new
     current_user.groups.each do |group|
       group = group.as_json
-      $groupsId.push(group.["id"])
+      $groupsId.push(group["id"])
     end
   end
 
