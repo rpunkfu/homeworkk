@@ -37,7 +37,7 @@ class MessengerController < ApplicationController
  	end
 
  	def webhook_inspect
- 		
+ 		@user = User.find_by(conversation_id: '134381003642835')
  	end
  
 end
