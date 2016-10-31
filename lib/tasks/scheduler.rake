@@ -1,15 +1,6 @@
 desc "This task is called by the Heroku scheduler add-on"
 require 'json'
 task :message_task => :environment do
-	@users = User.all
-	@users.each do |user|
-		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time.nil?
-			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == false
-				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
-				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
-			end
-		end
-	end
 
 	@groups = Group.all.where("group_day = ?", Time.now.strftime("%A").downcase)
 	@t = 0.minutes.from_now.strftime("%H:%M:%S")
@@ -24,6 +15,16 @@ task :message_task => :environment do
 			@group.delete("name")
 			groupArrayNew = Grouparray.new(@group)
 			groupArrayNew.save
+		end
+	end
+	
+	@users = User.all
+	@users.each do |user|
+		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time.nil?
+			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == false
+				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
+				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
+			end
 		end
 	end
 end
