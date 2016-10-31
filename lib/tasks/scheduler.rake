@@ -4,11 +4,14 @@ task :message_task => :environment do
 	@users = User.all
 	@users.each do |user|
 		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).nil?
-			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true
+			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == false
 				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
 				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
 			end
 		end
+	end
+
+	if Time.now.strftime("%H:%M:%S") == "00:04" || Time.now.strftime("%H:%M:%S") == "00:05"
 	end
 
 	@groups = Group.all.where("group_day = ?", Time.now.strftime("%A").downcase)
@@ -25,5 +28,12 @@ task :message_task => :environment do
 			groupArrayNew = Grouparray.new(@group)
 			groupArrayNew.save
 		end
+	end
+end
+
+task :reset_classes => :environment do
+	@groups = Group.all
+	@groups.each do |group|
+		group.update(homework_assigned: nil)
 	end
 end
