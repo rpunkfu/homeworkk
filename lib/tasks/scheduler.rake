@@ -3,7 +3,7 @@ require 'json'
 task :message_task => :environment do
 	@users = User.all
 	@users.each do |user|
-		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).nil?
+		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time.nil?
 			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == false
 				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
 				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
