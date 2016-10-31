@@ -11,9 +11,6 @@ task :message_task => :environment do
 		end
 	end
 
-	if Time.now.strftime("%H:%M:%S") == "00:04" || Time.now.strftime("%H:%M:%S") == "00:05"
-	end
-
 	@groups = Group.all.where("group_day = ?", Time.now.strftime("%A").downcase)
 	@t = 0.minutes.from_now.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.strftime("%H:%M:%S")
