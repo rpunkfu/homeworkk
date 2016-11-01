@@ -22,10 +22,8 @@ task :message_task => :environment do
 	puts 'line 22'
 	@users.each do |user|
 		puts 'line24'
-		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time.nil?
-			puts 'line 26'
-			puts 'heyo: ' + user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time.inspect
-			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.end_time == false
+		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned.nil?
+			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == false
 				puts 'line 28'
 				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
 				puts "heyllo: " + homeworkGroups.inspect
