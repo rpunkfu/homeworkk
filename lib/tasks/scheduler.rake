@@ -25,7 +25,7 @@ task :message_task => :environment do
 		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned.nil?
 			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == false
 				puts 'line 28'
-				homeworkGroups = user.groups.where("group_day = ?", Time.now.strftime("%A"))
+				homeworkGroups = Group.where(homework_assigned: true).where(conversation_id: user.conversation_id)
 				homeworkGroups.each do |group|
 					puts group.group_name.inspect
 				end
