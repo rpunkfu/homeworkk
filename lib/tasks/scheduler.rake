@@ -25,9 +25,9 @@ task :message_task => :environment do
 		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned.nil?
 			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == false
 				puts 'line 28'
-				homeworkGroups = user.groups.group_name.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true).to_a
+				homeworkGroups = user.groups.where("group_day = ?", Time.now.strftime("%A")).where("homework_assigned = ?", true)
 				puts "heyllo: " + homeworkGroups.inspect
-				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
+				#Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
 				puts 'sent message.'
 			end
 		end
