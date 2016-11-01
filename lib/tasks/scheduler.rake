@@ -30,7 +30,7 @@ task :message_task => :environment do
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group.group_name)
 				end
-				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups)
+				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups.to_s)
 				puts 'sent message.'
 			end
 		end
