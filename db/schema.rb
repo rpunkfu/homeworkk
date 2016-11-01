@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026233926) do
+ActiveRecord::Schema.define(version: 20161101003715) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161026233926) do
     t.string   "uid"
     t.string   "class_number"
     t.string   "conversation_id"
+    t.boolean  "sentHomwork"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

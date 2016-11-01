@@ -1,7 +1,6 @@
 desc "This task is called by the Heroku scheduler add-on"
 require 'json'
 task :message_task => :environment do
-
 	@groups = Group.all.where("group_day = ?", Time.now.strftime("%A").downcase)
 	@t = 0.minutes.from_now.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.strftime("%H:%M:%S")
@@ -18,10 +17,24 @@ task :message_task => :environment do
 		end
 	end
 	
+end
+
+task :reset_classes => :environment do
+	@groups = Group.all
+	@groups.each do |group|
+		group.update(homework_assigned: nil)
+	end
+
 	@users = User.all
-	puts 'line 22'
 	@users.each do |user|
-		puts 'line24'
+		user.update(sentHomwork: false)
+	end
+end
+
+task :send_homework => :environment do
+	@users = User.all
+	@users.each do |user|
+		if !user.sentHomwork == true
 		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned.nil?
 			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == false
 				puts 'line 28'
@@ -31,15 +44,9 @@ task :message_task => :environment do
 					homeworkGroups.push(group.group_name)
 				end
 				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups.to_s)
-				puts 'sent message.'
+				user.update(sentHomwork: true)
 			end
 		end
 	end
 end
-
-task :reset_classes => :environment do
-	@groups = Group.all
-	@groups.each do |group|
-		group.update(homework_assigned: nil)
-	end
 end
