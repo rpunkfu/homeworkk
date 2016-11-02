@@ -12,6 +12,8 @@ task :message_task => :environment do
 			@group = group.as_json
 			@group["id"] = nil
 			@group.delete("name")
+			checkExistingGroupArray = Grouparray.where(conversation_id = group.conversation_id)
+			checkExistingGroupArray.destroy
 			groupArrayNew = Grouparray.new(@group)
 			groupArrayNew.save
 		end
