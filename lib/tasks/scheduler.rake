@@ -37,8 +37,8 @@ task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		if !user.sentHomwork == true
-		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned.nil?
-			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).last.homework_assigned == false
+		if !user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).order("end_time ASC").last.homework_assigned.nil?
+			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
 				puts 'line 28'
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where(homework_assigned: true).where(conversation_id: user.conversation_id)

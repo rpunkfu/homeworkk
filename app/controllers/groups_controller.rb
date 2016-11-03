@@ -57,7 +57,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @groups = current_user.groups.where("group_day = ?", @group.group_day).to_a # edit all the groups from the selected group day
+    @groups = current_user.groups.where("group_day = ?", @group.group_day).order("end_time ASC").to_a # edit all the groups from the selected group day
     $groupUpdateNumber = @groups.count # amount of original groups in update page
     $groupsId = Array.new
     current_user.groups.where("group_day = ?", @group.group_day).each do |group|
