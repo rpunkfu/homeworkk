@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build  # so you can create new classes
     @groups = current_user.groups.last # list of the user's groups
     #@groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
-      case @groups
+      case @groups.group_day
         when "monday"
           @yesterdayClassDay = "monday"
           @classSignUpDay = "tuesday"
