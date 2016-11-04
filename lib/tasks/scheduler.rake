@@ -46,6 +46,7 @@ task :send_homework => :environment do
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group.group_name)
 				end
+				puts 'user send to: ' + user.first_name.to_s
 				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroups.to_s)
 				user.update(sentHomwork: true)
 			end
