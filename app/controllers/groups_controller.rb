@@ -31,9 +31,9 @@ class GroupsController < ApplicationController
   def new
     @classSignUpDay = "monday" # day your class is for
     @group = current_user.groups.build  # so you can create new classes
-    @groups = current_user.groups.last # list of the user's groups
-    #@groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
-      case @groups.group_day
+    @groups = current_user.groups # list of the user's groups
+    @groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
+      case group.group_day
         when "monday"
           @yesterdayClassDay = "monday"
           @classSignUpDay = "tuesday"
@@ -48,8 +48,10 @@ class GroupsController < ApplicationController
           @classSignUpDay = "friday"
         when "friday"
           redirect_to groups_path, notice: "You have already set up all your classes, edit them instead"
+          break
         else
       end
+    end 
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay) # groups for set from yesterday
   end
 
