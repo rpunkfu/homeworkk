@@ -24,7 +24,7 @@ module Homeworkk
     config.active_record.raise_in_transactional_callbacks = true
 
     
-    config.time_zone = "Pacific Time (US & Canada)"
+    config.time_zone = "America/Los_Angeles"
     config.active_record.default_timezone = :local
   end
 end
