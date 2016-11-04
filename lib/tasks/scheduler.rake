@@ -12,7 +12,7 @@ task :message_task => :environment do
 			@group = group.as_json
 			@group["id"] = nil
 			@group.delete("name")
-			checkExistingGroupArray = Grouparray.where(conversation_id = group.conversation_id)
+			checkExistingGroupArray = Grouparray.where("conversation_id = ?", group.conversation_id)
 			checkExistingGroupArray.destroy
 			groupArrayNew = Grouparray.new(@group)
 			groupArrayNew.save
@@ -41,7 +41,7 @@ task :send_homework => :environment do
 			if user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", Time.now.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
 				puts 'line 28'
 				homeworkGroups = Array.new
-				homeworkGroupsTrue = Group.where(homework_assigned: true).where(conversation_id: user.conversation_id)
+				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group.group_name)
 				end
