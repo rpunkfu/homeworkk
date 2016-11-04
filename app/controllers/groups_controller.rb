@@ -48,7 +48,6 @@ class GroupsController < ApplicationController
           @classSignUpDay = "friday"
         when "friday"
           redirect_to groups_path, notice: "You have already set up all your classes, edit them instead"
-          break
         else
       end
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay) # groups for set from yesterday
