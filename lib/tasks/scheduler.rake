@@ -8,6 +8,7 @@ task :message_task => :environment do
 
 	@groups.each do |group|
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
+			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			@group = group.as_json
 			@group["id"] = nil
