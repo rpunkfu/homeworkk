@@ -9,6 +9,8 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
+ 		@message_text = Messagehuman.checkUserExists(@recipient)
+ 		Messagehuman.sendMessage(@recipient, @messageText) if !@messageText == ''
 
  		currentClasses.each do |group|
  			if group.conversation_id == @recipient
