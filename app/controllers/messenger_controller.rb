@@ -27,7 +27,7 @@ class MessengerController < ApplicationController
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name)
  					@group.update(homework_assigned: false)
  				else
- 					Messagehuman.sendMessage(group.conversation_id, "failed logic")		
+ 					
  				end
  			end
  		end
