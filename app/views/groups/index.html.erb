@@ -24,11 +24,9 @@
 	    <br>
 	<h2> Wednesday </h2>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
-		    <div class="display-class">
 		      <%= group.group_name.capitalize %> - <%= group.end_time.strftime("%H:%M") %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
-	      </div>
 	        <br>
 	    <% end %>
 	    <br>
