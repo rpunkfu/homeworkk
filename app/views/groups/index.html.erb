@@ -14,7 +14,6 @@
 	        <br>
 	    <% end %>
 	    <br>
-	    <br>
 	<h2> Tuesday </h2>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 		      <%= group.group_name %> - <%= group.end_time %>
@@ -22,7 +21,6 @@
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
 	    <% end %>
-	    <br>
 	    <br>
 	<h2> Wednesday </h2>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
@@ -32,7 +30,6 @@
 	        <br>
 	    <% end %>
 	    <br>
-	    <br>
 	<h2> Thursday </h2>
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
 		      <%= group.group_name %> - <%= group.end_time %>
@@ -40,7 +37,6 @@
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
 	    <% end %>
-	    <br>
 	    <br>
 	<h2> Friday </h2>
 	    <% current_user.groups.where("group_day = ?", "friday").order("end_time ASC").each do |group| %>
@@ -51,7 +47,7 @@
 	    <% end %>
 	    <br>
 
-	<%= link_to 'New Class Day', new_group_path if !current_user.groups.where("group_day = ?", "friday").nil?%>
+	<%= link_to 'New Class Day', new_group_path if current_user.groups.where("group_day = ?", "friday").nil?%>
 
 <% end %>
 
