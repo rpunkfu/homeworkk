@@ -8,7 +8,7 @@
 
 	<h2> Monday </h2>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
-		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.to_s %>
+		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.inspect %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
@@ -16,7 +16,7 @@
 	    <br>
 	<h2> Tuesday </h2>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
-		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.to_s %>
+		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.inspect %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
@@ -24,7 +24,7 @@
 	    <br>
 	<h2> Wednesday </h2>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
-		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.to_s %>
+		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.inspect %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
@@ -32,7 +32,7 @@
 	    <br>
 	<h2> Thursday </h2>
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
-		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.to_s %>
+		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.inspect %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
@@ -40,7 +40,7 @@
 	    <br>
 	<h2> Friday </h2>
 	    <% current_user.groups.where("group_day = ?", "friday").order("end_time ASC").each do |group| %>
-		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.to_s %>
+		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - <%= "Homework? " + group.homework_assigned.inspect %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
