@@ -23,7 +23,7 @@ task :message_task => :environment do
 end
 
 task :reset_classes => :environment do
-	@groups = Group.all
+	@groups = Group.all.where("group_day = ?", 1.hours.from_now.strftime("%A").downcase)
 	@groups.each do |group|
 		group.update(homework_assigned: nil)
 	end

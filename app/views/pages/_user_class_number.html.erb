@@ -4,7 +4,7 @@
     <%= form_for(@user, url: groups_path, method: 'get') do |f| %>
 
       <div class="form-group">
-        <%= f.label :class_number, class: "form-label" %><br />
+        <%= "How many classes do you have a day?" %>
         <%= f.text_field :class_number, autofocus: true, class: "form-control" %>
       </div>
       <%= f.submit "sign up", :class => "btn btn-primary" %>
