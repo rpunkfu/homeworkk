@@ -4,6 +4,14 @@ $btn-primary-bg: #3498db;
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+p {
+	font-family: 'Montserrat'
+}
+body {
+	font-family: 'Montserrat'
+}
 .sub-heading {
 	font-size: 60px;
 }
@@ -11,6 +19,7 @@ $btn-primary-bg: #3498db;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-bottom: 0px;
+	font-family: 'Montserrat'
 }
 
 .p-tight {
