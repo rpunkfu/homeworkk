@@ -23,14 +23,15 @@ class GroupsController < ApplicationController
   end
 
   def checkIfHomework(group)
-      if group.homework_assigned == true
-        return "yes"
-      elsif group.homework_assigned == false
-        return "no"
-      else 
-        return "don't know yet"
-      end
+    if group.homework_assigned == true
+      return "yes"
+    elsif group.homework_assigned == false
+      return "no"
+    else 
+      return "don't know yet"
     end
+  end
+  helper_method :checkIfHomework
 
 
   # GET /groups/1
