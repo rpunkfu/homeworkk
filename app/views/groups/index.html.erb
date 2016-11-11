@@ -9,7 +9,7 @@
 	<h2> Monday </h2>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
-		      <%= "Homework? " + if group.homework_assigned.inspect == true "yes" elsif group.homework_assigned.inspect == false "no" else "not sure" %>
+		      <%= "Homework? " %> <% if group.homework_assigned.inspect == true %> <%= "yes" %> <% elsif group.homework_assigned.inspect == false %> <%= "no"%> <% else %> <%= "not sure" %>
 	        <%= link_to 'Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
