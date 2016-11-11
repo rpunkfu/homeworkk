@@ -7,6 +7,15 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
+    def checkIfHomework(group)
+      if group.homework_assigned == true
+        return "yes"
+      elsif group.homework_assigned == false
+        return "no"
+      else 
+        return "don't know yet"
+      end
+    end
     if user_signed_in? && current_user.class_number.nil? && !params["user"].nil?
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i)
@@ -21,6 +30,7 @@ class GroupsController < ApplicationController
       @user.save
     end
   end
+
 
   # GET /groups/1
   # GET /groups/1.json
