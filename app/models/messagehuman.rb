@@ -79,6 +79,40 @@ class Messagehuman
  	end
 
  	def self.sendButton(recipient)
+		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
+ 		body = {
+ 			"recipient":{
+    id: recipient
+  },
+  message:{
+    attachment:{
+      type:"template",
+      payload:
+        template_type:"generic",
+        elements:[
+          {
+            title:"sign up for Christopher Bot",
+            item_url:"https://christopherbot.herokuapp.com/users/sign_in=" + recipient,
+            subtitle:"To get daily reminders of your homework",
+            buttons:[
+              {
+                type:"web_url",
+                url:"https://christopherbot.herokuapp.com/users/sign_in=" + recipient,
+                title:"sign up for my services",
+                webview_height_ratio:"tall"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  } 
+  }.to_json
+		response = HTTParty.post(
+ 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+ 			body: body,
+ 			headers: { 'Content-Type' => 'application/json' }
+		)
  	end
 			
 end

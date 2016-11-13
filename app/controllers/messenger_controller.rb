@@ -9,7 +9,7 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
- 		Messagehuman.sendMessage(@recipient, "HEYO")
+ 		Messagehuman.sendbutton(@recipient)
  		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		#Messagehuman.sendMessage(@recipient, @checkUserExists)
 
