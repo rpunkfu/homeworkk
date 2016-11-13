@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     puts 'starting....'
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    $testingUser = @user
     if $conversation_id.nil?
       puts 'conversation_id: ' + $conversation_id.inspect
       @existingUser = User.find_by(uid: @user.uid)
