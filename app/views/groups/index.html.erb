@@ -6,9 +6,10 @@
 
 	<h1 class="center">My Classes</h1>
 
-	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary" if current_user.groups.where("group_day = ?", "friday").empty?%>
+	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary center" if current_user.groups.where("group_day = ?", "friday").empty?%>
 
 	<h2> Monday </h2>
+	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> No Classes For Monday Yet</h3>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
@@ -19,6 +20,7 @@
 	    <% end %>
 	    <br>
 	<h2> Tuesday </h2>
+	<% if current_user.groups.where("group_day = ?", "tuesday").empty? %> <h3> No Classes For Tuesday Yet</h3>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
@@ -29,6 +31,7 @@
 	    <% end %>
 	    <br>
 	<h2> Wednesday </h2>
+	<% if current_user.groups.where("group_day = ?", "wednesday").empty? %> <h3> No Classes For Wednesday Yet</h3>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
@@ -39,6 +42,7 @@
 	    <% end %>
 	    <br>
 	<h2> Thursday </h2>
+	<% if current_user.groups.where("group_day = ?", "thursday").empty? %> <h3> No Classes For Thursday Yet</h3>
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
@@ -49,6 +53,7 @@
 	    <% end %>
 	    <br>
 	<h2> Friday </h2>
+			<% if current_user.groups.where("group_day = ?", "friday").empty? %> <h3> No Classes For Friday Yet</h3>
 	    <% current_user.groups.where("group_day = ?", "friday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <%= group.group_name %> - <%= "ends at: " + group.end_time.strftime("%H:%M") %> - 
