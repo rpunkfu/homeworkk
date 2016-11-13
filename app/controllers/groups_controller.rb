@@ -20,6 +20,20 @@ class GroupsController < ApplicationController
       @user.update(conversation_id: $conversation_id)
       @user.save
     end
+     @userGroups = current_user.groups if user_signed_in?
+     @userGroups.each do |group| # if the group day exists, then set @classSignUpDay to the next
+      case group.group_day
+        when "monday"
+          @classSignUpDay = "tuesday"
+        when "tuesday"
+          @classSignUpDay = "wednesday"
+        when "wednesday"
+          @classSignUpDay = "thursday"
+        when "thursday"
+          @classSignUpDay = "friday"
+        else
+        end
+     end
   end
 
   def checkIfHomework(group)
@@ -42,7 +56,6 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @classSignUpDay = "monday" # day your class is for
-    $classSignUpDay = @classSignUpDay
     @group = current_user.groups.build  # so you can create new classes
     @groups = current_user.groups # list of the user's groups
     @groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
