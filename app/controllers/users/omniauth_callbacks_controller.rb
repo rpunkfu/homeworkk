@@ -6,7 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.conversation_id.nil?
       @existingUser = User.find_by(uid: @user.uid)
       if !@existingUser.conversation_id.nil?
-        break
       else
         redirect_to root_path, notice: "You need to talk to Christopher"
       end
