@@ -17,10 +17,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url if current_user.nil?
     end
   end
+end
+end
 
   def failure
     redirect_to root_path
   end
-end
-end
 end
