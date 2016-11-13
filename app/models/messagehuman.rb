@@ -8,15 +8,7 @@ class Messagehuman
    			id: recipient
  			},
  			message: {
-   			text: message,
-   			"buttons":[
-      {
-        type:"web_url",
-        url:"https://petersfancyapparel.com/classic_white_tshirt",
-        title:"View Item",
-        webview_height_ratoi: "compact"
-      }
-    ]
+   			text: message
  			}
 		}.to_json
 		response = HTTParty.post(
@@ -77,5 +69,42 @@ class Messagehuman
  		end
  		return @messageText
  	end
+
+ 	def self.sendButton(recipient)
+  page_access_token='EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
+ 	body = {
+ 		"recipient":{
+    			id: recipient
+  		},
+  		message:{
+    			attachment:{
+     				 type:"template",
+     				 payload: {
+       					 template_type:"generic",
+        					elements:[
+         				{
+            					 title:"sign up for Christopher Bot",
+           					 item_url:"https://christopherbot.herokuapp.com/users/sign_in=" + recipient,
+           					 subtitle:"To get daily reminders of your homework",
+           					 buttons:[
+              							{
+                							type:"web_url",
+               							url:"https://christopherbot.herokuapp.com/users/sign_in=" + recipient,
+                							title:"sign up for my services",
+                							webview_height_ratio:"tall"
+              							}
+            						     ]
+          				}
+        					]
+      				}
+   		 }
+ 	 } 
+  }.to_json
+response = HTTParty.post(
+ 	"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+ 	body: body,
+ 	headers: { 'Content-Type' => 'application/json' }
+)
+end
 			
 end
