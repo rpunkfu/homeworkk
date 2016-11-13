@@ -8,7 +8,7 @@ class Messagehuman
    			id: recipient
  			},
  			message: {
-   			text: message
+   			text: message,
    			"buttons":[
       {
         type:"web_url",
