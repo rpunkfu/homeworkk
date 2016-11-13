@@ -5,11 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.conversation_id.nil?
       @existingUser = User.find_by(uid: @user.uid)
-      if !@existingUser.conversation_id.nil?
-      else
+      if @existingUser.conversation_id.nil?
         redirect_to root_path, notice: "You need to talk to Christopher"
-      end
-    end
+      else
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
@@ -24,3 +22,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 end
+ end
+  end
