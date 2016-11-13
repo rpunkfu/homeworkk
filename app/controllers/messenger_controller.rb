@@ -9,8 +9,9 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
- 		@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		Messagehuman.sendMessage(@recipient, @checkUserExists)
+ 		Messagehuman.sendButton(@recipient)
+ 		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
+ 		#Messagehuman.sendMessage(@recipient, @checkUserExists)
 
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
