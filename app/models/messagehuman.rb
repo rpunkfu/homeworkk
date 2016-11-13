@@ -87,7 +87,7 @@ class Messagehuman
   message:{
     attachment:{
       type:"template",
-      payload:
+      payload: {
         template_type:"generic",
         elements:[
           {
