@@ -2,11 +2,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   require 'json'
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+    puts 'starting....'
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if $conversation_id.nil?
-      puts 'conversation_id: ' + $conversation_id
+      puts 'conversation_id: ' + $conversation_id.inspect
       @existingUser = User.find_by(uid: @user.uid)
-      puts 'exisitng user: ' + @exisitngUser
+      puts 'exisitng user: ' + @exisitngUser.inspect
       if @existingUser.conversation_id.nil?
         redirect_to pages_talk_to_christopher_path
       else
