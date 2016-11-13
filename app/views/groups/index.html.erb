@@ -57,7 +57,7 @@
 	    <% end %>
 	    <br>
 
-	<%= link_to 'New Class Day', new_group_path if current_user.groups.where("group_day = ?", "friday").nil?%>
+	<%= link_to 'New Class Day', new_group_path if current_user.groups.where("group_day = ?", "friday").empty?%>
 
 <% end %>
 
