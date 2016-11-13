@@ -8,7 +8,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @existingUser.conversation_id.nil?
         redirect_to pages_talk_to_christopher_path
       else
-    else
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
