@@ -2,7 +2,7 @@ class Messagehuman
 
 
 	def self.sendMessage(recipient, message)
-		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
  		body = {
  			recipient: {
    			id: recipient
@@ -27,7 +27,7 @@ class Messagehuman
 	end
 
 	def self.sendBinaryMessage(recipient, message)
-		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
  		body = {
  			recipient: {
    			id: recipient
@@ -79,7 +79,7 @@ class Messagehuman
  	end
 
  	def self.sendButton(recipient)
-		page_access_token = 'EAAZAjj9YZAiZC0BAHnGNh9baN7nOD5fXxglWkzJ2ZBrQt0kZAXs7lX95PRjyaRlZAHgU05bQMOZCzjv3jndQZAgHMQATBtDglSCrg5FZA7mmVDb75sLG2hrqHaNaChVUbCu166D0FHE40Fikv3aZB1w6Xg7YKYfoCsNw90z79auXDGZCQZDZD'
+		page_access_token = 'EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
  		body = {
  			"recipient":{
     id: recipient
