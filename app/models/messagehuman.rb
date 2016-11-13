@@ -77,9 +77,5 @@ class Messagehuman
  		end
  		return @messageText
  	end
-
- 	def self.sendButton(recipient)
-		
- 	end
 			
 end
