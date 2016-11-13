@@ -6,7 +6,7 @@
 
 	<h1 class="center">My Classes</h1>
 
-	<%= link_to 'Create Classes For ' + $classSignUpDay.capitalize, new_group_path, class: "btn btn-primary" if current_user.groups.where("group_day = ?", "friday").empty?%>
+	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary" if current_user.groups.where("group_day = ?", "friday").empty?%>
 
 	<h2> Monday </h2>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
