@@ -25,7 +25,6 @@ class GroupsController < ApplicationController
      @userGroups.each do |group|# if the group day exists, then set @classSignUpDay to the next
       @classSignUpDay = "monday"
       case group.group_day
-          @classSignUpDay = "monday"
         when "monday"
           @classSignUpDay = "tuesday"
         when "tuesday"
