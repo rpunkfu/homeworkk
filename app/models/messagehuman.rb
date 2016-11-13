@@ -65,7 +65,7 @@ class Messagehuman
 		if User.find_by(conversation_id: recipient).nil?
  			@messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=' + recipient
  		else
- 			@messageText = "you've already signed up"
+ 			@messageText = "good news... you've already signed up!"
  		end
  		return @messageText
  	end

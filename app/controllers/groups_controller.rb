@@ -20,10 +20,12 @@ class GroupsController < ApplicationController
       @user.update(conversation_id: $conversation_id)
       @user.save
     end
-    if user_signed_in?
+    if user_signed_in? &&
      @userGroups = current_user.groups
      @userGroups.each do |group|# if the group day exists, then set @classSignUpDay to the next
+      @classSignUpDay = "monday"
       case group.group_day
+          @classSignUpDay = "monday"
         when "monday"
           @classSignUpDay = "tuesday"
         when "tuesday"
