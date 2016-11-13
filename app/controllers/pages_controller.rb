@@ -4,5 +4,8 @@ class PagesController < ApplicationController
   def home
  		#Messagehuman.message("134381003642835", "Sign up" + <a href='https://christopherbot.herokuapp.com'>here</a> )
   end
+
+  def talk_christopher
+  end
   
 end

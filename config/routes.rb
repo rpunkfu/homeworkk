@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'messenger/webhook' => 'messenger#check_token'
   get 'messenger/inspect' => 'messenger#webhook_inspect'
 
+
   get 'pages/home' => 'pages#home'
+  get 'pages/talk_to_christopher' => 'pages#talk_christopher'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
