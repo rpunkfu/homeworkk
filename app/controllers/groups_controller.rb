@@ -14,14 +14,15 @@ class GroupsController < ApplicationController
       redirect_to groups_path
     end
     @groups = Group.all
-    @user = current_user
+    @user = current_user if user_signed_in?
     if user_signed_in? && current_user.conversation_id.nil?
       @user = current_user
       @user.update(conversation_id: $conversation_id)
       @user.save
     end
-     @userGroups = current_user.groups if user_signed_in?
-     @userGroups.each do |group| # if the group day exists, then set @classSignUpDay to the next
+    if user_signed_in?
+     @userGroups = current_user.groups
+     @userGroups.each do |group|# if the group day exists, then set @classSignUpDay to the next
       case group.group_day
         when "monday"
           @classSignUpDay = "tuesday"
@@ -34,6 +35,7 @@ class GroupsController < ApplicationController
         else
         end
      end
+    end
   end
 
   def checkIfHomework(group)
