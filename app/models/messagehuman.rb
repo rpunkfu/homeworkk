@@ -76,14 +76,14 @@ class Messagehuman
 		recipient: {
    			id: recipient
  			},
- 		"buttons":[
+ 		buttons:[
               {
-                "type":"web_url",
-                "url":"https://christopherbot.herokuapp.com/users/sign_in?conversation_id = " + @recipient,
-                "title":"Select Criteria",
-                "webview_height_ratio": "full",
-                "messenger_extensions": true,  
-                "fallback_url": "https://www.messenger.com/t/1135063803224611"
+                type:"web_url",
+                url: 'https://christopherbot.herokuapp.com/users/sign_in?conversation_id=' + @recipient,
+                title:"Select Criteria",
+                webview_height_ratio: "full",
+                messenger_extensions: true,  
+                fallback_url: "https://www.messenger.com/t/1135063803224611"
               }
         ].to_json
 
