@@ -14,7 +14,7 @@ class Messagehuman
         type:"web_url",
         url:"https://petersfancyapparel.com/classic_white_tshirt",
         title:"View Item",
-        webview_height_ratio: "compact"
+        webview_height_ratoi: "compact"
       }
     ]
  			}
