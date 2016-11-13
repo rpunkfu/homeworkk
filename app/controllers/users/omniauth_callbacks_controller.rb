@@ -4,7 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if $conversation_id.nil?
+      puts 'conversation_id: ' + $conversation_id
       @existingUser = User.find_by(uid: @user.uid)
+      puts 'exisitng user: ' + @exisitngUser
       if @existingUser.conversation_id.nil?
         redirect_to pages_talk_to_christopher_path
       else
@@ -16,8 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url if current_user.nil?
     end
+    end
   end
-end
 end
 
   def failure
