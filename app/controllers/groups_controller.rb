@@ -22,8 +22,8 @@ class GroupsController < ApplicationController
     end
     if user_signed_in?
      @userGroups = current_user.groups
+    @classSignUpDay = "monday"
      @userGroups.each do |group|# if the group day exists, then set @classSignUpDay to the next
-      @classSignUpDay = "monday"
       case group.group_day
         when "monday"
           @classSignUpDay = "tuesday"
