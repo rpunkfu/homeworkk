@@ -11,10 +11,10 @@ class Messagehuman
    			text: message
    			"buttons":[
       {
-        "type":"web_url",
-        "url":"https://petersfancyapparel.com/classic_white_tshirt",
-        "title":"View Item",
-        "webview_height_ratio": "compact"
+        type:"web_url",
+        url:"https://petersfancyapparel.com/classic_white_tshirt",
+        title:"View Item",
+        webview_height_ratio: "compact"
       }
     ]
  			}
