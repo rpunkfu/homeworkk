@@ -6,6 +6,7 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
+=begin
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
@@ -33,7 +34,7 @@ class MessengerController < ApplicationController
  				end
  			end
  		end
-
+=end
  	end
 
  	def check_token
