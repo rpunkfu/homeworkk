@@ -54,7 +54,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    
+    redirect_to root_path
   end
 
   # GET /groups/new
@@ -77,7 +77,7 @@ class GroupsController < ApplicationController
           @yesterdayClassDay = "thursday"
           @classSignUpDay = "friday"
         when "friday"
-          redirect_to groups_path, notice: "You have already set up all your classes, edit them instead"
+          redirect_to root_path, notice: "You have already set up all your classes, edit them instead"
           break
         else
       end
@@ -109,7 +109,7 @@ class GroupsController < ApplicationController
         counter += 1
       end
       if @group.save
-        redirect_to root_path, notice: "Class was successfully created"
+        redirect_to root_path, notice: "classes were successfully created"
       else
         render :new
       end
@@ -137,14 +137,14 @@ class GroupsController < ApplicationController
         counter += 1
       end
     end
-    redirect_to root_path, notice: "Successfully Updated"
+    redirect_to root_path, notice: "successfully updated your classes"
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    redirect_to groups_path, notice: 'Class was removed'
+    redirect_to root_path, notice: 'Class was removed'
   end
 
   private
