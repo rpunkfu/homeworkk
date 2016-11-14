@@ -19,17 +19,21 @@ class MessengerController < ApplicationController
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
  				if @userText == "yes"
+=begin
  					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
  					@group.update(homework_assigned: true)
+=end
  				elsif @userText == "no"
+=begin
  					Messagehuman.sendMessage(group.conversation_id, @positiveResponses[randomNum])
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name)
  					@group.update(homework_assigned: false)
+=end
  				else
  					
  				end
