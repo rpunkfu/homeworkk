@@ -13,7 +13,6 @@ class MessengerController < ApplicationController
  		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		#Messagehuman.sendMessage(@recipient, @checkUserExists)
 
-=begin
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
@@ -34,7 +33,6 @@ class MessengerController < ApplicationController
  				end
  			end
  		end
-=end
  	end
 
  	def check_token
