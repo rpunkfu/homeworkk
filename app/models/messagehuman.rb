@@ -63,9 +63,9 @@ class Messagehuman
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient).nil?
- 			@messageText = 'sign up for christopherbot here: https://christopherbot.herokuapp.com/users/sign_in/?conversation_id=' + recipient
+      @messageText = false
  		else
- 			@messageText = "good news... you've already signed up!"
+ 			@messageText = true
  		end
  		return @messageText
  	end
