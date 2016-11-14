@@ -6,7 +6,6 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
-=begin
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
@@ -14,6 +13,7 @@ class MessengerController < ApplicationController
  		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		#Messagehuman.sendMessage(@recipient, @checkUserExists)
 
+=begin
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
