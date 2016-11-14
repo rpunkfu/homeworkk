@@ -109,7 +109,7 @@ class GroupsController < ApplicationController
         counter += 1
       end
       if @group.save
-        redirect_to groups_path, notice: "Class was successfully created"
+        redirect_to root_path, notice: "Class was successfully created"
       else
         render :new
       end
@@ -137,7 +137,7 @@ class GroupsController < ApplicationController
         counter += 1
       end
     end
-    redirect_to groups_path, notice: "Successfully Updated"
+    redirect_to root_path, notice: "Successfully Updated"
   end
 
   # DELETE /groups/1
