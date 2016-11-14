@@ -10,8 +10,8 @@ class MessengerController < ApplicationController
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase
  		currentClasses = Grouparray.all
 
- 		@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+ 		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
+ 		#Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
  		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		#Messagehuman.sendMessage(@recipient, @checkUserExists)
 
