@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if $conversation_id.nil?
       @existingUser = User.find_by(uid: @user.uid)
-      if @existingUser.nil? || @existingUser.blank?
+      if @existingUser.nil?
         redirect_to pages_talk_to_christopher_path
       end
     else
