@@ -54,7 +54,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    redirect_to root_path, notice: "sorry, that page is not available"
+    
   end
 
   # GET /groups/new
