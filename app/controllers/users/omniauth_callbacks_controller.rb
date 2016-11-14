@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if $conversation_id.nil? 
       @checkUserExists = User.find_by(uid: @user.uid)
+      $checkUserExists = @checkUserExists
       if @checkUserExists.blank? || @checkUserExists.nil?
         redirect_to pages_talk_to_christopher_path
       else
