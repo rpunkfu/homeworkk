@@ -18,7 +18,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           redirect_to new_user_registration_url if current_user.nil?
         end
 
-        
       else
       end
 
@@ -32,6 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url if current_user.nil?
     end
+  end
 
   def failure
     redirect_to root_path
