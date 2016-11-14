@@ -84,7 +84,6 @@ class Messagehuman
         	elements:[
          	{
             title:"Sign Up For Christopher Bot",
-           	item_url:"https://christopherbot.herokuapp.com/users/sign_in?conversation_id=" + recipient,
            	subtitle:"To get daily reminders of your homework",
            	buttons:[
               			{
