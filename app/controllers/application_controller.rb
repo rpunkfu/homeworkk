@@ -1,11 +1,4 @@
 class ApplicationController < ActionController::Base
-	before_filter :strip_www
-
-	def strip_www
-    if request.env["HTTP_HOST"] == "www.christopherbot.co"
-      redirect_to "http://christopherbot.co/"
-    end
-	end
 
   protected
   def set_user_api_token
