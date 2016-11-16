@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if request.env["HTTP_HOST"] == "www.christopherbot.co"
       redirect_to "http://christopherbot.co/"
     end
-	end_time
+	end
 
   protected
   def set_user_api_token
