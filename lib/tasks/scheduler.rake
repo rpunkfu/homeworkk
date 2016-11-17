@@ -27,12 +27,15 @@ task :reset_classes => :environment do
 	@groups.each do |group|
 		group.update(homework_assigned: nil)
 	end
+end
 
+task :reset_user_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		user.update(sentHomwork: false)
 	end
 end
+
 
 task :send_homework => :environment do
 	@users = User.all
@@ -42,7 +45,7 @@ task :send_homework => :environment do
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned.nil?
 			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
 				homeworkGroups = Array.new
-				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("conversation_id = ?", user.conversation_id)
+				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group.group_name)
 				end
