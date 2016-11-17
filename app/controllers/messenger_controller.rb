@@ -13,7 +13,11 @@ class MessengerController < ApplicationController
  		currentClasses = Grouparray.all
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+ 		if @checkUserExists == false
+ 			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+ 		else
+ 			Messagehuman.sendMessage(@recipient, "you're already signed up")
+ 		end
 
  		currentClasses.each do |group|
  			randomNum = rand(0..7)

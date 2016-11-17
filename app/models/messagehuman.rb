@@ -70,7 +70,6 @@ class Messagehuman
  		return @messageText
  	end
 
-=begin
  	def self.sendButton(recipient)
   page_access_token='EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
  	body = {
@@ -107,6 +106,6 @@ class Messagehuman
 	 	headers: { 'Content-Type' => 'application/json' }
 	)
 end
-=end
+
 			
 end
