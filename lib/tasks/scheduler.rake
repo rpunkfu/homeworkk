@@ -38,7 +38,7 @@ task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		if user.sentHomwork == false
-		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).blank?
+		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).last.nil?
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned.nil?
 			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
 				homeworkGroups = Array.new
