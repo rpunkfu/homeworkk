@@ -12,10 +12,8 @@ class MessengerController < ApplicationController
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
  		currentClasses = Grouparray.all
 
- 		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		#Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
- 		#@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		#Messagehuman.sendMessage(@recipient, @checkUserExists)
+ 		@checkUserExists = Messagehuman.checkUserExists(@recipient)
+ 		Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
 
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
