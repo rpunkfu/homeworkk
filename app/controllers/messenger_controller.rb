@@ -13,10 +13,11 @@ class MessengerController < ApplicationController
  		currentClasses = Grouparray.all
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		if @checkUserExists == false && @userText != "yes" && @user != "no"
+ 		if @checkUserExists == false 
  			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
- 		else
+ 		elsif @userText != "yes" && @user != "no"
  			Messagehuman.sendMessage(@recipient, "you're already signed up")
+ 		else
  		end
 
  		currentClasses.each do |group|
