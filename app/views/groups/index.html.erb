@@ -6,6 +6,7 @@
 
 	<h1 class="center">My Classes</h1>
 
+<div class="body-left">
 	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary center" if current_user.groups.where("group_day = ?", "friday").empty?%>
 
 	<h2> Monday </h2>
@@ -63,6 +64,6 @@
 	        <br>
 	    <% end %>
 	    <br>
-
+</div>
 <% end %>
 
