@@ -23,7 +23,7 @@
 	        <br>
 	    <% end %>
 	    <br>
-	<h2> Tuesday </h2>
+	<h2> Tuesday - <%= link_to 'Edit', edit_group_path(Group.where("group_day = ?", "tuesday").first) %></h2>
 	<% if current_user.groups.where("group_day = ?", "tuesday").empty? %> <h3> No Classes For Tuesday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
@@ -32,7 +32,6 @@
 		      <% else %>
 		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
 		      <% end %>
-	        <%= link_to ' Edit', edit_group_path(group) %>
 	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 	        <br>
 	    <% end %>
