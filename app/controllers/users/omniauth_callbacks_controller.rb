@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     
     @facebookUser = request.env["omniauth.auth"]
-    @user = facebookUser
+    @user = @facebookUser
 
     if !$conversation_id.nil?
       if @user.persisted?
