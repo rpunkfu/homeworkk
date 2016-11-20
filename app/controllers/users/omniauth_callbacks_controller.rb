@@ -4,14 +4,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     
     @facebookUser = request.env["omniauth.auth"]
+    puts @facebookUser
 
     if $conversation_id.nil?
       @existingUser = User.find_by(uid: @facebookUser.uid)
+      puts "THIS IS LINE 10"
       if @existingUser.nil?
+        puts "REDIRECTING THE USER"
         redirect_to pages_talk_to_christopher_path
       end
+    puts "THIS IS LINE 15"
     else
-
+    puts "THIS IS LINE 17"
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
     if @user.persisted?
