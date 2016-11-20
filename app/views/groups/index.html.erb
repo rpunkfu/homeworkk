@@ -44,7 +44,7 @@
 		      <% else %>
 		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
 		      <% end %>
-	        <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+	        <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
 	        <% end %>
 	        <br>
