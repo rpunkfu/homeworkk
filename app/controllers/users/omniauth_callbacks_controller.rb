@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     
     @user = request.env["omniauth.auth"]
+    
     puts 'user: ' + @user.to_s
     puts 'persisted: ' + @user.persisted?
     if @user.persisted?
