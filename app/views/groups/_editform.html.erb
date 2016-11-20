@@ -11,7 +11,7 @@
 		<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
 	<% else %>
 		<%= f.text_field :group_name, name: "group[][group_name]", value: @groups[counter]["group_name"], class: "form-control" %>
-		<%= f.time_select :end_time, name: "group[][end_time]", value: @groups[counter]["end_time"].strftime("%k:%M:%S"), class: "form-control" %>
+		<%= f.time_field :end_time, name: "group[][end_time]", value: @groups[counter]["end_time"].strftime("%H:%M:%S"), class: "form-control" %>
 		<%= f.hidden_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
 		<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
 	<% end %>
