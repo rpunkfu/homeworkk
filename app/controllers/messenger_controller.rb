@@ -37,6 +37,7 @@ class MessengerController < ApplicationController
  					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(group)
  					@groupArray.destroy
+ 				else
  				end
  			end
  		end
