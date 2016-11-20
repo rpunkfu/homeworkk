@@ -1,8 +1,9 @@
+<div class="panel panel-default">
+	<div class="panel-body">
 <%= simple_form_for(@group, html: { class: "form-inline"}) do |f| %>
   <%= f.error_notification %>
 
 <% counter = 0 %>
-
 <% current_user.class_number.to_i.times do %>
 	<% if @groups[counter].nil? %>
 		<%= f.text_field :group_name, name: "group[][group_name]", value: "", class: "form-control" %>
@@ -23,3 +24,5 @@
     <%= f.submit 'Make Changes To Classes', class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
+</div>

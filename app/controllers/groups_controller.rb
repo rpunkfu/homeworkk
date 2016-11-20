@@ -82,7 +82,7 @@ class GroupsController < ApplicationController
         else
       end
     end 
-    @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay) # groups for set from yesterday
+    @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
   end
 
   # GET /groups/1/edit
