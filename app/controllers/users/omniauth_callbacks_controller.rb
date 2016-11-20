@@ -25,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to root_path if current_user.nil?
       end
   end
-end
+
 
   def failure
     redirect_to root_path
