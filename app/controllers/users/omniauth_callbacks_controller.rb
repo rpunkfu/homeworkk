@@ -14,23 +14,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to pages_talk_to_christopher_path
       end
       puts "THIS IS LINE 15"
+    end
+      puts "THIS IS LINE 17"
+
       if @facebookUser.persisted?
         sign_in_and_redirect @facebookUser, :event => :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
       else
         session["devise.facebook_data"] = request.env["omniauth.auth"]
-        redirect_to new_user_registration_url if current_user.nil?
-      end
-    else
-      puts "THIS IS LINE 17"
-      @user = @facebookUser
-
-      if @user.persisted?
-        sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-        set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-      else
-        session["devise.facebook_data"] = request.env["omniauth.auth"]
-        redirect_to new_user_registration_url if current_user.nil?
+        redirect_to root_path if current_user.nil?
       end
   end
 end
