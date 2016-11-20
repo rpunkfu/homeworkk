@@ -45,7 +45,7 @@ class GroupsController < ApplicationController
     elsif group.homework_assigned == false
       return "no"
     else 
-      return "don't know yet"
+      return ""
     end
   end
   helper_method :checkIfHomework
