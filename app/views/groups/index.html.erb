@@ -1,6 +1,6 @@
 <% if !user_signed_in? %>
 	<%= render 'pages/home' %>
-<% elsif current_user.class_number.nil? %>
+<% elsif current_user.class_number.nil? || current_user.time_zone.nil? %>
 	<%= render 'pages/user_class_number' %>
 <% else %>
 
