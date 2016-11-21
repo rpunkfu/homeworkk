@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
      @timeZones = [["Pacific Time", -8], ["Mountain", -7],["Central Time", -6],["Eastern Time", -5],["Atlantic Time", -4]] 
     if user_signed_in? && current_user.class_number.nil? && !params["user"].nil?
       @setUserClassNumber = User.find_by(id: current_user.id)
-      @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i, time_zone: params["user"]["time_zone"].to_i)
+      @setUserClassNumber.update(time_zone: params["user"]["time_zone"].to_i, class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save
       redirect_to root_path
     end
@@ -132,7 +132,7 @@ class GroupsController < ApplicationController
         end
         next if group[:group_name].nil? || group[:end_time].nil? || group[:group_name].blank? || group[:end_time].blank?
         @groupUpdate = Group.find_by(id: $groupsId[counter])
-        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time]) if !@groupUpdate.nil?
+        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone) if !@groupUpdate.nil?
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
         counter += 1
