@@ -125,7 +125,7 @@ def self.sendSummaryButton(recipient)
             buttons:[
                     {
                 type:"web_url",
-                url:"https://christopherbot.herokuapp.com/"
+                url:"https://christopherbot.herokuapp.com/",
                 title:"See My Homework",
                 webview_height_ratio:"tall"
               }
