@@ -8,9 +8,9 @@ task :message_task => :environment do
 
 	@groups.each do |group|
 		if group.time_zone.to_i < 0
-			group.end_time = (group.time_zone * -1).hours.from_now
+			group.end_time = group.end_time + (group.time_zone * -1).hours
 		else
-			group.end_time = group.time_zone.hours.from_now
+			group.end_time = group.end_time + group.time_zone.hours
 		end
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
