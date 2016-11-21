@@ -47,8 +47,11 @@ task :send_homework => :environment do
 	@users.each do |user|
 		if user.sentHomwork == false
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).last.nil?
+			puts "HELLOOOOO"
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned.nil?
+				puts "WE ARE HEAREdddd"
 			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
+				puts "WE GOT HERE"
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
