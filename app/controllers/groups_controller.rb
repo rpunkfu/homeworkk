@@ -12,6 +12,9 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(time_zone: params["user"]["time_zone"].to_i, class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save
+      current_user.groups.each do |group| if !current_user.groups.nil?
+        group.update(time_zone: current_user.time_zone)
+      end
       redirect_to root_path
     end
     @groups = Group.all
