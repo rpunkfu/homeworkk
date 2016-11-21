@@ -22,19 +22,19 @@ class MessengerController < ApplicationController
  			if group.conversation_id == @recipient
  				if @userText == "yes"
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
- 					@group.update(homework_assigned: true) if !@group.nil?
+ 					@group.update(homework_assigned: true)
  					@grouparray = Grouparray.find_by(id: group.id)
- 					@grouparray.update(homework_assigned: true) if !@groupArray.nil?
+ 					@grouparray.update(homework_assigned: true)
  					Messagehuman.sendMessage(group.conversation_id, 'what homework do you have?')
  				elsif @userText == "no"
  					Messagehuman.sendMessage(group.conversation_id, @positiveResponses[randomNum])
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
- 					@group.update(homework_assigned: false) if !@group.nil?
+ 					@group.update(homework_assigned: false)
  				elsif group.homework_assigned == true
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
- 					@group.update(homework_assignment: @userText) if !@group.nil?
+ 					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(id: group.id)
  					@groupArray.destroy
  				else
