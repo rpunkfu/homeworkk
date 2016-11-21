@@ -12,9 +12,6 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i, time_zone: params["user"]["time_zone"].to_i)
       @setUserClassNumber.save
-      current_user.groups.each do |group|
-        group.update(time_zone: params["user"]["time_zone"].to_i)
-      end
       redirect_to root_path
     end
     @groups = Group.all
@@ -108,7 +105,7 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       params[:group].each do |group|
         next if group[:group_name].blank? || group[:end_time].blank?
-        @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id])
+        @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
         @group.save
         counter += 1
       end
@@ -130,7 +127,7 @@ class GroupsController < ApplicationController
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
           break if group[:group_name].nil? || group[:end_time].nil? || group[:group_name].blank? || group[:end_time].blank?
-          @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id])
+          @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id, time_zone: current_user.time_zone])
           @group.save
         end
         next if group[:group_name].nil? || group[:end_time].nil? || group[:group_name].blank? || group[:end_time].blank?
@@ -159,6 +156,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.permit(group: [:group, :name, :fb_id, :group_num, :group_day, :end_time, :homework_assigned, :homework_assignment, :conversation_id]).require(:group)
+      params.permit(group: [:group, :name, :fb_id, :group_num, :group_day, :end_time, :homework_assigned, :homework_assignment, :conversation_id, :time_zone]).require(:group)
     end
 end
