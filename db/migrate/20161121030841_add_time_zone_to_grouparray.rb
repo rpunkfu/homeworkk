@@ -1,5 +1,5 @@
 class AddTimeZoneToGrouparray < ActiveRecord::Migration
   def change
-    add_column :grouparray, :time_zone, :integer
+    add_column :grouparrays, :time_zone, :integer
   end
 end
