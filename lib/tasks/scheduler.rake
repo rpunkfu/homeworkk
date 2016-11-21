@@ -30,7 +30,7 @@ end
 task :reset_classes => :environment do
 	@groups = Group.all.where("group_day = ?", 1.minutes.from_now.strftime("%A").downcase)
 	@groups.each do |group|
-		group.update(homework_assigned: nil)
+		group.update(homework_assigned: nil, homework_assignment: nil)
 	end
 end
 
@@ -52,15 +52,15 @@ task :send_homework => :environment do
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
-					homeworkGroups.push(group.group_name)
+					homeworkGroups.push(group)
 				end
 				homeworkGroupsString = String.new
 				counter = 1
 				homeworkGroups.each do |group|
 					if counter != 1
-						homeworkGroupsString = homeworkGroupsString + ", " + group
+						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment
 					else
-						homeworkGroupsString = homeworkGroupsString + group
+						homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment
 					end
 				end
 				puts 'user send to: ' + user.first_name.to_s
