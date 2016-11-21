@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
       @setUserClassNumber = User.find_by(id: current_user.id)
       @setUserClassNumber.update(class_number: params["user"]["class_number"].to_i)
       @setUserClassNumber.save
-      @timeZones = ["Pacific Time", -8], ["Mountain", -7]["Central Time", -6]["Eastern Time", -5]["Atlantic Time", -4]] 
+      @timeZones = ["Pacific Time", -8], ["Mountain", -7],["Central Time", -6],["Eastern Time", -5],["Atlantic Time", -4]] 
       redirect_to groups_path
     end
     @groups = Group.all
