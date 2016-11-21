@@ -66,6 +66,7 @@ task :send_homework => :environment do
 				puts 'user send to: ' + user.first_name.to_s
 				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroupsString)
 				user.update(sentHomwork: true)
+				Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
 			end
 		end
 		end

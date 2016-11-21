@@ -107,5 +107,41 @@ class Messagehuman
 	)
 end
 
+def self.sendSummaryButton(recipient)
+  page_access_token='EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
+  body = {
+    "recipient":{
+      id: recipient
+    },
+    message:{
+      attachment:{
+        type:"template",
+        payload: {
+          template_type:"generic",
+          elements:[
+          {
+            title:"See All Your Homework",
+            subtitle:"To see all of homework easily on our website",
+            buttons:[
+                    {
+                type:"web_url",
+                url:"https://christopherbot.herokuapp.com/"
+                title:"See My Homework",
+                webview_height_ratio:"tall"
+              }
+              ]
+            }
+          ]
+        }
+    }
+   } 
+  }.to_json
+
+  response = HTTParty.post(
+    "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+    body: body,
+    headers: { 'Content-Type' => 'application/json' }
+  )
+end
 			
 end
