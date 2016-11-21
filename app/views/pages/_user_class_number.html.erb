@@ -8,7 +8,7 @@
         <%= f.text_field :class_number, autofocus: true, class: "form-control" %>
         <br>
         <%= "What time zone do you live in?" %><br>
-        <%= f.select :time_zone, @timeZones { |zone| [zone[0], zone[1]] }, include_blank: true %>
+        <%= f.select :time_zone, @timeZones.each do { |zone| [key, value] } end, include_blank: true %>
       </div>
       <%= f.submit "sign up", :class => "btn btn-primary" %>
     <% end %>
