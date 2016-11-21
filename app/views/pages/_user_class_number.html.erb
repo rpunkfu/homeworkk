@@ -6,6 +6,9 @@
       <div class="form-group">
         <%= "How many classes do you have a day?" %>
         <%= f.text_field :class_number, autofocus: true, class: "form-control" %>
+
+        <%= "What time zone do you live in?" %>
+        <%= f.time_zone_select :time_zone, nil, include_blank: true %>
       </div>
       <%= f.submit "sign up", :class => "btn btn-primary" %>
     <% end %>
