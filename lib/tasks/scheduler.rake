@@ -2,8 +2,8 @@ desc "This task is called by the Heroku scheduler add-on"
 require 'json'
 task :message_task => :environment do
 	@groups = Group.all.where("group_day = ?", "monday").where("conversation_id = ?", "134381003642835").order("end_time ASC")
-	@t = 0.minutes.from_now.strftime("%H:%M:%S").utc
-	@timeten = 10.minutes.from_now.strftime("%H:%M:%S").utc
+	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
+	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
 
 
 	@groups.each do |group|
