@@ -4,23 +4,20 @@ task :message_task => :environment do
 	@groups = Group.all.where("group_day = ?", 0.hours.from_now.strftime("%A").downcase).order("end_time ASC")
 	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
-	puts "starting"
+
 
 	@groups.each do |group|
 		if group.time_zone.to_i < 0
 			group.end_time = group.end_time + (group.time_zone * -1).hours
-			puts "hear"
 		else
 			group.end_time = group.end_time + group.time_zone.hours
-			puts "heareee"
 		end
-		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten\
-
+		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			@group = group.as_json
 			@group["id"] = nil
-			@group["name"] = nil
+			@group.delete("name")
 			checkExistingGroupArray = Grouparray.find_by(conversation_id: group.conversation_id)
 			checkExistingGroupArray.destroy if !checkExistingGroupArray.nil?
 			groupArrayNew = Grouparray.new(@group)
