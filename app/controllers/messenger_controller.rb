@@ -21,7 +21,9 @@ class MessengerController < ApplicationController
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
  				if @userText == "yes"
+ 					puts "yes"
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day, end_time: group.end_time)
+ 					puts "group thing: " + @group.group_name.inspect
  					@group.update(homework_assigned: true)
  					@grouparray = Grouparray.find_by(id: group.id)
  					@grouparray.update(homework_assigned: true)
