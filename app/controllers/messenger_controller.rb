@@ -39,6 +39,7 @@ class MessengerController < ApplicationController
  					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(id: group.id)
  					@groupArray.destroy
+ 					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
  				else
  				end
  			end
