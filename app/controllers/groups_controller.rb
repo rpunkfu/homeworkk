@@ -136,7 +136,7 @@ class GroupsController < ApplicationController
           @group.save
         end
         next if group[:group_name].nil? || group[:end_time].nil?
-        @groupUpdate = Group.find_by(id: $groupsId[counter])
+        @groupUpdate = Group.find_by(id: group[:id])
         @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone)
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
