@@ -15,7 +15,7 @@ task :message_task => :environment do
 			puts "end time 2: " + group.end_time.inspect
 		end
 
-		File.open("/tmp/test.yaml", "r+") do |f|
+		File.open("/tmp/test.yaml", "w") do |f|
       f.write(group.end_time.to_yaml)
     end
 
