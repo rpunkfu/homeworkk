@@ -4,13 +4,16 @@ task :message_task => :environment do
 	@groups = Group.all.where("group_day = ?", 0.hours.from_now.strftime("%A").downcase).order("end_time ASC")
 	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
-
+	puts "@t: " + @t.inspect
+	puts "@timeten: " + @timeten.inspect
 
 	@groups.each do |group|
 		if group.time_zone.to_i < 0
+			puts "end time 1: " + group.end_time.inspect
 			group.end_time = group.end_time + (group.time_zone * -1).hours
+			puts "end time 2: " + group.end_time.inspect
 		end
-		
+
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
