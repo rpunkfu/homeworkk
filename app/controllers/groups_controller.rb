@@ -131,13 +131,13 @@ class GroupsController < ApplicationController
       $inspectparams = params[:group]
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
-          break if group[:group_name].nil? || group[:end_time].nil? || group[:group_name].blank? || group[:end_time].blank?
+          break if group[:group_name].nil? || group[:end_time].nil?
           @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id, time_zone: current_user.time_zone])
           @group.save
         end
-        next if group[:group_name].nil? || group[:end_time].nil? || group[:group_name].blank? || group[:end_time].blank?
+        next if group[:group_name].nil? || group[:end_time].nil?
         @groupUpdate = Group.find_by(id: $groupsId[counter])
-        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone) if !@groupUpdate.nil?
+        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone)
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
         counter += 1
