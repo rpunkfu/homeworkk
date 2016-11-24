@@ -14,10 +14,7 @@ task :message_task => :environment do
 			group.end_time = group.end_time + (group.time_zone * -1).hours
 			puts "end time 2: " + group.end_time.inspect
 		end
-
-		File.open("/tmp/test.yml", "w") do |f|
-      f.write(group.end_time.to_yaml)
-    end
+		
 
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
