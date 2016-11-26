@@ -70,9 +70,13 @@ task :send_homework => :environment do
 					end
 				end
 				puts 'user send to: ' + user.first_name.to_s
-				Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroupsString)
-				user.update(sentHomwork: true)
-				Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
+				if !homeworkGroupsString.blank?
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroupsString)
+					Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
+					user.update(sentHomwork: true)
+				else
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'Yay. You have no homework.')
+				end		
 			end
 		end
 	end
