@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
         return daysOfWeek[counter]
         counter += 1
       else
-        return nil
+        return "no"
       end
     end
   end
