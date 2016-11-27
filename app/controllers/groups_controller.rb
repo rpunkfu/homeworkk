@@ -56,20 +56,6 @@ class GroupsController < ApplicationController
   end
   helper_method :checkIfHomework
 
-  def checkDayHomework
-    daysOfWeek = [["monday", 0],["tuesday",1],["wednesday",2],["thursday",3],["friday",4]]
-    daysOfWeek.each do |day|
-      if current_user.groups.where("group_day = ?", day[0]).nil?
-        $day = day
-        break
-      else
-        return nil
-      end
-    end
-  end
-  helper_method :checkDayHomework
-
-
   # GET /groups/1
   # GET /groups/1.json
   def show
@@ -78,9 +64,29 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"]
-    @classSignUpDay = checkDayHomework
-    @yesterdayClassDay = "monday"
+    @classSignUpDay = "monday" # day your class is for
+    @group = current_user.groups.build  # so you can create new classes
+    @groups = current_user.groups # list of the user's groups
+    @groups.each do |group| # if the group day exists, then set @classSignUpDay to the next
+      case group.group_day
+        when "monday"
+          @yesterdayClassDay = "monday"
+          @classSignUpDay = "tuesday"
+        when "tuesday"
+          @yesterdayClassDay = "tuesday"
+          @classSignUpDay = "wednesday"
+        when "wednesday"
+          @yesterdayClassDay = "wednesday"
+          @classSignUpDay = "thursday"
+        when "thursday"
+          @yesterdayClassDay = "thursday"
+          @classSignUpDay = "friday"
+        when "friday"
+          redirect_to root_path, notice: "You have already set up all your classes, edit them instead"
+          break
+        else
+      end
+    end 
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
   end
 
