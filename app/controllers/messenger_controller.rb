@@ -10,6 +10,7 @@ class MessengerController < ApplicationController
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if !$webhook["entry"][0]["messaging"][0]["message"]["text"].nil?
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
+		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
  		currentClasses = Grouparray.all
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
@@ -27,6 +28,7 @@ class MessengerController < ApplicationController
  					@group.update(homework_assigned: true)
  					@grouparray = Grouparray.find_by(id: group.id)
  					@grouparray.update(homework_assigned: true)
+ 					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
  					Messagehuman.sendMessage(group.conversation_id, 'what homework do you have?')
  				elsif @userText == "no"
  					Messagehuman.sendMessage(group.conversation_id, @positiveResponses[randomNum])
@@ -39,7 +41,7 @@ class MessengerController < ApplicationController
  					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(id: group.id)
  					@groupArray.destroy
- 					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
+ 					Messagehuman.sendMessage(group.conversation_id, 'Ok Dokey! Got it!')
  				else
  				end
  			end

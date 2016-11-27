@@ -33,10 +33,10 @@ class Messagehuman
         	payload: 'Yes'	
       	},
       	{
-        		content_type: "text",
-        		title: "No",
-        		payload: 'No'
-      		}
+        	content_type: "text",
+        	title: "No",
+        	payload: 'No'
+      	}
    			]
  			}
 		}.to_json
