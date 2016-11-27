@@ -57,13 +57,11 @@ class GroupsController < ApplicationController
   helper_method :checkIfHomework
 
   def checkDayHomework
-    daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"]
-    daysOfWeek.each do |day|
-      if current_user.groups.where("group_day = ?", day).nil?
-        return day
-        exit!
-      end
-    end
+    return "monday" if current_user.groups.where("group_day = ?", "monday").nil?
+    return "tuesday" if current_user.groups.where("group_day = ?", "tuesday").nil?
+    return "wednesday" if current_user.groups.where("group_day = ?", "wednesday").nil?
+    return "thursday" if current_user.groups.where("group_day = ?", "thursday").nil?
+    return "friday" if current_user.groups.where("group_day = ?", "friday").nil?
   end
   helper_method :checkDayHomework
 
