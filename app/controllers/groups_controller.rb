@@ -59,9 +59,11 @@ class GroupsController < ApplicationController
   def checkHomeworkDay
     days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     days.each do |day|
-      groups = current_user.groups.where(group_day: day)
-      return day if groups.nil?
-      break if groups.nil?
+      groups = current_user.groups
+      groups.each do |group|
+        break if group.group_day == day
+        return day
+      end
     end
   end
   helper_method :checkHomeworkDay
