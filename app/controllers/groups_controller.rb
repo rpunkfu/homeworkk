@@ -59,8 +59,8 @@ class GroupsController < ApplicationController
   def checkHomeworkDay
     days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     days.each do |day|
-      $sssgroups = current_user.groups.where("group_day = ?", day)
-      if $sssgroups.empty?
+      groups = current_user.groups.where("group_day = ?", day)
+      if groups.empty?
         return day
         break
       end
@@ -76,8 +76,20 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @classSignUpDay = "tuesday"
-    @yesterdayClassDay = "monday"
+    @classSignUpDay = checkHomeworkDay
+    case @ClassSignUpDay
+      when "monday"
+        @yesterdayClassDay = nil
+      when "tuesday"
+        @yesterdayClassDay = "monday"
+      when "wednesday"
+        @yesterdayClassDay = "tuesday"
+      when "thursday"
+        @yesterdayClassDay = "wednesday"
+      when "friday"
+        @yesterdayClassDay = "thursday"
+      else
+    end
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
   end
 
