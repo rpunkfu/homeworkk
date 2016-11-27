@@ -9,6 +9,7 @@
 <div class="body-left">
 	<% classDay = checkHomeworkDay %>
 	<% puts "CLASS DAY: " + $sssgroups.inspect %>
+	<% puts "CLAALlALA: " + classDay.inspect
 	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary center" if current_user.groups.where("group_day = ?", "friday").empty? %>
 
 	<h2> Monday - <%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
