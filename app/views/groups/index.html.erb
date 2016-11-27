@@ -10,7 +10,7 @@
 	<%= link_to 'Create Classes For ' + @classSignUpDay.capitalize, new_group_path, class: "btn btn-primary center" if current_user.groups.where("group_day = ?", "friday").empty?%>
 
 	<h2> monday - <% if !current_user.groups.where(group_day: "monday").nil? %> 
-									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "friday").first.id) %> </h2><% else %><% end %>
+									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "monday")) %> </h2><% else %><% end %>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> No Classes For Monday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
@@ -26,7 +26,7 @@
 	    <% end %>
 	    <br>
 	tuesday - <% if !current_user.groups.where(group_day: "tuesday").nil? %> 
-									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "friday").first.id) %> </h2><% else %><% end %>
+									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "tuesday")) %> </h2><% else %><% end %>
 	<% if current_user.groups.where("group_day = ?", "tuesday").empty? %> <h3> No Classes For Tuesday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
@@ -42,7 +42,7 @@
 	    <% end %>
 	    <br>
 	<h2> wednesday - <% if !current_user.groups.where(group_day: "wednesday").nil? %> 
-									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "friday").first.id) %> </h2><% else %><% end %>
+									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "wednesday")) %> </h2><% else %><% end %>
 	<% if current_user.groups.where("group_day = ?", "wednesday").empty? %> <h3> No Classes For Wednesday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
@@ -58,7 +58,7 @@
 	    <% end %>
 	    <br>
 	<h2> thursday - <% if !current_user.groups.where(group_day: "thursday").nil? %> 
-									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "friday").first.id) %> </h2><% else %><% end %>
+									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "thursday")) %> </h2><% else %><% end %>
 	<% if current_user.groups.where("group_day = ?", "thursday").empty? %> <h3> No Classecurrent_s For Thursday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
