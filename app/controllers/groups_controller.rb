@@ -57,12 +57,11 @@ class GroupsController < ApplicationController
   helper_method :checkIfHomework
 
   def checkDayHomework
-    daysOfWeek = [["monday", 0],["tuesday",1],["wednesday",2],["thursday",3],["friday",4]]
+    daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     daysOfWeek.each do |day|
-      if current_user.groups.where("group_day = ?", daysOfWeek[4][0]).nil?
+      if current_user.groups.where("group_day = ?", day).nil?
         return day
-      else
-        return "no"
+        break
       end
     end
   end
@@ -77,7 +76,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     @classSignUpDay = checkDayHomework
     @yesterdayClassDay = "monday"
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
