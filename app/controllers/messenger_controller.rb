@@ -11,11 +11,13 @@ class MessengerController < ApplicationController
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
+		@sentMessage = false
  		currentClasses = Grouparray.all
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		if @checkUserExists == false 
  			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+ 			@sentMessage = true
  		end
 
  		currentClasses.each do |group|
@@ -30,22 +32,27 @@ class MessengerController < ApplicationController
  					@grouparray.update(homework_assigned: true)
  					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
  					Messagehuman.sendMessage(group.conversation_id, 'what homework do you have?')
+ 					@sentMessage = true
  				elsif @userText == "no"
  					Messagehuman.sendMessage(group.conversation_id, @positiveResponses[randomNum])
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
  					@group.update(homework_assigned: false)
+ 					@sendMessage = false
  				elsif group.homework_assigned == true
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
  					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(id: group.id)
  					@groupArray.destroy
  					Messagehuman.sendMessage(group.conversation_id, 'Ok Dokey! Got it!')
+ 					@sentMessage = true
  				else
- 					Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  				end
  			end
+ 		end
+ 		if @sentMessage == false
+ 			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
  	end
 
