@@ -7,9 +7,7 @@
 	<h1 class="center">My Classes</h1>
 
 <div class="body-left">
-	<% createClassesDay = checkDayHomework() %>
-	<% puts 'CLASSES DAY' + createClassesDay.inspect %>
-	<%= link_to 'Create Classes For ' + createClassesDay, new_group_path, class: "btn btn-primary center" if createClassesDay != nil %>
+	<%= link_to 'Create Classes For ' + $day.to_s, new_group_path, class: "btn btn-primary center" %>
 
 	<h2> Monday - <%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> No Classes For Monday Yet</h3> <% end %>
