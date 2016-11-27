@@ -90,6 +90,7 @@ class GroupsController < ApplicationController
         @yesterdayClassDay = "thursday"
       else
     end
+    @group = current_user.groups.build
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
   end
 
