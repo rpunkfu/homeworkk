@@ -79,7 +79,7 @@ class GroupsController < ApplicationController
   def new
     daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     @classSignUpDay = checkDayHomework
-    @yesterdayClassDay = 0
+    @yesterdayClassDay = "monday"
     @yesterday_groups = current_user.groups.where("group_day = ?", @yesterdayClassDay).order("end_time ASC") # groups for set from yesterday
   end
 
