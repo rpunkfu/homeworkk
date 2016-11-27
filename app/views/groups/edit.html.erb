@@ -1,5 +1,5 @@
-<h1>Editing Classes for <%= @group.group_day %> </h1>
+<h1 class="body-left">Editing Classes for <%= @group.group_day.capitalize %> </h1>
 
 <%= render 'editform' %>
 <br>
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Back', groups_path, class: "body-left" %>
