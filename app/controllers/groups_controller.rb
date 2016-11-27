@@ -59,10 +59,10 @@ class GroupsController < ApplicationController
   def checkHomeworkDay
     days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     days.each do |day|
-      groups = current_user.groups
-      groups.each do |group|
-        break if group.group_day == day
+      groups = current_user.groups.group_day == day
+      if groups.nil?
         return day
+        break
       end
     end
   end
