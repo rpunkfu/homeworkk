@@ -43,6 +43,7 @@ class MessengerController < ApplicationController
  					@groupArray.destroy
  					Messagehuman.sendMessage(group.conversation_id, 'Ok Dokey! Got it!')
  				else
+ 					Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  				end
  			end
  		end
