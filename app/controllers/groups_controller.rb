@@ -59,7 +59,7 @@ class GroupsController < ApplicationController
   def checkHomeworkDay
     days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     days.each do |day|
-      $sssgroups = current_user.groups.where("group_day = ?", day)
+      $sssgroups = current_user.groups.where("group_day = ?", day[0])
     end
   end
   helper_method :checkHomeworkDay
