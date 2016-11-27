@@ -134,14 +134,14 @@ class GroupsController < ApplicationController
           break if group[:group_name].nil? || group[:end_time].nil?
           @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
           @group.save
-        else
+          next
+        end
         next if group[:group_name].nil? || group[:end_time].nil?
         @groupUpdate = Group.find_by(id: group[:id])
         @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone)
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
         counter += 1
-      end
       end
     end
     redirect_to root_path, notice: "successfully updated your classes"
