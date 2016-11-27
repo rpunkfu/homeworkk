@@ -7,7 +7,7 @@
 	<h1 class="center">My Classes</h1>
 
 <div class="body-left">
-	<% createClassesDay = checkDayHomework %>
+	<% createClassesDay = checkDayHomework() %>
 	<% puts 'CLASSES DAY' + createClassesDay.inspect %>
 	<%= link_to 'Create Classes For ' + createClassesDay, new_group_path, class: "btn btn-primary center" if createClassesDay != nil %>
 
