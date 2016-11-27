@@ -62,10 +62,10 @@ class GroupsController < ApplicationController
     daysOfWeek.each do
       if current_user.groups.where("group_day = ?", daysOfWeek[counter][0]).nil?
         return daysOfWeek[counter]
-        counter += 1
       else
         return "no"
       end
+      counter += 1
     end
   end
   helper_method :checkDayHomework
