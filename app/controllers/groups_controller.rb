@@ -59,7 +59,7 @@ class GroupsController < ApplicationController
   def checkDayHomework
     weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     weekDays.each do |day|
-      groups = current_user.groups.where("group_day = ?", day)
+      groups = current_user.groups.where("group_day = ?", "friday")
       if groups.nil?
         return day
         break
