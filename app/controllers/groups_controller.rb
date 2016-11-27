@@ -61,7 +61,7 @@ class GroupsController < ApplicationController
     daysOfWeek.each do |day|
       if current_user.groups.where("group_day = ?", day).nil?
         return day
-        break
+        exit!
       end
     end
   end
