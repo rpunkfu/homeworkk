@@ -63,6 +63,8 @@ class GroupsController < ApplicationController
       if current_user.groups.where("group_day = ?", daysOfWeek[counter][0]).nil?
         return daysOfWeek[counter]
         counter += 1
+      else
+        return nil
       end
     end
   end
