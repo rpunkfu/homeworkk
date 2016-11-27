@@ -13,6 +13,7 @@
 					<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>	
 					<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
+					<br>
 				</div>
 				<br>
 			<% else %>
@@ -23,6 +24,7 @@
 					<%= f.time_field :end_time, name: "group[][end_time]", value: @yesterday_groups[counter]["end_time"].strftime('%H:%M:%S'), class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>
 					<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
+					<br>
 					<br>
 				</div>
 			<% end %>
