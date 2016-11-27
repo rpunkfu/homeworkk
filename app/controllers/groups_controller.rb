@@ -81,7 +81,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @classSignUpDay = checkHomeworkDay
-    case @ClassSignUpDay
+    case @classSignUpDay
       when "monday"
         @yesterdayClassDay = nil
       when "tuesday"
