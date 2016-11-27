@@ -25,7 +25,7 @@
 	        <br>
 	    <% end %>
 	    <br>
-	tuesday - <% if !current_user.groups.where(group_day: "tuesday").nil? %> 
+	<h2>tuesday - <% if !current_user.groups.where(group_day: "tuesday").nil? %> 
 									<%= link_to 'Edit', edit_group_path(current_user.groups.where("group_day = ?", "tuesday")) %> </h2><% else %><% end %>
 	<% if current_user.groups.where("group_day = ?", "tuesday").empty? %> <h3> No Classes For Tuesday Yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
