@@ -60,6 +60,10 @@ class GroupsController < ApplicationController
     days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     days.each do |day|
       groups = current_user.groups.where("group_day = ?", day)
+      if day == "friday" && !groups.empty?
+        return nil
+        break
+      end
       if groups.empty?
         return day
         break
