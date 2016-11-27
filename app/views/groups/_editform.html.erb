@@ -1,5 +1,4 @@
-<div class="panel panel-default">
-	<div class="panel-body">
+<div class="body-left">
 <%= simple_form_for(@group, html: { class: "form-inline"}) do |f| %>
   <%= f.error_notification %>
 
@@ -26,7 +25,6 @@
     <%= f.submit 'Make Changes To Classes', class: "btn btn-primary" %>
   </div>
 <% end %>
-</div>
 </div>
 
 <%= $groupsId.inspect %>
