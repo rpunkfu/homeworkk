@@ -17,7 +17,7 @@
 	    		<% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
 		      <% end %>
 	        <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
@@ -32,7 +32,7 @@
 		      <% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
 		      <% end %>
 	       <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
@@ -47,7 +47,7 @@
 		     <% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
 		      <% end %>
 	        <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
@@ -62,7 +62,7 @@
 		     <% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
 		      <% end %>
 	        <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
@@ -77,7 +77,7 @@
 		      <% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= ifHomework %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
 		      <% end %>
 	        <%= link_to group, method: :delete, data: { confirm: 'Are you sure?' } do %>
 	        	<span class="glyphicon glyphicon-trash" aria-hidden="true">
