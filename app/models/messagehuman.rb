@@ -88,7 +88,7 @@ class Messagehuman
            	buttons:[
               			{
                 type:"web_url",
-               	url:"https://christopherbot.herokuapp.com/users/sign_in?conversation_id=" + recipient,
+               	url:"https://www.christopherbot.co/users/sign_in?conversation_id=" + recipient,
                 title:"Sign Up",
                 webview_height_ratio:"tall"
               }
@@ -125,7 +125,7 @@ def self.sendSummaryButton(recipient)
             buttons:[
                     {
                 type:"web_url",
-                url:"https://christopherbot.herokuapp.com/",
+                url:"https://www.christopherbot.co/",
                 title:"See My Homework",
                 webview_height_ratio:"tall"
               }
