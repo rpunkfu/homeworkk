@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121014234) do
+ActiveRecord::Schema.define(version: 20161128011433) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20161121014234) do
     t.string  "conversation_id"
     t.string  "group_name"
     t.integer "user_id"
+    t.integer "time_zone"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161121014234) do
     t.string   "conversation_id"
     t.boolean  "sentHomwork"
     t.integer  "time_zone"
+    t.string   "email"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
