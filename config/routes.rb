@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :groups
 
-  devise_for :users, :controllers => {registrations: 'registrations', sessions: "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => {registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks"}
   root 'groups#index'
+  # sessions: "users/sessions"
 
   post 'messenger/webhook' => 'messenger#receive_message'
   get 'messenger/webhook' => 'messenger#check_token'
