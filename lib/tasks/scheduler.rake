@@ -1,7 +1,8 @@
 desc "This task is called by the Heroku scheduler add-on"
 require 'json'
+require 'yaml'
 task :message_task => :environment do
-	@groups = Group.all.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC")
+	@groups = Group.all.where("group_day = ?", 0.hours.ago.strftime("%A").order("end_time ASC")
 	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
 	puts "@t: " + @t.inspect

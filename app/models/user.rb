@@ -7,12 +7,12 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :groups
 
   def email_required?
-  	false
-	end
+    false
+  end
 
-	def email_changed?
-  	false
-	end
+  def email_changed?
+    false
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
