@@ -5,6 +5,6 @@ if Rails.env == 'development' || Rails.env == 'test'
 else
   # Production
   Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, 'PRODUCTION_APP_ID', 'PRODUCTION_APP_SECRET'
+    provider :facebook, '1798319283735549', '7e1cb8536d22cef46f21f8d2b705cd43'
   end
 end
