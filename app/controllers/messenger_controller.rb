@@ -39,7 +39,7 @@ class MessengerController < ApplicationController
  					@groupArrayGroup.destroy
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
  					@group.update(homework_assigned: false)
- 					@sendMessage = true
+ 					@sentMessage = true
  				elsif group.homework_assigned == true
  					@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
  					@group.update(homework_assignment: @userText)
