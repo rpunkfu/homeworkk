@@ -4,7 +4,7 @@
 	<%= render 'pages/user_class_number' %>
 <% else %>
 
-	<h1 class="center">My Classes</h1>
+	<h1 class="center">Mys Classes</h1>
 
 <div class="body-left">
 	<% classDay = checkHomeworkDay %>
@@ -53,7 +53,7 @@
 		     <% if ifHomework == 'yes' %>
 		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %>  - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
+		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
 		      <% end %>
 	        <br>
 	    <% end %>
