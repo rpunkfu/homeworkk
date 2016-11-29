@@ -16,6 +16,9 @@
 		<%= f.hidden_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
 		<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
 		<%= f.hidden_field :id, :value => @groups[counter]["id"], name: "group[][id]", class: "form-control" %>
+		<%= link_to @groups[counter], method: :delete, data: { confirm: 'Are you sure?' } do %>
+	    <span class="glyphicon glyphicon-trash" aria-hidden="true">
+	  <% end %>
 	<% end %>
 	<% counter += 1 %>
 	<br>

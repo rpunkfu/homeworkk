@@ -158,7 +158,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    redirect_to root_path, notice: 'Class was removed'
+    redirect_to root_path, notice: 'Class was incinerated'
   end
 
   private
