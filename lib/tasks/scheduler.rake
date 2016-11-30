@@ -67,7 +67,7 @@ task :send_homework => :environment do
 				end
 				puts 'user send to: ' + user.first_name.to_s
 				if !homeworkGroupsString.blank?
-					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + homeworkGroupsString)
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + "\n\n" + homeworkGroupsString)
 					Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
 					user.update(sentHomwork: true)
 				else
