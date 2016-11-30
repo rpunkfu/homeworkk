@@ -60,9 +60,9 @@ task :send_homework => :environment do
 				counter = 1
 				homeworkGroups.each do |group|
 					if counter != 1
-						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\r\n"
+						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n\n"
 					else
-						homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\r\n"
+						homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\n\n"
 					end
 				end
 				puts 'user send to: ' + user.first_name.to_s
