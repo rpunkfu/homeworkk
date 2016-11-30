@@ -86,7 +86,7 @@ class Messagehuman
        		template_type:"generic",
         	elements:[
          	{
-            title:"Sign Up For Christopher Bot",
+            title:"Sign Up For Christopher Bot.",
            	subtitle:"To get daily reminders of your homework",
            	buttons:[
               			{
