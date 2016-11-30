@@ -7,7 +7,7 @@ class Messagehuman
  			recipient: {
    			id: recipient
  			},
-      "sender_action":"typing_on",
+      sender_action:"typing_on",
  			message: {
    			text: message
  			}
@@ -25,7 +25,7 @@ class Messagehuman
  			recipient: {
    			id: recipient
  			},
-      "sender_action":"typing_on",
+      sender_action:"typing_on",
  			message: {
    			text: message,
    			quick_replies: [
@@ -78,7 +78,7 @@ class Messagehuman
  		"recipient":{
     	id: recipient
   	},
-    "sender_action":"typing_on",
+    sender_action:"typing_on",
   	message:{
     	attachment:{
      		type:"template",
@@ -116,7 +116,7 @@ def self.sendSummaryButton(recipient)
     "recipient":{
       id: recipient
     },
-    "sender_action":"typing_on",
+    sender_action:"typing_on",
     message:{
       attachment:{
         type:"template",
