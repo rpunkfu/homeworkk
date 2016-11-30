@@ -60,14 +60,14 @@ task :send_homework => :environment do
 				counter = 1
 				homeworkGroups.each do |group|
 					if counter != 1
-						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n\n"
+						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n"
 					else
-						homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\n\n"
+						homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\n"
 					end
 				end
 				puts 'user send to: ' + user.first_name.to_s
 				if !homeworkGroupsString.blank?
-					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + "\n\n" + homeworkGroupsString)
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for: ' + "\n" + homeworkGroupsString)
 					Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
 					user.update(sentHomwork: true)
 				else
