@@ -72,6 +72,7 @@ task :send_homework => :environment do
 					user.update(sentHomwork: true)
 				else
 					Messagehuman.sendMessage(user.groups.last.conversation_id, 'Yay. You have no homework.')
+					user.update(sentHomwork: true)
 				end		
 			end
 		end
