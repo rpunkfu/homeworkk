@@ -16,7 +16,7 @@ class MessengerController < ApplicationController
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		if @checkUserExists == false 
- 			Messagehuman.sendMessageBubbles(group.conversation_id)
+ 			Messagehuman.sendMessageBubbles(@recipient)
  			sleep(2)
  			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
  			@sentMessage = true
