@@ -3,18 +3,13 @@ class Messagehuman
 
 	def self.sendMessage(recipient, message)
 		page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
- 		body =
+ 		body = {
  			recipient: {
    			id: recipient
  			},
-      "sender_action":"typing_on"
-
-    
-
-    body = body,
  			message: {
    			text: message
- 			}
+ 			},
 		}.to_json
     sleep(2)
 		response = HTTParty.post(
