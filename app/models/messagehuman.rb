@@ -9,7 +9,7 @@ class Messagehuman
  			},
  			message: {
    			text: message
- 			},
+ 			}
 		}.to_json
     sleep(3)
 		response = HTTParty.post(
