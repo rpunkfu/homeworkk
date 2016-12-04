@@ -12,7 +12,7 @@ class Messagehuman
    			text: message
  			}
 		}.to_json
-    sleep()
+    sleep(2)
 		response = HTTParty.post(
  			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
  			body: body,
