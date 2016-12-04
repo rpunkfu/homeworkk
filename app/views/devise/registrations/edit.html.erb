@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Edit <%= resource_name.to_s.humanize %></h1>
+  </div>
+
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+		<div class="form-group">
+        <%= f.label :time_zone %><br />
+        <%= f.select :time_zone, options_for_select(@timeZones, :selected => current_user.time_zone), {include_blank: true}, class: "form-control" %>
+      </div>
+
+		<div class="form-group">
+		<%= f.label :class_number %> - the number of classes you have a day <br />
+    <%= f.text_field :class_number, value: current_user.class_number, class: "form-control" %>
+		</div>
+
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %></p>
+  </div>
+
+  <div class="panel-footer">
+    <%= link_to "Back", :back %>
+  </div>
+
+</div>

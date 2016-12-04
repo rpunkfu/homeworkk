@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :groups
 
   devise_for :users, :controllers => {registrations: 'registrations', session: "users/sessions", :omniauth_callbacks => "users/omniauth_callbacks"}
+  get 'users/edit' => 'devise/registrations/edit', as: "edit_user"
   root 'groups#index'
 
   post 'messenger/webhook' => 'messenger#receive_message'
