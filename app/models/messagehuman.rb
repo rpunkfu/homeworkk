@@ -11,13 +11,27 @@ class Messagehuman
    			text: message
  			},
 		}.to_json
-    sleep(2)
 		response = HTTParty.post(
  			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
  			body: body,
  			headers: { 'Content-Type' => 'application/json' }
 		)
 	end
+
+  def self.sendMessageBubbles(recipient)
+    page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
+    body = {
+      recipient: {
+        id: recipient
+      },
+      sender_action: "typing_on"
+    }
+    response = HTTParty.post(
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+      body: body,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
 
 	def self.sendBinaryMessage(recipient, message)
 		page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'

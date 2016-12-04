@@ -52,6 +52,8 @@ class MessengerController < ApplicationController
  			end
  		end
  		if @sentMessage == false
+ 			Messagehuman.sendMessageBubbles(@recipient)
+ 			sleep(2)
  			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
  	end
