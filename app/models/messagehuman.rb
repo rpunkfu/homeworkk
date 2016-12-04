@@ -10,9 +10,8 @@ class Messagehuman
  			message: {
    			text: message
  			},
-      sender_action: "typing_on"
 		}.to_json
-    sleep(10)
+    sleep(3)
 		response = HTTParty.post(
  			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
  			body: body,
