@@ -16,6 +16,8 @@ class MessengerController < ApplicationController
 
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		if @checkUserExists == false 
+ 			Messagehuman.sendMessageBubbles(group.conversation_id)
+ 			sleep(2)
  			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
  			@sentMessage = true
  		end
@@ -30,10 +32,16 @@ class MessengerController < ApplicationController
  					@group.update(homework_assigned: true)
  					@grouparray = Grouparray.find_by(id: group.id)
  					@grouparray.update(homework_assigned: true)
+ 					Messagehuman.sendMessageBubbles(group.conversation_id)
+ 					sleep(2)
  					Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
+ 					Messagehuman.sendMessageBubbles(group.conversation_id)
+ 					sleep(2)
  					Messagehuman.sendMessage(group.conversation_id, 'what homework do you have?')
  					@sentMessage = true
  				elsif @userText == "no"
+ 					Messagehuman.sendMessageBubbles(group.conversation_id)
+ 					sleep(2)
  					Messagehuman.sendMessage(group.conversation_id, @positiveResponses[randomNum])
  					@groupArrayGroup = Grouparray.find_by(id: group.id)
  					@groupArrayGroup.destroy
@@ -45,6 +53,8 @@ class MessengerController < ApplicationController
  					@group.update(homework_assignment: @userText)
  					@groupArray = Grouparray.find_by(id: group.id)
  					@groupArray.destroy
+ 					Messagehuman.sendMessageBubbles(group.conversation_id)
+ 					sleep(2)
  					Messagehuman.sendMessage(group.conversation_id, 'Ok Dokey! Got it!')
  					@sentMessage = true
  				else
