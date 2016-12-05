@@ -137,10 +137,11 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       $inspectparams = params[:group]
       params[:group].each do |group|
-        if groupCounter > $groupUpdateNumber
-          next if group[:group_name] == "" || group[:end_time] == ""
+        if groupCounter > $groupUpdateNumber || current_user.class_number.to_i <= groupCounter
+          break if group[:group_name] == "" || group[:end_time] == ""
           @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
-          @group.save if !group[:group_name] == "" && !group[:end_time] == ""
+          @group.save
+          next
         end
         next if group[:group_name] == "" || group[:end_time] == ""
         @groupUpdate = Group.find_by(id: group[:id])
