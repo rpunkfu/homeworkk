@@ -15,9 +15,9 @@
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
+		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
+		      	<%= group.group_name %> - <%= "no homework yet" %> 
 		      <% end %>
 	        <br>
 	    <% end %>
@@ -27,9 +27,9 @@
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
+		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
+		      	<%= group.group_name %> - <%= "no homework yet" %>
 		      <% end %>
 	        <br>
 	    <% end %>
@@ -39,9 +39,9 @@
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		     <% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
+		      	<span class="yes-homework"><%= group.group_name %>  %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
+		      	<%= group.group_name %> - <%= "no homework yet" %>
 		      <% end %>
 	        <br>
 	    <% end %>
@@ -51,9 +51,9 @@
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		     <% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
+		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> 
+		      	<%= group.group_name %> - <%= "no homework yet" %>
 		      <% end %>
 	        <br>
 	    <% end %>
@@ -63,9 +63,9 @@
 	    <% current_user.groups.where("group_day = ?", "friday").order("end_time ASC").each do |group| %>
 	    		<% ifHomework = checkIfHomework(group) %>
 		      <% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %> - <%= group.homework_assignment %> </span>
+		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "ends at " + group.end_time.strftime("%l:%M %P") %>
+		      	<%= group.group_name %> - <%= "no homework yet" %>
 		      <% end %>
 	        <br>
 	    <% end %>
