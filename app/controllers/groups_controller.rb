@@ -116,7 +116,7 @@ class GroupsController < ApplicationController
     # for each class created, loop through it and enter it into the database, increment counter as well
     if !params[:group].nil?
       params[:group].each do |group|
-        next if group[:group_name].nil? || group[:end_time].nil?
+        next if group[:group_name] == "" || group[:end_time] == ""
         @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
         @group.save
         counter += 1
@@ -138,12 +138,11 @@ class GroupsController < ApplicationController
       $inspectparams = params[:group]
       params[:group].each do |group|
         if groupCounter > $groupUpdateNumber
-          break if group[:group_name].nil? || group[:end_time].nil?
+          next if group[:group_name] == "" || group[:end_time] == ""
           @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
-          @group.save
-          next
+          @group.save if !group[:group_name] == "" && !group[:end_time] == ""
         end
-        next if group[:group_name].nil? || group[:end_time].nil?
+        next if group[:group_name] == "" || group[:end_time] == ""
         @groupUpdate = Group.find_by(id: group[:id])
         @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone)
         puts "this is @group: " + @group.inspect.to_s

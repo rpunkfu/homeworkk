@@ -28,6 +28,9 @@
 <% @extraGroups.each do |group| %>
 	<% if specialcounter != current_user.class_number.to_i %>
 		<% group.delete %>
+	<% end %>
+	<% end %>
+	<% end %>
   <div class="form-actions">
   <br>
     <%= f.submit 'Make Changes To Classes', class: "btn btn-primary" %>
