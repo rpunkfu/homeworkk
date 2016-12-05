@@ -137,15 +137,15 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       $inspectparams = params[:group]
       params[:group].each do |group|
-        if groupCounter > $groupUpdateNumber || current_user.class_number.to_i <= groupCounter
+        if groupCounter > $groupUpdateNumber || group[:id] == ""
+          puts "WORKKKK"
           break if group[:group_name] == "" || group[:end_time] == ""
           @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
           @group.save
-          next
         end
-        next if group[:group_name] == "" || group[:end_time] == ""
+        break if group[:group_name] == "" || group[:end_time] == ""
         @groupUpdate = Group.find_by(id: group[:id])
-        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone)
+        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone) if !@groupUpdate.nil?
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
         counter += 1
@@ -158,7 +158,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    redirect_to root_path, notice: 'Class was incinerated'
+    if $deletedFromEdit == true
+      redirect_to :back
+    else
+      redirect_to root_path, notice: 'Class was incinerated'
+    end
   end
 
   private

@@ -1,6 +1,7 @@
 <div class="body-left">
 <%= simple_form_for(@group, html: { class: "form-inline"}) do |f| %>
   <%= f.error_notification %>
+  <% $deletedFromEdit == false %>
 
 <% counter = 0 %>
 <% current_user.class_number.to_i.times do %>
@@ -9,6 +10,7 @@
 		<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
 		<%= f.hidden_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
 		<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
+		<%= f.hidden_field :id, :value => nil, name: "group[][id]", class: "form-control" %>
 	<% else %>
 		<%= f.text_field :group_name, name: "group[][group_name]", value: @groups[counter]["group_name"], class: "form-control" %>
 		<%= f.time_field :end_time, name: "group[][end_time]", value: @groups[counter]["end_time"].strftime("%H:%M"), class: "form-control" %>
@@ -17,6 +19,7 @@
 		<%= f.hidden_field :id, :value => @groups[counter]["id"], name: "group[][id]", class: "form-control" %>
 		<%= link_to @groups[counter], method: :delete, data: { confirm: 'Are you sure?' } do %>
 	    <span class="glyphicon glyphicon-trash" aria-hidden="true">
+	    <% $deletedFromEdit = true %>
 	  <% end %>
 	<% end %>
 	<br>
@@ -40,6 +43,7 @@
 		<%= f.hidden_field :id, :value => @extraGroups[specialcounter]["id"], name: "group[][id]", class: "form-control" %>
 		<%= link_to @groups[specialcounter], method: :delete, data: { confirm: 'Are you sure?' } do %>
 	    <span class="glyphicon glyphicon-trash" aria-hidden="true">
+	    <% $deletedFromEdit = true %>
 	  <% end %>
 	  <br>
 	<% specialcounter += 1 %>
