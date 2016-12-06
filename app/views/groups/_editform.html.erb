@@ -36,7 +36,10 @@
 	<% if @extraGroups != 0 %>
 		Extra Classes - delete these if you don't need them <br>
 	<% @extraGroups.count.times do %>
-
+		<% if @extraGroups[specialcounter]["group_name"].nil? || @extraGroups[specialcounter]["end_time"]nil? || @extraGroups[specialcounter]["group_name"] == "" || @extraGroups[specialcounter]["end_time"] == "" %>
+			<% @groupDelete = Group.find_by(id: @extraGroups[specialcounter]["id"]) %>
+			<% @groupDelete.delete %>
+		<% else %>
 		<%= f.text_field :group_name, name: "group[][group_name]", value: @extraGroups[specialcounter]["group_name"], class: "form-control" %>
 		<%= f.time_field :end_time, name: "group[][end_time]", value: @extraGroups[specialcounter]["end_time"].strftime("%H:%M"), class: "form-control" %>
 		<%= f.hidden_field :group_day, :hidden => true, :value => @group.group_day, name: "group[][group_day]", class: "form-control" %>
@@ -47,6 +50,7 @@
 	    <% $deletedFromEdit = true %>
 	  <% end %>
 	  <br>
+	  <% end %>
 	<% specialcounter += 1 %>
 	<% end %>
 	<% end %>
