@@ -159,8 +159,10 @@ class GroupsController < ApplicationController
   def destroy
     @groupDelete = @group.freeze
     @group.destroy
-    @groupFirstId = current_user.groups.where("group_day = ?", @groupDelete.group_day).first.id
-    if $deletedFromEdit == true
+    @groupFirstId = current_user.groups.where("group_day = ?", @groupDelete.group_day).first.id if !current_user.groups.where("group_day = ?", @groupDelete.group_day).first.nil?
+    if @groupFirstId.nil?
+      redirect_to root_path, notice: 'You have deleted all your classes for that day'
+    elsif $deletedFromEdit == true
       redirect_to action: "edit", id: @groupFirstId
     else
       redirect_to root_path, notice: 'Class was incinerated'
