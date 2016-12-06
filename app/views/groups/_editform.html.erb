@@ -28,11 +28,12 @@
 
 <% if @groups.count > current_user.class_number.to_i %>
 	<% specialcounter = 0 %>
-	<% @extraGroups = @groups %>
+	<% @extraGroups = @groups.freeze %>
 	<% current_user.class_number.to_i.times do %>
-		<% @extraGroups.delete(@groups.first) %>
+		<% @extraGroups.delete(@extraGroups.first) %>
 	<% end %>
 	<br>
+	<% if @extraGroups != 0 %>
 		Extra Classes - delete these if you don't need them <br>
 	<% @extraGroups.count.times do %>
 
@@ -47,6 +48,7 @@
 	  <% end %>
 	  <br>
 	<% specialcounter += 1 %>
+	<% end %>
 	<% end %>
 	<% end %>
 
