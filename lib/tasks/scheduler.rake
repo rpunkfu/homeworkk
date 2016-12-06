@@ -1,7 +1,7 @@
 desc "This task is called by the Heroku scheduler add-on"
 require 'json'
 task :message_task => :environment do
-	@groups = Group.all.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC")
+	@groups = Group.all.order("end_time ASC").where("group_day = ?", 0.hours.ago.strftime("%A").downcase)
 	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
 	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
 	puts "@t: " + @t.inspect
@@ -49,8 +49,8 @@ task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		if user.sentHomwork == false
-		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).last.nil?
-			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").last.homework_assigned == false
+		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time asc").limit(user.class_number.to_i).last.nil?
+			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").limit(user.class_number.to_i).last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").limit(user.class_number.to_i).last.homework_assigned == false
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|

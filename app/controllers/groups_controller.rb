@@ -157,9 +157,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @groupDelete = @group.freeze
     @group.destroy
+    @groupFirstId = current_user.groups.where("group_day = ?", @groupDelete.group_day).first.id
     if $deletedFromEdit == true
-      redirect_to :back
+      redirect_to action: "edit", id: @groupFirstId
     else
       redirect_to root_path, notice: 'Class was incinerated'
     end
