@@ -36,7 +36,7 @@
 	<% if @extraGroups != 0 %>
 		Extra Classes - delete these if you don't need them <br>
 	<% @extraGroups.count.times do %>
-		<% if @extraGroups[specialcounter]["group_name"].nil? || @extraGroups[specialcounter]["end_time"]nil? || @extraGroups[specialcounter]["group_name"] == "" || @extraGroups[specialcounter]["end_time"] == "" %>
+		<% if @extraGroups[specialcounter]["group_name"].nil? || @extraGroups[specialcounter]["end_time"].nil? || @extraGroups[specialcounter]["group_name"] == "" || @extraGroups[specialcounter]["end_time"] == "" %>
 			<% @groupDelete = Group.find_by(id: @extraGroups[specialcounter]["id"]) %>
 			<% @groupDelete.delete %>
 		<% else %>
