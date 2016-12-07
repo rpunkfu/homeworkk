@@ -21,13 +21,10 @@ class Messagehuman
   def AddNewUser   
    page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
    body = {
-     "setting_type":"call_to_actions",
-      "thread_state":"new_thread",
-      "call_to_actions":[
-       {
-        "payload":"USER_DEFINED_PAYLOAD"
-       }
-      ]
+     "setting_type":"greeting",
+    "greeting":{
+    "text":"Hi {{user_first_name}}, nice to meet you. "
+  }
     }
     response = HTTParty.post(
       "https://graph.facebook.com/v2.6/me/thread_settings?access_token=#{page_access_token}",
