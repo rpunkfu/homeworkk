@@ -8,10 +8,9 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if !$webhook["entry"][0]["messaging"][0]["message"]["text"].nil?
- 		
 
- 		$userStartText = $webhook["entry"][0]["messaging"][0]["recipient"]["postback"]["payload"] if !$webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil? && @userText.nil?
- 		$userStartRecipient = $webhook["entry"][0]["messaging"][0]["recipient"]["sender"]["id"] if !$webhook["entry"][0]["messaging"][0]["sender"]["id"].nil?
+ 		$userStartText = $webhook["entry"][0]["messaging"][0]["postback"]["payload"] if !$webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil? && @userText.nil?
+ 		$userStartRecipient = $webhook["entry"][0]["messaging"][0]["recipient"]["id"] if @recipient.nil? && !$webhook["entry"][0]["messaging"][0]["recipient"]["id"].nil?
  		
 
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
@@ -20,20 +19,23 @@ class MessengerController < ApplicationController
 		@sentMessage = false
  		currentClasses = Grouparray.all
 
- 		@checkUserExists = Messagehuman.checkUserExists(@recipient)
- 		if @checkUserExists == false || !@userStartText.nil?
- 			Messagehuman.sendMessageBubbles(@recipient)
- 			sleep(2)
- 			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
- 			@sentMessage = true
+ 		if @userStartText.nil? && @userStartRecipient.nil?
+ 			@checkUserExists = Messagehuman.checkUserExists(@recipient)
+	 		if @checkUserExists == false
+	 			Messagehuman.sendMessageBubbles(@recipient)
+	 			sleep(2)
+	 			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+	 			@sentMessage = true
+	 		end
+	 	else
+	 		@checkUserExists = Messagehuman.checkUserExists(@userStartRecipient)
+	 		if @checkUserExists == false || @sentMessage == false
+	 			Messagehuman.sendMessageBubbles(@recipient)
+	 			sleep(2)
+	 			Messagehuman.sendButton(@userStartRecipient)
+	 		end
  		end
-
- 		@checkUserExists = Messagehuman.checkUserExists(@userStartRecipient) if !@userStartRecipient.nil?
- 		if @checkUserExists == false || @sentMessage == false
- 			Messagehuman.sendMessageBubbles(@recipient)
- 			sleep(2)
- 			Messagehuman.sendButton(@userStartRecipient)
- 		end
+ 		
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
