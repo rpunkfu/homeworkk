@@ -14,10 +14,12 @@ class MessengerController < ApplicationController
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
 		@sentMessage = false
  		currentClasses = Grouparray.all
+ 		
+ 			Messagehuman.newUserMessage
 
  			@checkUserExists = Messagehuman.checkUserExists(@recipient)
 	 		if @checkUserExists == false
-	 			Messagehuman.sendButton(@recipient) if User.find_by(conversation_id: @recipient).nil? && @checkUserExists == false
+	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
 	 		end
 	 	
