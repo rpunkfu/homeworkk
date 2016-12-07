@@ -6,7 +6,7 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
- 		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
+ 		$recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if !$webhook["entry"][0]["messaging"][0]["message"]["text"].nil?
  		@userStartText = $webhook["entry"][0]["messaging"][0]["postback"]["payload"] if !$webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil? && @userText.nil?
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
@@ -19,7 +19,7 @@ class MessengerController < ApplicationController
 	 		if @checkUserExists == false
 	 			Messagehuman.sendMessageBubbles($recipient)
 	 			sleep(2)
-	 			Messagehuman.sendButton($recipient) if User.find_by(conversation_id: $recipient).nil? && @checkUserExists == false
+	 			Messagehuman.sendButton($recipient)
 	 			@sentMessage = true
 	 		end
 
