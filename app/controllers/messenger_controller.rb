@@ -15,8 +15,8 @@ class MessengerController < ApplicationController
 		@sentMessage = false
  		currentClasses = Grouparray.all
 
- 			@checkUserExists = Messagehuman.checkUserExists($recipient)
-	 		if @checkUserExists == false
+ 			$checkUserExists = Messagehuman.checkUserExists($recipient)
+	 		if $checkUserExists == false
 	 			Messagehuman.sendMessageBubbles($recipient)
 	 			sleep(2)
 	 			Messagehuman.sendButton($recipient)
