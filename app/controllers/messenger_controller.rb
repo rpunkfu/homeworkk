@@ -9,10 +9,9 @@ class MessengerController < ApplicationController
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if !$webhook["entry"][0]["messaging"][0]["message"]["text"].nil?
 
- 		$userStartText = $webhook["entry"][0]["messaging"][0]["postback"]["payload"] if !$webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil? && @userText.nil?
- 		$userStartRecipient = $webhook["entry"][0]["messaging"][0]["recipient"]["id"] if @recipient.nil? && !$webhook["entry"][0]["messaging"][0]["recipient"]["id"].nil?
+ 		@userStartText = $webhook["entry"][0]["messaging"][0]["postback"]["payload"] if !$webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil? && @userText.nil?
+ 		@userStartRecipient = $webhook["entry"][0]["messaging"][0]["recipient"]["id"] if @recipient.nil? && !$webhook["entry"][0]["messaging"][0]["recipient"]["id"].nil?
  		
-
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
@@ -35,7 +34,7 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendButton(@userStartRecipient)
 	 		end
  		end
- 		
+
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient

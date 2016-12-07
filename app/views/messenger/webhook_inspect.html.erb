@@ -1,4 +1,1 @@
-<% $webhook = {"object"=>"page", "entry"=>[{"id"=>"1135063803224611", "time"=>1481074620216, "messaging"=>[{"recipient"=>{"id"=>"1135063803224611"}, "timestamp"=>1481074620216, "sender"=>{"id"=>"134381003642835"}, "postback"=>{"payload"=>"Hello"}}]}]} %>
-
-<% $userStartRecipient = $webhook["entry"][0]["messaging"][0]["postback"]["payload"]%>
-<%= $userStartRecipient %>
+<%= $webhook.inspect %>
