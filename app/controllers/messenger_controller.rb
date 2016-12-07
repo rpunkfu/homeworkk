@@ -14,7 +14,7 @@ class MessengerController < ApplicationController
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
 		@sentMessage = false
  		currentClasses = Grouparray.all
- 		
+
  			Messagehuman.newUserMessage
 
  			@checkUserExists = Messagehuman.checkUserExists(@recipient)
@@ -64,8 +64,7 @@ class MessengerController < ApplicationController
  			end
  		end
  		if @sentMessage == false
- 			Messagehuman.sendMessageBubbles(@recipient)
- 			sleep(2)
+ 			Messagehuman.newUserMessage
  			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
  	end
