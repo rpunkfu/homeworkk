@@ -18,21 +18,6 @@ class Messagehuman
 		)
 	end
 
-  def AddNewUser   
-   page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
-   body = {
-     "setting_type":"greeting",
-    "greeting":{
-    "text":"Hi {{user_first_name}}, nice to meet you. "
-  }
-    }
-    response = HTTParty.post(
-      "https://graph.facebook.com/v2.6/me/thread_settings?access_token=#{page_access_token}",
-      body: body,
-      headers: { 'Content-Type' => 'application/json' }
-    )
-  end
-
   def self.sendMessageBubbles(recipient)
     page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
     body = {
