@@ -7,7 +7,7 @@ class MessengerController < ApplicationController
 		checkFacebookToken()
  		$webhook = JSON.parse(request.raw_post)
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
- 		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if !$webhook["entry"][0]["messaging"][0]["message"]["text"].nil?
+ 		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase if $webhook["entry"][0]["messaging"][0]["postback"]["payload"].nil?
  		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
