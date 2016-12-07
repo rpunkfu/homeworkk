@@ -17,28 +17,7 @@ class Messagehuman
  			headers: { 'Content-Type' => 'application/json' }
 		)
 	end
-
-  def self.newUserMessage
-    page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
-    body = {
-      setting_type: "call_to_actions",
-      thread_state: "new_thread",
-      call_to_actions: [
-        {
-          message: {
-            text: "Welcome to my bot."
-          }
-        }
-      ]
-    }
-    response = HTTParty.post(
-      "https://graph.facebook.com/v2.6/me/thread_settings?access_token=#{page_access_token}",
-      body: body,
-      headers: { 'Content-Type' => 'application/json' }
-    )
-    
-  end
-
+  
   def self.sendMessageBubbles(recipient)
     page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
     body = {
