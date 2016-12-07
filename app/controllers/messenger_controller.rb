@@ -15,7 +15,7 @@ class MessengerController < ApplicationController
  		currentClasses = Grouparray.all
 
 
- 			@checkUserExists = Messagehuman.checkUserExists(@recipient)
+ 			@checkUserExists = Messagehuman.checkUserExists(@recipient) || @userText.nil?
 	 		if @checkUserExists == false
 	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
