@@ -4,6 +4,19 @@ class RegistrationsController < Devise::RegistrationsController
     @userTimeZone = current_user.time_zone.to_i.freeze
     $timeZoneParam = params
   end
+
+  def destroy
+    @user = User.find(current_user.id)
+    @user.groups.each do |group| 
+      @group = Group.find_by(id: group.id)
+      @group.destroy
+    end
+    @user.destroy
+
+    if @user.destroy
+      redirect_to root_url, notice: "Your account has been successfully, terminated."
+    end
+  end
   private
 
   def update_resource(resource, params)
