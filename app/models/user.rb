@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.provider = auth.provider
       user.uid = auth.uid
+      #user.conversation_id = conversation_id.to_s
       user.password = Devise.friendly_token[0,20]
     end
   end

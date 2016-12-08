@@ -1,3 +1,4 @@
+<% $conversation_id = params[:conversation_id] %>
 <div class="panel panel-defualt">
   <div class="panel-heading">
   </div>
@@ -5,5 +6,6 @@
   <%= link_to image_tag("signin.png"), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
 
   <h2 class="center"> Christopher Bot is patiently waiting... </h2>
+  
   
 </div>

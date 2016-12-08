@@ -264,9 +264,9 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   #for facebook authentication
-  if Rails.env.development?
+  #if Rails.env.development?
     config.omniauth :facebook, "1894774840756659", "f228177f7baee22f1b9e158a19749dfd", scope: 'email,public_profile', info_fields: 'email, first_name, last_name'
-  else
-    config.omniauth :facebook, "1798319283735549", "7e1cb8536d22cef46f21f8d2b705cd43", scope: 'email,public_profile', info_fields: 'email, first_name, last_name'
-  end
+  #else
+   # config.omniauth :facebook, "1798319283735549", "7e1cb8536d22cef46f21f8d2b705cd43", scope: 'email,public_profile', info_fields: 'email, first_name, last_name'
+  #end
 end
