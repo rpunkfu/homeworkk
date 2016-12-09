@@ -79,6 +79,7 @@ class Messagehuman
     if $keyWordCount >= 3
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject.capitalize)
       @group.update(homework_assigned: true)
+      @group = @group.as_json
       @group["id"] = nil
       @group.delete("name")
       groupArrayNew = Grouparray.new(@group.as_json)
