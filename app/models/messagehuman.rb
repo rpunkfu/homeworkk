@@ -62,19 +62,34 @@ class Messagehuman
 		)
 	end
 
-	def self.checkKeyWords(userText)
-		case userText.downcase
-		when "getting started"
-			@messageText = 'Hi, I am Christopher Bot'
-			return @messageText
-		when "hi"
-			@messageText = "Hi, I'm Christopher; the coolest bot around"
-			return @messageText
-		else 
-			@messageText = "Sorry, I don't understand; I have a small vocabulary right now"
-			return @messageText
-		end
+	def self.checkKeyWords(recipient, userText)
+    @user = User.find_by(conversation_id: recipient)
+    @userTodayGroups = Array.new
+    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| @userTodayGroups.push(group.group_name) end
+		@textArray = userText.split(" ")
+    @keyWordCount = 0
+    @textArray.each do |word|
+      if word == "have" || word == "homework"
+        if @userTodayGroups.include? word
+          @keyWordCount += 1
+          @subject = word
+        else
+          @keyWordCount += 1
+        end
+      end
+    if @keyWordCount >= 3
+      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject)
+      @group.update(homework_assigned: true)
+      groupArrayNew = Grouparray.new(@group)
+      groupArrayNew.save
+      return true, @subject
+    elsif @keyWordCount == 2
+      return false, @subject unless @subject.nil?
+    else
+      return nil
+    end
 	end
+  end
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient).nil?

@@ -21,6 +21,16 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 	 	
+	 	@checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
+	 	if @checkKeyWords[0] == true
+	 		Messagehuman.sendMessageBubbles(group.conversation_id)
+ 			sleep(2)
+ 			Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])
+ 			Messagehuman.sendMessageBubbles(group.conversation_id)
+ 			sleep(2)
+ 			Messagehuman.sendMessage(group.conversation_id, 'what homework do you have?')
+ 			@sentMessage == true
+ 		end
 
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
