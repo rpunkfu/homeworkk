@@ -67,7 +67,7 @@ class Messagehuman
     $userTodayGroups = Array.new
     @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		@textArray = userText.split(" ")
-    @keyWordCount = 0
+    $keyWordCount = 0
     @textArray.each do |word|
       if word == "have" || word == "homework"
         if $userTodayGroups.include? word
