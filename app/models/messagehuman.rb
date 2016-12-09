@@ -75,6 +75,7 @@ class Messagehuman
         end
         $keyWordCount += 1
       end
+    end
     if $keyWordCount >= 3
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject)
       @group.update(homework_assigned: true)
