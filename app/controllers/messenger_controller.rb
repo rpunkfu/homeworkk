@@ -21,9 +21,9 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 	 	
-	 	@checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
-	 	if !@checkKeyWords.nil? && @checkKeyWords[0] != false
-	 	if @checkKeyWords[0] == true
+	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
+	 	if !$checkKeyWords.nil? && $checkKeyWords[0] != false
+	 	if $checkKeyWords[0] == true
 	 		Messagehuman.sendMessageBubbles(group.conversation_id)
  			sleep(2)
  			Messagehuman.sendMessage(group.conversation_id, @negativeResponses[randomNum])

@@ -64,26 +64,26 @@ class Messagehuman
 
 	def self.checkKeyWords(recipient, userText)
     @user = User.find_by(conversation_id: recipient)
-    @userTodayGroups = Array.new
-    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| @userTodayGroups.push(group.group_name.downcase) end
+    $userTodayGroups = Array.new
+    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		@textArray = userText.split(" ")
     @keyWordCount = 0
     @textArray.each do |word|
       if word == "have" || word == "homework"
-        if @userTodayGroups.include? word
-          @keyWordCount += 1
+        if $userTodayGroups.include? word
+          $keyWordCount += 1
           @subject = word
         else
-          @keyWordCount += 1
+          $keyWordCount += 1
         end
       end
-    if @keyWordCount >= 3
+    if $keyWordCount >= 3
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject)
       @group.update(homework_assigned: true)
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
       return true, @subject
-    elsif @keyWordCount == 2
+    elsif $keyWordCount == 2
       return false, @subject unless @subject.nil?
     else
       return nil
