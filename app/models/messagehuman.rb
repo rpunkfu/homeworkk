@@ -77,7 +77,7 @@ class Messagehuman
       end
     end
     if $keyWordCount >= 3
-      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject)
+      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject.capitilize)
       @group.update(homework_assigned: true)
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
