@@ -1,5 +1,5 @@
 class Messagehuman
-
+  require 'json'
 
 	def self.sendMessage(recipient, message)
 		page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
@@ -79,7 +79,7 @@ class Messagehuman
     if $keyWordCount >= 3
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject.capitalize)
       @group.update(homework_assigned: true)
-      groupArrayNew = Grouparray.new(@group)
+      groupArrayNew = Grouparray.new(@group.as_json)
       groupArrayNew.save
       return true, $subject
     elsif $keyWordCount == 2
