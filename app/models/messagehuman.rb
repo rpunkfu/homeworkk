@@ -65,7 +65,7 @@ class Messagehuman
 	def self.checkKeyWords(recipient, userText)
     @user = User.find_by(conversation_id: recipient)
     @userTodayGroups = Array.new
-    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| @userTodayGroups.push(group.group_name) end
+    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| @userTodayGroups.push(group.group_name.downcase) end
 		@textArray = userText.split(" ")
     @keyWordCount = 0
     @textArray.each do |word|
