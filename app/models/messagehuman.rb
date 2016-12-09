@@ -88,7 +88,6 @@ class Messagehuman
       return nil
     end
 	end
-  end
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient).nil?
