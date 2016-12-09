@@ -82,7 +82,7 @@ class Messagehuman
       @group = @group.as_json
       @group["id"] = nil
       @group.delete("name")
-      groupArrayNew = Grouparray.new(@group.as_json)
+      groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
       return true, $subject
     elsif $keyWordCount == 2
