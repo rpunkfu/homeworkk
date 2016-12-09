@@ -62,6 +62,7 @@ class Messagehuman
 		)
 	end
 
+=begin
 	def self.checkKeyWords(recipient, userText)
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
@@ -91,6 +92,8 @@ class Messagehuman
       return nil
     end
 	end
+
+=end
 
 	def self.checkUserExists(recipient)
 		if User.find_by(conversation_id: recipient).nil?
