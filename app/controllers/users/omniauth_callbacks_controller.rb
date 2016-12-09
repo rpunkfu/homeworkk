@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       if @user.persisted? 
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-        @user.update(conversation_id: $conversation_id)
+        @user.update(conversation_id: $conversation_id) unless !@existingUser.conversation_id.nil? || $conversation_id.nil?
         set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
       else
         session["devise.facebook_data"] = request.env["omniauth.auth"]
