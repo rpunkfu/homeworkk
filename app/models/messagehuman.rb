@@ -69,7 +69,7 @@ class Messagehuman
 		$textArray = userText.split(" ")
     $keyWordCount = 0
     $textArray.each do |word|
-      if word == "have" || word == "homework" || $userTodayGroups.include? word
+      if word == "have" || word == "homework" || $userTodayGroups.include?(word)
         if $userTodayGroups.include? word
           @subject = word
         end
