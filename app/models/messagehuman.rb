@@ -66,25 +66,23 @@ class Messagehuman
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
     @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
-		@textArray = userText.split(" ")
+		$textArray = userText.split(" ")
     $keyWordCount = 0
-    @textArray.each do |word|
-      if word == "have" || word == "homework"
+    $textArray.each do |word|
+      if word == "have" || word == "homework" || $userTodayGroups.include? word
         if $userTodayGroups.include? word
-          $keyWordCount += 1
           @subject = word
-        else
-          $keyWordCount += 1
         end
+        $keyWordCount += 1
       end
     if $keyWordCount >= 3
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: @subject)
       @group.update(homework_assigned: true)
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
-      return true, @subject
+      return true, $subject
     elsif $keyWordCount == 2
-      return false, @subject unless @subject.nil?
+      return false, $subject unless $subject.nil?
     else
       return nil
     end
