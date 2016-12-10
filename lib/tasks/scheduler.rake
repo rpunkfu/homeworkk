@@ -51,9 +51,9 @@ task :send_homework => :environment do
 		puts "one"
 		if user.sentHomwork == false
 			puts "two"
-		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time").nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time").last.nil?
+		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.nil?
 			puts "three"
-			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time").last.homework_assigned == false
+			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.homework_assigned == false
 				puts "four"
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
