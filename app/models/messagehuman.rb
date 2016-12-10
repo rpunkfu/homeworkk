@@ -204,7 +204,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
         quick_replies: [
         {
           content_type: "text",
-          title: possibleClasses[0]
+          title: possibleClasses[0],
           payload: possibleClasses[0]
         }
       ]
