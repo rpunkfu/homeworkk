@@ -12,6 +12,7 @@ class MessengerController < ApplicationController
 		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
 		@sentMessage = false
+		@sentKeyWords = false
  		currentClasses = Grouparray.all
  		randomNum = rand(0..7)
 
@@ -31,9 +32,11 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendMessageBubbles(@recipient)
 	 			sleep(2)
 	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
-	 			@sentMessage == true
+	 			@sentKeyWords = true
 	 		end
  		end
+
+ 		if @sentKeyWords == false
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
@@ -73,6 +76,7 @@ class MessengerController < ApplicationController
  				end
  			end
  		end
+ 	end
  		if @sentMessage == false
  			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
