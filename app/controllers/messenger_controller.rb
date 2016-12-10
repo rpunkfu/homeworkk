@@ -24,7 +24,7 @@ class MessengerController < ApplicationController
 	 		end
  	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
-	 	if !$checkKeyWords.nil? && $checkKeyWords[0] != false
+	 	if !$checkKeyWords.nil?
 		 	if $checkKeyWords[0] == true
 		 		Messagehuman.sendMessageBubbles(@recipient)
 	 			sleep(2)
@@ -34,6 +34,9 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
 	 			@sentKeyWords = true
 	 			@sentMessage = true
+	 		end
+	 		if $checkKeyWords == false && !$possibleSubjects.empty?
+	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 		end
  		end
 

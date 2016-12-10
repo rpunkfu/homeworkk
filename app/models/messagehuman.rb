@@ -102,7 +102,7 @@ class Messagehuman
       groupArrayNew.save
       return true, $subject
     elsif $keyWordCount == 2 && !$possibleSubjects.empty?
-      return false, $subject unless $subject.nil?
+      return false
     else
       return nil
     end
@@ -191,5 +191,31 @@ def self.sendSummaryButton(recipient)
     headers: { 'Content-Type' => 'application/json' }
   )
 end
+
+def self.sendGroupConfirmMessage(recipient, possibleClasses)
+    page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
+    body = {
+      recipient: {
+        id: recipient
+      },
+      message: {
+        text: "Sorry, which class do you have homework for?",
+        quick_replies: [
+        possibleClasses.each do |group|
+        {
+          content_type: "text",
+          title: "#{group}", 
+          payload: "#{group}"
+        }
+        end
+        ]
+      }
+    }.to_json
+    response = HTTParty.post(
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+      body: body,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
 			
 end
