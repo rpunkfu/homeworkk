@@ -17,9 +17,6 @@ class MessengerController < ApplicationController
  		randomNum = rand(0..7)
  		$checkKeyWords = nil
 
-
-
-
  			@checkUserExists = Messagehuman.checkUserExists(@recipient)
 	 		if @checkUserExists == false
 	 			Messagehuman.sendButton(@recipient)
@@ -38,13 +35,13 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
 	 			@sentKeyWords = true
 	 			@sentMessage = true
-	 		end
-	 		if $checkKeyWords == false && !$possibleSubjects.empty?
+	 		elsif $checkKeyWords == false && !$possibleSubjects.empty?
 	 			puts "WE ARE HERE"
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 			puts "SENT THE MESSAGE"
 	 			@sentMessage = true
 	 			@sentKeyWords = true
+	 		else
 	 		end
  		end
 
