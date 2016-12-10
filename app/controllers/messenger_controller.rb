@@ -15,6 +15,7 @@ class MessengerController < ApplicationController
 		@sentKeyWords = false
  		currentClasses = Grouparray.all
  		randomNum = rand(0..7)
+ 		$checkKeyWords = nil
 
 
 
