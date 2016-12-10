@@ -23,6 +23,27 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
 	 		end
+
+	 		if !@groupsResponse.nil?
+	 			@groupsResponse.each do |group|
+	 				if group.group_name == @userText
+	 					group.update(homework_assigned: true)
+	 					@group = group.as_json
+						@group["id"] = nil
+						@group.delete("name")
+						checkExistingGroupArray = Grouparray.find_by(conversation_id: group.conversation_id)
+						checkExistingGroupArray.destroy if !checkExistingGroupArray.nil?
+						groupArrayNew = Grouparray.new(@group)
+						groupArrayNew.save
+						Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
+			 			Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
+	 				end
+	 			end
+	 		end
  	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
 	 	if !$checkKeyWords.nil?
@@ -41,7 +62,13 @@ class MessengerController < ApplicationController
 	 			@sentKeyWords = true
 	 			@sentConfirmation = true
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
-	 			puts "SENT THE MESSAGE"
+	 			@groupsResponse = Array.new
+	 			$possibleSubjects.each do |group|
+	 				@group = Group.find_by(group_name: group, conversation_id: @recipient, group_day: 'friday')
+	 				if !@group.nil?
+	 					@groupsResponse.push(@group)
+	 				end
+	 			end
 	 		else
 	 		end
  		end
@@ -87,7 +114,7 @@ class MessengerController < ApplicationController
  			end
  		end
  	end
- 		if @sentMessage == false && @sentConfirmation = false
+ 		if @sentMessage == false && @sentConfirmation == false
  			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
  	end
