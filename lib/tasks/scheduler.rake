@@ -51,12 +51,13 @@ task :send_homework => :environment do
 		puts "one"
 		if user.sentHomwork == false
 			puts "two"
-		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.homework_assigned.nil?
+		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).empty?
+		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").nil? || !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.nil?
 			puts "three"
 			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.homework_assigned == true || user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false).order("end_time asc").last.homework_assigned == false
 				puts "four"
 				homeworkGroups = Array.new
-				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
+				homeworkGroupsTrue = Group.all.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group)
 				end
@@ -81,6 +82,7 @@ task :send_homework => :environment do
 					user.update(sentHomwork: true)
 				end		
 			end
+		end
 		end
 	end
 end
