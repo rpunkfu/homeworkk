@@ -69,6 +69,7 @@ class Messagehuman
 	end
 
 	def self.checkKeyWords(recipient, userText)
+    $subject = nil
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
     @user.groups.where("group_day = ?", "friday").each do |group| $userTodayGroups.push(group.group_name.downcase) end
