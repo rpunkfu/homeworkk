@@ -49,7 +49,7 @@ task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		puts "one"
-		if user.sentHomwork == false
+		if user.sentHomwork == false || user.sentHomwork == nil
 			puts "two"
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time asc").limit(user.class_number.to_i).last.nil?
 			puts "three"
