@@ -33,6 +33,7 @@ class MessengerController < ApplicationController
 	 			sleep(2)
 	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
 	 			@sentKeyWords = true
+	 			@sentMessage = true
 	 		end
  		end
 
