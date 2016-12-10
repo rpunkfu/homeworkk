@@ -71,13 +71,13 @@ class Messagehuman
     $textArray.each do |word|
       if word == "have" || word == "homework" || $userTodayGroups.include?(word)
         if $userTodayGroups.include?(word)
-          $subject = word
+          $subject = word.downcase
         end
         $keyWordCount += 1
       end
     end
     if $keyWordCount >= 3
-      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.capitalize)
+      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
       @group.update(homework_assigned: true)
       @group = @group.as_json
       @group["id"] = nil

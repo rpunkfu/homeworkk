@@ -117,7 +117,7 @@ class GroupsController < ApplicationController
     if !params[:group].nil?
       params[:group].each do |group|
         next if group[:group_name] == "" || group[:end_time] == ""
-        @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
+        @group = current_user.groups.build(group_name: group[:group_name].downcase, end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
         @group.save
         counter += 1
       end
@@ -140,12 +140,12 @@ class GroupsController < ApplicationController
         if groupCounter > $groupUpdateNumber || group[:id] == ""
           puts "WORKKKK"
           break if group[:group_name] == "" || group[:end_time] == ""
-          @group = current_user.groups.build(group_name: group[:group_name], end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
+          @group = current_user.groups.build(group_name: group[:group_name].downcase, end_time: group[:end_time], group_day: group[:group_day], conversation_id: group[:conversation_id], time_zone: current_user.time_zone)
           @group.save
         end
         break if group[:group_name] == "" || group[:end_time] == ""
         @groupUpdate = Group.find_by(id: group[:id])
-        @groupUpdate.update(group_name: group[:group_name], end_time: group[:end_time], time_zone: current_user.time_zone) if !@groupUpdate.nil?
+        @groupUpdate.update(group_name: group[:group_name].downcase, end_time: group[:end_time], time_zone: current_user.time_zone) if !@groupUpdate.nil?
         puts "this is @group: " + @group.inspect.to_s
         groupCounter += 1
         counter += 1
