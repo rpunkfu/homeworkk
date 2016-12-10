@@ -13,6 +13,7 @@ class MessengerController < ApplicationController
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
 		@sentMessage = false
 		@sentKeyWords = false
+		@sentConfirmation = false
  		currentClasses = Grouparray.all
  		randomNum = rand(0..7)
  		$checkKeyWords = nil
@@ -35,12 +36,13 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
 	 			@sentKeyWords = true
 	 			@sentMessage = true
-	 		elsif $checkKeyWords == false && !$possibleSubjects.empty?
+	 		elsif $checkKeyWords == false && !$possibleSubjects.empty? && @sentConfirmation == false
 	 			puts "WE ARE HERE"
-	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
-	 			puts "SENT THE MESSAGE"
 	 			@sentMessage = true
 	 			@sentKeyWords = true
+	 			@sentConfirmation = true
+	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
+	 			puts "SENT THE MESSAGE"
 	 		else
 	 		end
  		end
