@@ -88,7 +88,7 @@ class MessengerController < ApplicationController
  	end
 
  	def webhook_inspect
- 		
+ 		@word = Messagehuman.string_difference_percent("math", "mwth")
  	end
  
 end

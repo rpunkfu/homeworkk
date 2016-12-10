@@ -18,6 +18,12 @@ class Messagehuman
 		)
 	end
   
+  def self.string_difference_percent(a, b)
+    longer = [a.size, b.size].max
+    same = a.each_char.zip(b.each_char).select { |a,b| a == b }.size
+    return (longer - same) / a.size.to_f
+  end
+
   def self.sendMessageBubbles(recipient)
     page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
     body = {
@@ -65,19 +71,26 @@ class Messagehuman
 	def self.checkKeyWords(recipient, userText)
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
-    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
+    @user.groups.where("group_day = ?", "friday").each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		$textArray = userText.split(" ")
     $keyWordCount = 0
     $textArray.each do |word|
       if word == "have" || word == "homework" || $userTodayGroups.include?(word)
         if $userTodayGroups.include?(word)
           $subject = word.downcase
+        elsif 2 > 1
+          $userTodayGroups.each do |group|
+            if Messagehuman.string_difference_percent(word, group) <= 0.5
+              $possibleSubjects = Array.new
+              $possibleSubjects.push(group)
+            end
+          end
         end
         $keyWordCount += 1
       end
     end
     if $keyWordCount >= 3
-      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
+      @group = Group.find_by(conversation_id: recipient, group_day: "friday", group_name: $subject.downcase)
       @group.update(homework_assigned: true)
       @group = @group.as_json
       @group["id"] = nil
