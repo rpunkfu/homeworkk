@@ -25,7 +25,6 @@ class MessengerController < ApplicationController
 	 		end
  	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
-	 	Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 	if !$checkKeyWords.nil?
 		 	if $checkKeyWords == true
 		 		Messagehuman.sendMessageBubbles(@recipient)
@@ -88,7 +87,7 @@ class MessengerController < ApplicationController
  			end
  		end
  	end
- 		if @sentMessage == false
+ 		if @sentMessage == false && @sentConfirmation = false
  			Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  		end
  	end
