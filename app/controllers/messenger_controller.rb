@@ -17,6 +17,8 @@ class MessengerController < ApplicationController
  		randomNum = rand(0..7)
 
 
+
+
  			@checkUserExists = Messagehuman.checkUserExists(@recipient)
 	 		if @checkUserExists == false
 	 			Messagehuman.sendButton(@recipient)
@@ -24,6 +26,7 @@ class MessengerController < ApplicationController
 	 		end
  	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
+	 	Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 	if !$checkKeyWords.nil?
 		 	if $checkKeyWords[0] == true
 		 		Messagehuman.sendMessageBubbles(@recipient)
