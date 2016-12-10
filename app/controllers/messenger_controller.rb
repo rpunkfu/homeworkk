@@ -13,6 +13,7 @@ class MessengerController < ApplicationController
 		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
 		@sentMessage = false
  		currentClasses = Grouparray.all
+ 		randomNum = rand(0..7)
 
 
  			@checkUserExists = Messagehuman.checkUserExists(@recipient)
