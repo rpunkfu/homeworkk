@@ -193,7 +193,7 @@ def self.sendSummaryButton(recipient)
   )
 end
 
-def self.sendGroupConfirmMessage(recipient, possibleClasses)
+def self.sendGroupConfirmMessage(recipient,@possibleClasses)
     page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
     body = {
       recipient: {
@@ -205,8 +205,8 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
         possibleClasses.each do |group|
         {
           content_type: "text",
-          title: "#{group}", 
-          payload: "#{group}"
+          title: group, 
+          payload: group
         }
         end
         ]
