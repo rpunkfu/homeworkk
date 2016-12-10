@@ -39,8 +39,9 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 	 		if $checkKeyWords == false && !$possibleSubjects.empty?
+	 			puts "WE ARE HERE"
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
-	 			
+	 			puts "SENT THE MESSAGE"
 	 		end
  		end
 
