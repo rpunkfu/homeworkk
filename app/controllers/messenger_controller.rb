@@ -40,6 +40,7 @@ class MessengerController < ApplicationController
 	 		end
 	 		if $checkKeyWords == false && !$possibleSubjects.empty?
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
+	 			
 	 		end
  		end
 
