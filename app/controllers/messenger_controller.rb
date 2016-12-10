@@ -42,6 +42,8 @@ class MessengerController < ApplicationController
 	 			puts "WE ARE HERE"
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 			puts "SENT THE MESSAGE"
+	 			@sentMessage = true
+	 			@sentKeyWords = true
 	 		end
  		end
 

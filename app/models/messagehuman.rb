@@ -202,14 +202,12 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
       message: {
         text: "Sorry, which class do you have homework for?",
         quick_replies: [
-        possibleClasses.each do |group|
         {
           content_type: "text",
-          title: group, 
-          payload: group
+          title: possibleClasses[0]
+          payload: possibleClasses[0]
         }
-        end
-        ]
+      ]
       }
     }.to_json
     response = HTTParty.post(
