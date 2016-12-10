@@ -23,17 +23,16 @@ class MessengerController < ApplicationController
  	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
 	 	if !$checkKeyWords.nil? && $checkKeyWords[0] != false
-	 	if $checkKeyWords[0] == true
-	 		Messagehuman.sendMessageBubbles(@recipient)
- 			sleep(2)
- 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
- 			Messagehuman.sendMessageBubbles(@recipient)
- 			sleep(2)
- 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
- 			@sentMessage == true
+		 	if $checkKeyWords[0] == true
+		 		Messagehuman.sendMessageBubbles(@recipient)
+	 			sleep(2)
+	 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
+	 			Messagehuman.sendMessageBubbles(@recipient)
+	 			sleep(2)
+	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
+	 			@sentMessage == true
+	 		end
  		end
- 	end
-=end
  		currentClasses.each do |group|
  			randomNum = rand(0..7)
  			if group.conversation_id == @recipient
