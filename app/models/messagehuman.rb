@@ -70,7 +70,7 @@ class Messagehuman
     $keyWordCount = 0
     $textArray.each do |word|
       if word == "have" || word == "homework" || $userTodayGroups.include?(word)
-        if $userTodayGroups.include? word
+        if $userTodayGroups.include?(word)
           $subject = word
         end
         $keyWordCount += 1
