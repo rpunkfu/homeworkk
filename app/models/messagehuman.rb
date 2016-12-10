@@ -101,7 +101,7 @@ class Messagehuman
       @group.delete("name")
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
-      return true, $subject
+      return true
     elsif $keyWordCount == 2 && !$possibleSubjects.empty?
       return false
     else
