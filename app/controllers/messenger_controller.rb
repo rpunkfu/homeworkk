@@ -24,8 +24,9 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 
-	 		if !@groupsResponse.nil?
+	 		if !@groupsResponse.empty?
 	 			@groupsResponse.each do |group|
+	 				puts "IN GROUP RESPONSE"
 	 				if group.group_name == @userText
 	 					group.update(homework_assigned: true)
 	 					@group = group.as_json
@@ -61,14 +62,17 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 			@sentKeyWords = true
 	 			@sentConfirmation = true
+	 			puts "SENDING THE MESSAGE"
 	 			Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
 	 			@groupsResponse = Array.new
+	 			puts "GROPUS RESPONSE"
 	 			$possibleSubjects.each do |group|
 	 				@group = Group.find_by(group_name: group, conversation_id: @recipient, group_day: 'friday')
 	 				if !@group.nil?
 	 					@groupsResponse.push(@group)
 	 				end
 	 			end
+	 			puts "BUDDY THE ELF"
 	 		else
 	 		end
  		end
