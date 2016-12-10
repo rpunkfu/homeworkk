@@ -20,7 +20,7 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
 	 		end
-=begin	 	
+ 	
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
 	 	if !$checkKeyWords.nil? && $checkKeyWords[0] != false
 	 	if $checkKeyWords[0] == true
