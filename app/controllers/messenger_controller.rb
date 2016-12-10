@@ -55,7 +55,7 @@ class MessengerController < ApplicationController
 	 		end
  		end
 
- 		if !@groupsResponse.nil? || !groupsResponse.nil?
+ 		if !@groupsResponse.nil? && !@groupsResponse.empty?
 	 			@groupsResponse.each do |group|
 	 				puts "IN GROUP RESPONSE"
 	 				if group.group_name == @userText
