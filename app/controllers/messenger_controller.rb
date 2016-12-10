@@ -23,7 +23,29 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
 	 		end
- 	
+	 		
+ 			if !@groupsResponse.nil? && !@groupsResponse.empty?
+	 			@groupsResponse.each do |group|
+	 				puts "IN GROUP RESPONSE"
+	 				if group.group_name == @userText
+	 					group.update(homework_assigned: true)
+	 					@group = group.as_json
+						@group["id"] = nil
+						@group.delete("name")
+						checkExistingGroupArray = Grouparray.find_by(conversation_id: group.conversation_id)
+						checkExistingGroupArray.destroy if !checkExistingGroupArray.nil?
+						groupArrayNew = Grouparray.new(@group)
+						groupArrayNew.save
+						Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
+			 			Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
+	 				end
+	 			end
+	 		end
+
 	 	$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
 	 	if !$checkKeyWords.nil?
 		 	if $checkKeyWords == true
@@ -54,28 +76,6 @@ class MessengerController < ApplicationController
 	 		else
 	 		end
  		end
-
- 		if !@groupsResponse.nil? && !@groupsResponse.empty?
-	 			@groupsResponse.each do |group|
-	 				puts "IN GROUP RESPONSE"
-	 				if group.group_name == @userText
-	 					group.update(homework_assigned: true)
-	 					@group = group.as_json
-						@group["id"] = nil
-						@group.delete("name")
-						checkExistingGroupArray = Grouparray.find_by(conversation_id: group.conversation_id)
-						checkExistingGroupArray.destroy if !checkExistingGroupArray.nil?
-						groupArrayNew = Grouparray.new(@group)
-						groupArrayNew.save
-						Messagehuman.sendMessageBubbles(@recipient)
-			 			sleep(2)
-			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
-			 			Messagehuman.sendMessageBubbles(@recipient)
-			 			sleep(2)
-			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
-	 				end
-	 			end
-	 		end
 
  		if @sentKeyWords == false
  		currentClasses.each do |group|
