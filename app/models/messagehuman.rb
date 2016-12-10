@@ -78,15 +78,18 @@ class Messagehuman
       if word == "have" || word == "homework" || $userTodayGroups.include?(word)
         if $userTodayGroups.include?(word)
           $subject = word.downcase
-        elsif 2 > 1
-          $userTodayGroups.each do |group|
-            if Messagehuman.string_difference_percent(word, group) <= 0.5
-              $possibleSubjects = Array.new
-              $possibleSubjects.push(group)
-            end
-          end
         end
         $keyWordCount += 1
+      end
+    end
+    if $subject.nil?
+      $possibleSubjects = Array.new
+      $textArray.each do |word|
+        $userTodayGroups.each do |group|
+          if Messagehuman.string_difference_percent(word, group) <= 0.5
+            $possibleSubjects.push(group)
+          end
+        end
       end
     end
     if $keyWordCount >= 3
@@ -98,7 +101,7 @@ class Messagehuman
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
       return true, $subject
-    elsif $keyWordCount == 2
+    elsif $keyWordCount == 2 && !$possibleSubjects.empty?
       return false, $subject unless $subject.nil?
     else
       return nil
