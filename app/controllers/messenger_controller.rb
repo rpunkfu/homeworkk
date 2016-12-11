@@ -129,8 +129,11 @@ class MessengerController < ApplicationController
  				end
  			end
  		end
- 		end
+ 			if @sentMessage == false
+ 				Messagehuman.sendMessage(@recipient, defaultResponses[0])
+ 			end
  	end
+ end
 
 
  	def check_token
