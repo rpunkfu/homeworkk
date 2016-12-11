@@ -25,11 +25,14 @@ class MessengerController < ApplicationController
 	 		end
 
 	 		if @userText == "cancel"
-	 			@grouparrays = Grouparray.find_by(conversation_id: @recipient)
-	 			@grouparrays.each do |group|
-	 				group.destroy
+	 			@grouparrays = Grouparray.all.where(conversation_id: @recipient)
+	 			if !@grouparrays.nil? || !@grouparray.empty?
+		 			@grouparrays.each do |group|
+		 				group.destroy
+		 			end
 	 			end
 	 			Messagehuman.sendMessage(@recipient, "ok, all enquiries have been cancelled")
+	 			@sentMessage = true
 	 		else
 
  			if !$groupsResponse.nil? && !$groupsResponse.empty?
