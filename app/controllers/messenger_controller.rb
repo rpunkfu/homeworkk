@@ -133,7 +133,7 @@ class MessengerController < ApplicationController
  			end
  		end
  			if @sentMessage == false
- 				Messagehuman.sendMessage(@recipient, defaultResponses[0])
+ 				Messagehuman.sendMessage(@recipient, @defaultResponses[0])
  			end
  	end
  end
