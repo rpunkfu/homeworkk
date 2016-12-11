@@ -23,8 +23,9 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendButton(@recipient)
 	 			@sentMessage = true
 	 		end
-	 		
+
  			if !@groupsResponse.nil? && !@groupsResponse.empty?
+ 				puts "IN HERE"
 	 			@groupsResponse.each do |group|
 	 				puts "IN GROUP RESPONSE"
 	 				if group.group_name == @userText
