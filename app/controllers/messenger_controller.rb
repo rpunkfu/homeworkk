@@ -29,12 +29,6 @@ class MessengerController < ApplicationController
 	 			$groupsResponse.each do |group|
 	 				puts "IN GROUP RESPONSE"
 	 				if group.group_name == @userText
-	 					Messagehuman.sendMessageBubbles(@recipient)
-			 			sleep(2)
-			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
-			 			Messagehuman.sendMessageBubbles(@recipient)
-			 			sleep(2)
-			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
 	 					group.update(homework_assigned: true)
 	 					@group = group.as_json
 						@group["id"] = nil
@@ -43,8 +37,14 @@ class MessengerController < ApplicationController
 						checkExistingGroupArray.destroy if !checkExistingGroupArray.nil?
 						groupArrayNew = Grouparray.new(@group)
 						groupArrayNew.save
-						@sentMessage = true
-						@sentKeyWords = true
+						Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
+			 			Messagehuman.sendMessageBubbles(@recipient)
+			 			sleep(2)
+			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
+			 			@sentMessage = true
+			 			@sentKeyWords = true
 	 				end
 	 			end
 	 		end
