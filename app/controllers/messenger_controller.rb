@@ -24,6 +24,14 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 
+	 		if @sentMessage != true && @userText == "cancel"
+	 			@grouparrays = Grouparray.find_by(conversation_id: @recipient)
+	 			@grouparrays.each do |group|
+	 				group.destroy
+	 			end
+	 			Messagehuman.sendMessage(@recipient, "ok, all enquiries have been cancelled")
+	 		else
+
  			if !$groupsResponse.nil? && !$groupsResponse.empty?
  				puts "IN HERE"
 	 			$groupsResponse.each do |group|
@@ -120,6 +128,7 @@ class MessengerController < ApplicationController
  				end
  				end
  			end
+ 		end
  		end
  	end
 
