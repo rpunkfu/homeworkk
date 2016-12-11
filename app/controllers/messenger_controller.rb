@@ -24,7 +24,7 @@ class MessengerController < ApplicationController
 	 			@sentMessage = true
 	 		end
 
-	 		if @sentMessage != true && @userText == "cancel"
+	 		if @userText == "cancel"
 	 			@grouparrays = Grouparray.find_by(conversation_id: @recipient)
 	 			@grouparrays.each do |group|
 	 				group.destroy
