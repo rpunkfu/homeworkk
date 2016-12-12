@@ -8,9 +8,14 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
- 		@positiveResponses = ["thats grrrreaat", "Thats Awesome!", "Yay! No Homework!", "Finally, a break from some homework", "Awesome. Just what i needed to hear.", "Yay. Some good news today.", "thats almost better than harry potter", "time to celebrate, come on!"]
-		@negativeResponses = ["booooo.", "what a shame." "ugh. That stinks.", "your teacher needs to chill out on the homework", "That's so sad to hear", "that sucks, at least you look good today.", "that sucks more than a vacuum", "thats worse than when Dumbledore died."]
-		@defaultResponses = ["Hey! You've already signed up. All you have to do is wait for me to text you"]
+ 		
+
+ 		@positiveResponses = ["that's grrrreat", "that's awesome!", "yay! no homework!", "finally, a break from some homework", "awesome, just what i wanted to hear", "yay, some good news today", "that's almost better than harry potter", "time to celebrate, come on!"]
+		@negativeResponses = ["booooo", "what a shame" "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died"]
+		@defaultResponses = ["hey! you've already signed up... all you have to do is wait for me to text you"]
+		
+
+
 		@sentMessage = false
 		@sentKeyWords = false
 		@sentConfirmation = false
@@ -31,7 +36,7 @@ class MessengerController < ApplicationController
 		 				group.destroy
 		 			end
 	 			end
-	 			Messagehuman.sendMessage(@recipient, "ok, all enquiries have been cancelled")
+	 			Messagehuman.sendMessage(@recipient, "ok, let me know if you need anything else")
 	 			@sentMessage = true
 	 		else
 
@@ -53,7 +58,7 @@ class MessengerController < ApplicationController
 			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
 			 			Messagehuman.sendMessageBubbles(@recipient)
 			 			sleep(2)
-			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"])
+			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"] + '?')
 			 			@sentMessage = true
 			 			@sentKeyWords = true
 	 				end
@@ -68,7 +73,7 @@ class MessengerController < ApplicationController
 	 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum])
 	 			Messagehuman.sendMessageBubbles(@recipient)
 	 			sleep(2)
-	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject)
+	 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + $subject.downcase + '?')
 	 			@sentKeyWords = true
 	 			@sentMessage = true
 	 		elsif $checkKeyWords == false && !$possibleSubjects.empty? && @sentConfirmation == false
@@ -125,7 +130,7 @@ class MessengerController < ApplicationController
  					@groupArray.destroy
  					Messagehuman.sendMessageBubbles(group.conversation_id)
  					sleep(2)
- 					Messagehuman.sendMessage(group.conversation_id, 'Ok Dokey! Got it!')
+ 					Messagehuman.sendMessage(group.conversation_id, 'ok, got it!')
  					@sentMessage = true
  				else
  				end

@@ -50,12 +50,12 @@ class Messagehuman
    			quick_replies: [
       	{
         	content_type: "text",
-        	title: "Yes", 
+        	title: "yes", 
         	payload: 'Yes'	
       	},
       	{
         	content_type: "text",
-        	title: "No",
+        	title: "no",
         	payload: 'No'
       	}
    			]
@@ -132,8 +132,8 @@ class Messagehuman
        		template_type:"generic",
         	elements:[
          	{
-            title:"Sign Up For Christopher Bot.",
-           	subtitle:"To get daily reminders of your homework",
+            title:"Sign Up For Christopher Bot",
+           	subtitle:"To keep track of your homework",
            	buttons:[
               			{
                 type:"web_url",
@@ -170,7 +170,7 @@ def self.sendSummaryButton(recipient)
           elements:[
           {
             title:"See All Your Homework",
-            subtitle:"To see all of homework easily on our website",
+            subtitle:"To see all your homework for the week",
             buttons:[
                     {
                 type:"web_url",
@@ -200,12 +200,12 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
         id: recipient
       },
       message: {
-        text: "Sorry, which class do you have homework for?",
+        text: "sorry, which class do you have homework for?",
         quick_replies: [
         {
           content_type: "text",
-          title: possibleClasses[0],
-          payload: possibleClasses[0]
+          title: possibleClasses[0].downcase,
+          payload: possibleClasses[0].downcase
         }
       ]
       }
