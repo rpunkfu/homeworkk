@@ -86,7 +86,7 @@ class MessengerController < ApplicationController
 	 			$groupsResponse = Array.new
 	 			puts "GROPUS RESPONSE"
 	 			$possibleSubjects.each do |group|
-	 				@group = Group.find_by(group_name: group, conversation_id: @recipient, group_day: 'friday')
+	 				@group = Group.find_by(group_name: group, conversation_id: @recipient, group_day: 0.hours.ago.strftime("%A").downcase)
 	 				if !@group.nil?
 	 					$groupsResponse.push(@group)
 	 				end

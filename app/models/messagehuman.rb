@@ -72,7 +72,7 @@ class Messagehuman
     $subject = nil
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
-    @user.groups.where("group_day = ?", "friday").each do |group| $userTodayGroups.push(group.group_name.downcase) end
+    @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		$textArray = userText.split(" ")
     $keyWordCount = 0
     $textArray.each do |word|
@@ -94,7 +94,7 @@ class Messagehuman
       end
     end
     if $keyWordCount >= 3
-      @group = Group.find_by(conversation_id: recipient, group_day: "friday", group_name: $subject.downcase)
+      @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
       @group.update(homework_assigned: true)
       @group = @group.as_json
       @group["id"] = nil
