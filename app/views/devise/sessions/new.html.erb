@@ -1,10 +1,4 @@
 <% $conversation_id = params[:conversation_id] %>
-<div class="panel panel-defualt">
-  <div class="panel-heading">
-  </div>
 
-  <%= link_to image_tag("signin.png", style:'height:50%;width:auto;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
+  <%= link_to image_tag("signin.png", style:'height:30%;width:auto;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
   
-  
-</div>
-<%= $conversation_id %>
