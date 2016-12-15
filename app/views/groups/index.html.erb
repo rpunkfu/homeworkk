@@ -59,7 +59,7 @@
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
 	    	<% ifHomework = checkIfHomework(group) %>
-		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.strftime("%l:%M").to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s.strftime("%l:%M") %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
 	</div>
@@ -78,8 +78,8 @@
         Homework
       </div>
     </div>
-	<% if current_user.groups.where("group_day = wednesday").empty? %> <h3> no Wednesday on day yet</h3> <% end %>
-	    <% current_user.groups.where("group_day = wednesday").order("end_time ASC").each do |group| %>
+	<% if current_user.groups.where("group_day = ?", "wednesday").empty? %> <h3> no Wednesday on day yet</h3> <% end %>
+	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
 	    		<% group.update(extra_class: true) %>
 	    		<% else %>
