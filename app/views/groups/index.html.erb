@@ -20,12 +20,6 @@
       <div class="cell">
         Age
       </div>
-      <div class="cell">
-        Occupation
-      </div>
-      <div class="cell">
-        Location
-      </div>
     </div>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> no classes for Monday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
@@ -36,9 +30,9 @@
 	    	<% end %>
 	    		<% ifHomework = checkIfHomework(group) %>
 	    		<% if ifHomework == 'yes' %>
-		      <div class="row"><span class="yes-homework"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.homework_assignment %></div> </span></div>
+		      <div class="row"><div class="cell"><%= "#{group.group_name}" %></div><div class="cell"><%= "#{group.homework_assignment}" %></div></div> 
 		      <% else %>
-		      	<div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= "no homework yet" %></div><b> <%= " - not an active class" if group.extra_class == true %> </b> </div>
+		      	<div class="row"><div class="cell"><%= "#{group.group_name}" %></div><div class="cell"><%= "#{group.homework_assignment}" %></div></div> 
 		      <% end %>
 	    <% counter += 1 %>
 	    <% end %>

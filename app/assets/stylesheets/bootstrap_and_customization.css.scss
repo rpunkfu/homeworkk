@@ -91,7 +91,7 @@ body {
   &.blue {
     background: #2980b9;
   }
-  max-width: 580px;
+  //max-width: 580px;
     padding: 8px 0;
     display: block;
 }
@@ -101,7 +101,7 @@ body {
   width: 100%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   display: table;
-  max-width: 580px;
+  //max-width: 580px;
     display: block;
    }
 
@@ -109,7 +109,7 @@ body {
 .cell {
   padding: 6px 12px;
   display: table-cell;
-  max-width: 580px;
+  //max-width: 580px;
     padding: 2px 12px;
     display: block;
  }
