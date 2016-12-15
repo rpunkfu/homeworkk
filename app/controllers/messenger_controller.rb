@@ -15,7 +15,7 @@ class MessengerController < ApplicationController
 		# a list of negative responses if user has homework
 		@negativeResponses = ["booooo", "what a shame", "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died"]
 		# if user sends a text, but has nothing to do with homework and they're signed up
-		@defaultResponses = ["hey! you've already signed up... all you have to do is wait for me to text you"]
+		@defaultResponses = ["hardy har har"]
 		# setting variables to false, to know what and if I sent a message
 		@sentMessage = false
 		@sentKeyWords = false
