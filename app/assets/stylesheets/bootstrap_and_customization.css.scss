@@ -77,11 +77,13 @@ body {
   display: table;
   border: 1px solid;
 }
+/*
 @media screen and (max-width: 580px) {
   .table {
     display: block;
   }
 }
+*/
 
 .row {
   display: table-row;
@@ -102,21 +104,24 @@ body {
 .row.blue {
   background: #2980b9;
 }
+/*
 @media screen and (max-width: 580px) {
   .row {
     padding: 8px 0;
     display: block;
   }
 }
-
+*/
 .cell {
   padding: 6px 12px;
   display: table-cell;
   border: 1px solid;
 }
+/*
 @media screen and (max-width: 580px) {
   .cell {
     padding: 2px 12px;
     display: block;
   }
 }
+*/
