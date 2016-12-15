@@ -38,7 +38,6 @@
 	    <% end %>
 	</div>
 	    <br>
-	<% counter = 1 %>
 	<h2> <%= link_to 'Tuesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
 		<div class="table">
 		<div class="row header">
@@ -65,7 +64,7 @@
 	    <% end %>
 	</div>
 	    <br>
-	<% counter = 1 %>
+	<% counter += 1 %> 
 	<h2> <%= link_to 'Wednesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "wednesday").first) if !current_user.groups.where("group_day = ?", "wednesday").first.nil? %> </h2>
 		<div class="table">
 		<div class="row header">
@@ -79,8 +78,8 @@
         Homework
       </div>
     </div>
-	<% if current_user.groups.where("group_day = ?", "wednesday").empty? %> <h3> no classes for Wednesday yet</h3> <% end %>
-	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
+	<% if current_user.groups.where("group_day = wednesday").empty? %> <h3> no Wednesday on day yet</h3> <% end %>
+	    <% current_user.groups.where("group_day = wednesday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
 	    		<% group.update(extra_class: true) %>
 	    		<% else %>
