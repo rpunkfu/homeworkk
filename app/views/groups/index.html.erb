@@ -12,14 +12,17 @@
 	
 	<% counter = 1 %>
 
-	<h2> <%= link_to 'Monday', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
+	<h2> <%= link_to 'Monday Classes', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
 		<div class="table">
 		<div class="row header">
       <div class="cell">
-        Name
+        Class Name
       </div>
       <div class="cell">
-        Age
+        Class End Time
+      </div>
+      <div class="cell">
+        Homework
       </div>
     </div>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> no classes for Monday yet</h3> <% end %>
@@ -30,13 +33,25 @@
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
 	    	<% ifHomework = checkIfHomework(group) %>
-		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.homework_assignment %></div></div> 
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
 	</div>
 	    <br>
 	<% counter = 1 %>
-	<h2> <%= link_to 'Tuesday', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
+	<h2> <%= link_to 'Tuesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
+		<div class="table">
+		<div class="row header">
+      <div class="cell">
+        Class Name
+      </div>
+      <div class="cell">
+        Class End Time
+      </div>
+      <div class="cell">
+        Homework
+      </div>
+    </div>
 	<% if current_user.groups.where("group_day = ?", "tuesday").empty? %> <h3> no classes for Tuesday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "tuesday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
@@ -44,37 +59,53 @@
 	    		<% else %>
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
-	    		<% ifHomework = checkIfHomework(group) %>
-	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
-		      <% else %>
-		      	<%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b>
-		      <% end %>
-	        <br>
+	    	<% ifHomework = checkIfHomework(group) %>
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
+	</div>
 	    <br>
 	<% counter = 1 %>
-	<h2> <%= link_to 'Wednesday', edit_group_path(current_user.groups.where("group_day = ?", "wednesday").first) if !current_user.groups.where("group_day = ?", "wednesday").first.nil? %> </h2>
+	<h2> <%= link_to 'Wednesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "wednesday").first) if !current_user.groups.where("group_day = ?", "wednesday").first.nil? %> </h2>
+		<div class="table">
+		<div class="row header">
+      <div class="cell">
+        Class Name
+      </div>
+      <div class="cell">
+        Class End Time
+      </div>
+      <div class="cell">
+        Homework
+      </div>
+    </div>
 	<% if current_user.groups.where("group_day = ?", "wednesday").empty? %> <h3> no classes for Wednesday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "wednesday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
 	    		<% group.update(extra_class: true) %>
-	    	<% else %>
+	    		<% else %>
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
-	    		<% ifHomework = checkIfHomework(group) %>
-	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
-		      <% else %>
-		      	<%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b>
-		      <% end %>
-	        <br>
+	    	<% ifHomework = checkIfHomework(group) %>
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
+	</div>
 	    <br>
 		<% counter = 1 %>
-	<h2> <%= link_to 'Thursday', edit_group_path(current_user.groups.where("group_day = ?", "thursday").first) if !current_user.groups.where("group_day = ?", "thursday").first.nil? %> </h2>
+	<h2> <%= link_to 'Thursday Classes', edit_group_path(current_user.groups.where("group_day = ?", "thursday").first) if !current_user.groups.where("group_day = ?", "thursday").first.nil? %> </h2>
+		<div class="table">
+		<div class="row header">
+      <div class="cell">
+        Class Name
+      </div>
+      <div class="cell">
+        Class End Time
+      </div>
+      <div class="cell">
+        Homework
+      </div>
+    </div>
 	<% if current_user.groups.where("group_day = ?", "thursday").empty? %> <h3> no classes for Thursday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "thursday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
@@ -82,18 +113,26 @@
 	    		<% else %>
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
-	    		<% ifHomework = checkIfHomework(group) %>
-	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
-		      <% else %>
-		      	<%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b>
-		      <% end %>
-	        <br>
+	    	<% ifHomework = checkIfHomework(group) %>
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
+	</div>
 	    <br>
 		<% counter = 1 %>
-	<h2> <%= link_to 'Friday', edit_group_path(current_user.groups.where("group_day = ?", "friday").first) if !current_user.groups.where("group_day = ?", "friday").first.nil? %> </h2>
+	<h2> <%= link_to 'Friday Classes', edit_group_path(current_user.groups.where("group_day = ?", "friday").first) if !current_user.groups.where("group_day = ?", "friday").first.nil? %> </h2>
+		<div class="table">
+		<div class="row header">
+      <div class="cell">
+        Class Name
+      </div>
+      <div class="cell">
+        Class End Time
+      </div>
+      <div class="cell">
+        Homework
+      </div>
+    </div>
 	<% if current_user.groups.where("group_day = ?", "friday").empty? %> <h3> no classes for Friday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "friday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
@@ -101,15 +140,11 @@
 	    		<% else %>
 	    		<% group.update(extra_class: false) %>
 	    	<% end %>
-	    		<% ifHomework = checkIfHomework(group) %>
-	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
-		      <% else %>
-		      	<%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b>
-		      <% end %>
-	        <br>
+	    	<% ifHomework = checkIfHomework(group) %>
+		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.end_time.to_s %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
+	</div>
 	    <br>
 </div>
 <% end %>
