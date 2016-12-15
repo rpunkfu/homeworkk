@@ -11,7 +11,7 @@
 	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn btn-primary center" if !classDay.nil? %>
 	
 	<% counter = 1 %>
-	<table class="table">
+	<div class="table">
 	<h2> <%= link_to 'Monday', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
 		<div class="row header">
       <div class="cell">
@@ -36,9 +36,9 @@
 	    	<% end %>
 	    		<% ifHomework = checkIfHomework(group) %>
 	    		<% if ifHomework == 'yes' %>
-		      <tr class="row"><span class="yes-homework"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.homework_assignment %></div> </span></tr>
+		      <div class="row"><span class="yes-homework"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.homework_assignment %></div> </span></div>
 		      <% else %>
-		      	<tr class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= "no homework yet" %></div><b> <%= " - not an active class" if group.extra_class == true %> </b> </tr>
+		      	<div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= "no homework yet" %></div><b> <%= " - not an active class" if group.extra_class == true %> </b> </div>
 		      <% end %>
 	        <br>
 	    <% counter += 1 %>
