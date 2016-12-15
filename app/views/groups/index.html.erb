@@ -31,9 +31,9 @@
 	    	<% end %>
 	    		<% ifHomework = checkIfHomework(group) %>
 	    		<% if ifHomework == 'yes' %>
-		      <div class="row"><div class="cell"><%= "#{group.group_name}" %></div><div class="cell"><%= "#{group.homework_assignment}" %></div></div> 
+		      <div class="row"><div class="cell"><%= "#{group.group_name}" %><%= "#{group.homework_assignment}" %></div></div> 
 		      <% else %>
-		      	<div class="row"><div class="cell"><%= "#{group.group_name}" %></div><div class="cell"><%= "#{group.homework_assignment}" %></div></div> 
+		      	<div class="row"><div class="cell"><%= "#{group.group_name}" %><%= "#{group.homework_assignment}" %></div></div> 
 		      <% end %>
 	    <% counter += 1 %>
 	    <% end %>
