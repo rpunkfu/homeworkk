@@ -11,7 +11,22 @@
 	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn btn-primary center" if !classDay.nil? %>
 	
 	<% counter = 1 %>
+	<table>
 	<h2> <%= link_to 'Monday', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
+		<div class="row-header-monday">
+      <div class="cell">
+        Name
+      </div>
+      <div class="cell">
+        Age
+      </div>
+      <div class="cell">
+        Occupation
+      </div>
+      <div class="cell">
+        Location
+      </div>
+    </div>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h3> no classes for Monday yet</h3> <% end %>
 	    <% current_user.groups.where("group_day = ?", "monday").order("end_time ASC").each do |group| %>
 	    	<% if counter > current_user.class_number.to_i %>
@@ -21,13 +36,14 @@
 	    	<% end %>
 	    		<% ifHomework = checkIfHomework(group) %>
 	    		<% if ifHomework == 'yes' %>
-		      	<span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span>
+		      	<tr class="light-row"><span class="yes-homework"><%= group.group_name %> - <%= group.homework_assignment %> </span></tr>
 		      <% else %>
-		      	<%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b>
+		      	<tr class="light-row"><%= group.group_name %> - <%= "no homework yet" %> <b> <%= " - not an active class" if group.extra_class == true %> </b> </tr>
 		      <% end %>
 	        <br>
 	    <% counter += 1 %>
 	    <% end %>
+	</table>
 	    <br>
 	<% counter = 1 %>
 	<h2> <%= link_to 'Tuesday', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
