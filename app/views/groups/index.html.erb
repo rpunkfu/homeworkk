@@ -11,8 +11,9 @@
 	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn btn-primary center" if !classDay.nil? %>
 	
 	<% counter = 1 %>
-	<div class="table">
+
 	<h2> <%= link_to 'Monday', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
+		<div class="table">
 		<div class="row header">
       <div class="cell">
         Name
@@ -36,7 +37,7 @@
 		      <% end %>
 	    <% counter += 1 %>
 	    <% end %>
-	</table>
+	</div>
 	    <br>
 	<% counter = 1 %>
 	<h2> <%= link_to 'Tuesday', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
