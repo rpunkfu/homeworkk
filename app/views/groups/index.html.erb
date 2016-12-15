@@ -33,7 +33,7 @@
 		     <div class="row"><div class="cell"><%= group.group_name %></div><div class="cell"><%= group.homework_assignment %></div></div> 
 	    <% counter += 1 %>
 	    <% end %>
-	</table>
+	</div>
 	    <br>
 	<% counter = 1 %>
 	<h2> <%= link_to 'Tuesday', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
