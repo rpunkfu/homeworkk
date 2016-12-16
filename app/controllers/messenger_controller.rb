@@ -179,7 +179,6 @@ class MessengerController < ApplicationController
 			if @sentMessage == false
 				# sending the default response
 				Messagehuman.sendMessage(@recipient, @defaultResponses[0])
-				@sentMessage = true # marker that I sent a message
 			end
  		end
  	end
