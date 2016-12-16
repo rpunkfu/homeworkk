@@ -4,6 +4,7 @@ class MessengerController < ApplicationController
 	include MessengerHelper
 
 	def receive_message
+		checkFacebookToken()
 		#variable with all the webhook data
  		$webhook = JSON.parse(request.raw_post)
  		# person who sent the text; id
