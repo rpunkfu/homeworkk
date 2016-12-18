@@ -20,7 +20,10 @@ gem 'devise'
 gem 'simple_form'
 # facebook authentication with devise
 gem 'omniauth-facebook'
+# allows me to send http request to facebook
 gem 'httparty'
+# giphy gem to send gifs
+gem 'giphy'
 
 group :production, :test do
   gem 'pg'

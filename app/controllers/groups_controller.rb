@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
+    @giphy = Giphy.random('elf')
      @timeZones = [["Pacific Time", -8], ["Mountain", -7],["Central Time", -6],["Eastern Time", -5],["Atlantic Time", -4]] 
     if user_signed_in? && current_user.class_number.nil? && !params["user"].nil?
       @setUserClassNumber = User.find_by(id: current_user.id)
