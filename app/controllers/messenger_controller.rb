@@ -42,7 +42,7 @@ class MessengerController < ApplicationController
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		# if @checkUserExists return false, then send the sign up button 
-	 	if @checkUserExists == false
+	 	if @checkUserExists == false && @sentMessage = false
  			Messagehuman.sendButton(@recipient)
  			# marking that I did send a messsage
  			@sentMessage = true
@@ -68,7 +68,7 @@ class MessengerController < ApplicationController
 			@sentMessage = true
 		else
 			# making sure that groups response is empty/nil
-			if !$groupsResponse.nil? && !$groupsResponse.empty?
+			if !$groupsResponse.nil? && !$groupsResponse.empty? && @sentMessage == false
 				# for each group in group response
 				$groupsResponse.each do |group|
 					# if the group name matches to group the user said in the text
@@ -98,7 +98,7 @@ class MessengerController < ApplicationController
 			end
 
 			# checking for key words (this would only happen if the other stuff above hasn't happend)
-			$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText)
+			$checkKeyWords = Messagehuman.checkKeyWords(@recipient, @userText) if @sentMessage == false
 			if !$checkKeyWords.nil? # if the function doesn't return nil
 		 	if $checkKeyWords == true # if true, which means, all keywords were found
 		 		Messagehuman.sendMessageBubbles(@recipient) # send message bubbles
