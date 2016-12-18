@@ -66,7 +66,7 @@
 	<% counter += 1 %> 
 	<h2> <%= link_to 'Wednesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "wednesday").first) if !current_user.groups.where("group_day = ?", "wednesday").first.nil? %> </h2>
 		<div class="table">
-		<div class="row header">
+		<div class="row header blue">
       <div class="cell">
         Class Name
       </div>
@@ -93,7 +93,7 @@
 		<% counter = 1 %>
 	<h2> <%= link_to 'Thursday Classes', edit_group_path(current_user.groups.where("group_day = ?", "thursday").first) if !current_user.groups.where("group_day = ?", "thursday").first.nil? %> </h2>
 		<div class="table">
-		<div class="row header">
+		<div class="row header purple">
       <div class="cell">
         Class Name
       </div>
@@ -120,7 +120,7 @@
 		<% counter = 1 %>
 	<h2> <%= link_to 'Friday Classes', edit_group_path(current_user.groups.where("group_day = ?", "friday").first) if !current_user.groups.where("group_day = ?", "friday").first.nil? %> </h2>
 		<div class="table">
-		<div class="row header">
+		<div class="row header yellow">
       <div class="cell">
         Class Name
       </div>
