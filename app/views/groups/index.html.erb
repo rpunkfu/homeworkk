@@ -39,7 +39,7 @@
 	    <br>
 	<h2> <%= link_to 'Tuesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
 		<div class="table">
-		<div class="row header">
+		<div class="row header green">
       <div class="cell">
         Class Name
       </div>
