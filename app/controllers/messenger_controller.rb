@@ -12,11 +12,11 @@ class MessengerController < ApplicationController
  		# what text the user sent
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
  		# a list of positve responses to respond with if user doesn't have homework
- 		@positiveResponses = ["that's grrrreat", "that's awesome!", "yay! no homework!", "finally, a break from some homework", "awesome, just what i wanted to hear", "yay, some good news today", "that's almost better than harry potter", "time to celebrate, come on!"]
+ 		@positiveResponses = ["that's grrrreat", "that's awesome!", "yay! no homework!", "finally, a break from some homework", "awesome, just what i wanted to hear", "yay, some good news today", "that's almost better than harry potter", "time to celebrate, come on!", "ho ho ho! merry christmas!"]
 		# a list of negative responses if user has homework
-		@negativeResponses = ["booooo", "what a shame", "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died"]
+		@negativeResponses = ["booooo", "what a shame", "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died", "that's too bad, but try not to become a debby downer"]
 		# if user sends a text, but has nothing to do with homework and they're signed up
-		@defaultResponses = ["hardy har har"]
+		@defaultResponses = ["43 percent of statistics are made up", "out of my mind. back in 5 minutes", "borrow money from a pessimist–they don’t expect it back", "why is “abbreviation” such a long word?", "what happens if you get scared half to death twice?", "gravity always gets me down", "give a man a fish and he will eat for a day. teach him how to fish, and he will sit in a boat and drink beer all day.", "Change is inevitable, except from a vending machine.", "the shinbone is a device for finding furniture in a dark room."]
 		# setting variables to false, to know what and if I sent a message
 		@sentMessage = false
 		@sentKeyWords = false
@@ -25,7 +25,7 @@ class MessengerController < ApplicationController
 		# list of all classes that need to be delt with
  		currentClasses = Grouparray.all
  		# random numbe from 0 to seven, to get a random response from the array
- 		randomNum = rand(0..7)
+ 		randomNum = rand(0..8)
  		
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
@@ -179,7 +179,7 @@ class MessengerController < ApplicationController
 			# if there has been no message sent, then send a default response
 			if @sentMessage == false
 				# sending the default response
-				Messagehuman.sendMessage(@recipient, @defaultResponses[0])
+				Messagehuman.sendMessage(@recipient, @defaultResponses[randomNum])
 			end
  		end
  	end
