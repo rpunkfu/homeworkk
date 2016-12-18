@@ -42,7 +42,7 @@ class MessengerController < ApplicationController
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		# if @checkUserExists return false, then send the sign up button 
-	 	if @checkUserExists == false && @sentMessage = false
+	 	if @checkUserExists == false && @sentMessage == false
  			Messagehuman.sendButton(@recipient)
  			# marking that I did send a messsage
  			@sentMessage = true
