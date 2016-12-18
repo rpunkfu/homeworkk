@@ -11,6 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
       @group = Group.find_by(id: group.id)
       @group.destroy
     end
+    $sentWelcome.delete(@user.conversation_id)
     @user.destroy
 
     if @user.destroy
