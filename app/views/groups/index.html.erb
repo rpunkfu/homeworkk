@@ -11,7 +11,7 @@
 	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn btn-primary center" if !classDay.nil? %>
 	
 	<% counter = 1 %>
-	<% if current_user.groups.where("group_day = ?", "monday").nil? %> <h2> No Classes For Monday Yet </h2>
+	<% if current_user.groups.where("group_day = ?", "monday").nil? %> <h2> No Classes For Monday Yet </h2> <% else %>
 	<h2> <%= link_to 'Monday Classes', edit_group_path(current_user.groups.where("group_day = ?", "monday").first) if !current_user.groups.where("group_day = ?", "monday").first.nil? %> </h2>
 		<div class="table">
 		<div class="row header">
@@ -38,7 +38,7 @@
 	</div>
 	<% end %>
 	    <br>
-	<% if current_user.groups.where("group_day = ?", "tuesday").nil? %> <h2> No Classes For Tuesday Yet </h2>
+	<% if current_user.groups.where("group_day = ?", "tuesday").nil? %> <h2> No Classes For Tuesday Yet </h2> <% else %>
 	<h2> <%= link_to 'Tuesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "tuesday").first) if !current_user.groups.where("group_day = ?", "tuesday").first.nil? %> </h2>
 		<div class="table">
 		<div class="row header green">
@@ -65,7 +65,7 @@
 	</div>
 	<% end %>
 	    <br>
-	<% if current_user.groups.where("group_day = ?", "wednesday").nil? %> <h2> No Classes For Wednesday Yet </h2>
+	<% if current_user.groups.where("group_day = ?", "wednesday").nil? %> <h2> No Classes For Wednesday Yet </h2> <% else %>
 	<% counter += 1 %> 
 	<h2> <%= link_to 'Wednesday Classes', edit_group_path(current_user.groups.where("group_day = ?", "wednesday").first) if !current_user.groups.where("group_day = ?", "wednesday").first.nil? %> </h2>
 		<div class="table">
@@ -93,7 +93,7 @@
 	</div>
 	<% end %>
 	    <br>
-	  <% if current_user.groups.where("group_day = ?", "thursday").nil? %> <h2> No Classes For Thursday Yet </h2>
+	  <% if current_user.groups.where("group_day = ?", "thursday").nil? %> <h2> No Classes For Thursday Yet </h2> <% else %>
 		<% counter = 1 %>
 	<h2> <%= link_to 'Thursday Classes', edit_group_path(current_user.groups.where("group_day = ?", "thursday").first) if !current_user.groups.where("group_day = ?", "thursday").first.nil? %> </h2>
 		<div class="table">
@@ -121,7 +121,7 @@
 	</div>
 	<% end %>
 	    <br>
-	  <% if current_user.groups.where("group_day = ?", "friday").nil? %> <h2> No Classes For Friday Yet </h2>
+	  <% if current_user.groups.where("group_day = ?", "friday").nil? %> <h2> No Classes For Friday Yet </h2> <% else %>
 		<% counter = 1 %>
 	<h2> <%= link_to 'Friday Classes', edit_group_path(current_user.groups.where("group_day = ?", "friday").first) if !current_user.groups.where("group_day = ?", "friday").first.nil? %> </h2>
 		<div class="table">
