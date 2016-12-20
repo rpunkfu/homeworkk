@@ -34,7 +34,7 @@ class MessengerController < ApplicationController
  		# if the user hasn't received a welcome message
  		if !$sentWelcome.include?(@recipient)
  			# send the welcome message
- 			Messagehuman.sendMessage(@recipient, "hi, i'm Christopher, a bot. if you sign up, i will be able to keep track of all your homework. hope to text you again!")
+ 			Messagehuman.sendMessage(@recipient, "hi, i'm christopher, a bot. if you sign up now, i’ll be able to keep track of all your homework. hope to text you again!")
  			# push their id to array
  			$sentWelcome.push(@recipient)
  		end
@@ -190,6 +190,8 @@ class MessengerController < ApplicationController
 			end
 			# if there has been no message sent, then send a default response
 			if @sentMessage == false
+				Messagehuman.sendMessageBubbles(@recipient)
+				sleep(1.5)
 				# sending the default response
 				Messagehuman.sendMessage(@recipient, @defaultResponses[randomNum])
 			end

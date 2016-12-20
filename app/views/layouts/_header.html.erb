@@ -22,8 +22,8 @@
              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="right-link"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
               <li class="right-link"><%= link_to "Change Settings", edit_user_path %></li>
+              <li class="right-link"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
