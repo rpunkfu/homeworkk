@@ -7,10 +7,15 @@ $btn-primary-bg: #3498db;
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 p {
-	font-family: 'Montserrat'
+	font-family: 'Montserrat';
 }
 body {
-	font-family: 'Montserrat'
+	font-family: 'Montserrat';
+}
+
+.navbar-left {
+  padding-top: 7px;
+  padding-right: 2px;
 }
 
 .h2 {

@@ -3,18 +3,14 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Home", root_path, class: "navbar-brand theme-color" %>
+      <%= link_to image_tag('cb_logo_home.png'), root_path, class: "navbar-left" %>
+      <%= link_to "Christopher Bot", root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+      <li class="right-link"><%= link_to "Home", root_path %></li>
         <li class="right-link"><a href="mailto:alecaej2002@gmail.com?Subject=Hey%20Alec" target="_top" class="right-link">Contact Me</a></li>
         <% if user_signed_in? %>
           <li role="presentation" class="dropdown right-link">
