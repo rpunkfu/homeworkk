@@ -80,7 +80,11 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @classSignUpDay = checkHomeworkDay
+    if params[:day].nil?
+      @classSignUpDay = checkHomeworkDay
+    else
+      @classSignUpDay = params[:day]
+    end
     case @classSignUpDay
       when "monday"
         @yesterdayClassDay = nil
