@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 	def edit
-  	@timeZones = [["Pacific Time", -8], ["Mountain", -7],["Central Time", -6],["Eastern Time", -5],["Atlantic Time", -4]] 
     @userTimeZone = current_user.time_zone.to_i.freeze
     $timeZoneParam = params
   end
