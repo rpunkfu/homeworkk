@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   #validations from form
+  validates :time_zone, presence: true, allow_blank: false
   validates :class_number, presence: true
-  validates :time_zone, presence: true
   validates :class_number, :numericality => { :greater_than => 0, :less_than_or_equal_to => 15 }
 
 
