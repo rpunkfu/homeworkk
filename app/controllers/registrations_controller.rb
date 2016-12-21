@@ -1,7 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
-	def edit
+
+  def edit
     @userTimeZone = current_user.time_zone.to_i.freeze
     $timeZoneParam = params
+  end
+
+  def new
+    redirect_to root_path, notice: 'something went wrong, please email me, the ceo, to help you'
   end
 
   def destroy
@@ -10,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
       @group = Group.find_by(id: group.id)
       @group.destroy
     end
-    $sentWelcome.delete(@user.conversation_id)
+   
     @user.destroy
 
     if @user.destroy
