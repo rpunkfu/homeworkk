@@ -6,9 +6,6 @@ class MessengerController < ApplicationController
 	def receive_message
 		checkFacebookToken()
 		#array to keep tack of who got the welcome message
-		if $sentWelcome.nil? || $sentWelcome.empty?
-			$sentWelcome = Array.new
-		end
 		#variable with all the webhook data
  		$webhook = JSON.parse(request.raw_post)
  		# person who sent the text; id
@@ -30,19 +27,15 @@ class MessengerController < ApplicationController
  		currentClasses = Grouparray.all
  		# random numbe from 0 to seven, to get a random response from the array
  		randomNum = rand(0..8)
- 		
- 		# if the user hasn't received a welcome message
- 		if !$sentWelcome.include?(@recipient)
- 			# send the welcome message
- 			Messagehuman.sendMessage(@recipient, "hi, i'm christopher, a bot. if you sign up now, i’ll be able to keep track of all your homework. hope to text you again!")
- 			# push their id to array
- 			$sentWelcome.push(@recipient)
- 		end
 
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		# if @checkUserExists return false, then send the sign up button 
 	 	if @checkUserExists == false && @sentMessage == false
+	 		Messagehuman.sendMessageBubbles(@recipient)
+	 		sleep(1.5)
+	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet, you should, just click below")
+	 		sleep(1)
  			Messagehuman.sendButton(@recipient)
  			# marking that I did send a messsage
  			@sentMessage = true
