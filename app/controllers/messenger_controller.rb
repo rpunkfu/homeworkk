@@ -57,7 +57,7 @@ class MessengerController < ApplicationController
  				@grouparrays.each do |group|
  					# find the corresponding group, and reset anything to do with that homework
 	 				@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
-	 				@group.update(homework_assigned: nil, homework_assigned: nil)
+	 				@group.update(homework_assigned: nil, homework_assignment: nil)
 	 				# destroy the group array
 	 				group.destroy
 	 			end
