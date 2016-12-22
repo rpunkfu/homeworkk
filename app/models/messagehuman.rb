@@ -14,7 +14,7 @@ class Messagehuman
  			},
 		}.to_json
 		response = HTTParty.post(
- 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+ 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
  			body: body,
  			headers: { 'Content-Type' => 'application/json' }
 		)
@@ -35,7 +35,7 @@ class Messagehuman
       sender_action: "typing_on"
     }
     response = HTTParty.post(
-      "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
       body: body,
       headers: { 'Content-Type' => 'application/json' }
     )
@@ -64,7 +64,7 @@ class Messagehuman
  			}
 		}.to_json
 		response = HTTParty.post(
- 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+ 			"https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
  			body: body,
  			headers: { 'Content-Type' => 'application/json' }
 		)
@@ -152,7 +152,7 @@ class Messagehuman
   }.to_json
 
 	response = HTTParty.post(
-	 	"https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+	 	"https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
 	 	body: body,
 	 	headers: { 'Content-Type' => 'application/json' }
 	)
@@ -189,7 +189,7 @@ def self.sendSummaryButton(recipient)
   }.to_json
 
   response = HTTParty.post(
-    "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+    "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
     body: body,
     headers: { 'Content-Type' => 'application/json' }
   )
@@ -213,7 +213,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
       }
     }.to_json
     response = HTTParty.post(
-      "https://graph.facebook.com/v2.6/me/messages?access_token=#{page_access_token}",
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
       body: body,
       headers: { 'Content-Type' => 'application/json' }
     )
