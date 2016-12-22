@@ -1,6 +1,10 @@
 class Messagehuman
   require 'json'
-
+  if Rails.env.staging?
+    $page_access_token = "EAAIgtnRF648BABaZCpNurJN2GBzjZC6jQZAZCCdQE90mluLc5jooAfHrFgSxsYT2eTeu9sXVjWWiFc1gZBXn5if7OC2Q4hXsnHwxrSDg7anLuzPnRzUvicPv5R1AXxkjZAS2Xhm7KknwGlx0poBZC7IFNhRyNHnWabn59f7CkwnjAZDZD"
+  else
+    $page_access_token = "EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD"
+  end
   # method to send string message to user
 	def self.sendMessage(recipient, message)
     # pace access token for facebook
