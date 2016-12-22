@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'omniauth-facebook'
 # allows me to send http request to facebook
 gem 'httparty'
+gem 'client_side_validations'
 
 
 group :production, :test do

@@ -78,7 +78,7 @@ class Messagehuman
     @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		$textArray = userText.split(" ")
     $textArray.each do |word|
-      if word == "have" || "don't" || "dont" || word == "homework" || $userTodayGroups.include?(word)
+      if word == "have" || word == "homework" || $userTodayGroups.include?(word)
         if $userTodayGroups.include?(word)
           $subject = word.downcase
         end

@@ -1,17 +1,19 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		
-    <%= form_for(@user, url: groups_path, method: 'get') do |f| %>
+    <%= form_for(@user, url: groups_path, method: 'get', :validate => true) do |f| %>
+     <%= devise_error_messages! %>
 
       <div class="form-group">
         <%= "How many classes do you have a day?" %>
         <%= f.text_field :class_number, autofocus: true, class: "form-control" %>
         <br>
         <%= "What time zone do you live in?" %><br>
-        <%= f.select :time_zone, options_for_select(@timeZones), include_blank: true %>
+        <%=  f.select :time_zone, options_for_select(@timeZones), {include_blank: true}, class: "form-control form-max-width-50" %>
       </div>
       <%= f.submit "sign up", :class => "btn btn-primary" %>
     <% end %>
 
 		<!-- need to figure out how to edit the following line properly -->
 </div>
+<%= $facebookArray.inspect %>

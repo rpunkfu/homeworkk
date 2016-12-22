@@ -12,6 +12,10 @@ task :message_task => :environment do
 			puts "end time 1: " + group.end_time.inspect
 			group.end_time = group.end_time + (group.time_zone * -1).hours
 			puts "end time 2: " + group.end_time.inspect
+		else
+			puts "end_time 1: " + group.end_time.inspect
+			group.end_time = group.end_time - group.time_zone.hours
+			puts "end_time 2: " + group.end_time
 		end
 		
 

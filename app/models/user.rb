@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   #validations from form
-
+  validates :class_number, presence: true, :numericality => true, :allow_blank => true
+  validates :time_zone, presence: true, :numericality => true, :allow_blank => true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -22,6 +23,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.password = Devise.friendly_token[0,20]
+      user.email = auth.info.email
     end
   end
 
