@@ -127,7 +127,12 @@ class Messagehuman
 
  	def self.sendButton(recipient)
   page_access_token='EAAZAjj9YZAiZC0BAMJmsPEAp8PEhWvOc1DEDrPQFkzZBZBd9BgCx8ZCzRk7LAQHxSkJZARMS9vGiIihyyenuzsZBqkMAeEW7vT3ukxjRRqHRTbBx5BlNauoXtgwy3lR6zosx70CzgiyiLZArTr1mZCQoqZBrsDOZAerirrbBHL2wumq19wZDZD'
- 	body = {
+ 	if Rails.env.staging?
+    url = "https://staging-christopherbot.herokuapp.com/users/sign_in?conversation_id=" + recipient
+  else
+    url = "https://www.christopherbot.co/users/sign_in?conversation_id=" + recipient
+  end
+  body = {
  		"recipient":{
     	id: recipient
   	},
@@ -143,7 +148,7 @@ class Messagehuman
            	buttons:[
               			{
                 type:"web_url",
-               	url:"https://www.christopherbot.co/users/sign_in?conversation_id=" + recipient,
+               	url:url,
                 title:"Sign Up",
                 webview_height_ratio:"tall"
               }
