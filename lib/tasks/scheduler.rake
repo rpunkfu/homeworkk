@@ -9,18 +9,18 @@ task :message_task => :environment do
 
 	@groups.each do |group|
 		if group.time_zone.to_i < 0
-			puts "end time 1: " + group.end_time.inspect
+			#puts "end time 1: " + group.end_time.inspect
 			group.end_time = group.end_time + (group.time_zone * -1).hours
-			puts "end time 2: " + group.end_time.inspect
+			#puts "end time 2: " + group.end_time.inspect
 		else
-			puts "end_time 1: " + group.end_time.inspect
+			#puts "end_time 1: " + group.end_time.inspect
 			group.end_time = group.end_time - group.time_zone.hours
-			puts "end_time 2: " + group.end_time
+			#puts "end_time 2: " + group.end_time
 		end
 		
 
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
-			puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
+			#puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
 			@group = group.as_json
 			@group["id"] = nil
