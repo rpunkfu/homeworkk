@@ -37,7 +37,11 @@ end
 task :reset_classes => :environment do
 	@groups = Group.all.where("group_day = ?", 1.minutes.from_now.strftime("%A").downcase)
 	@groups.each do |group|
-		@midnight = 0.minutes.from_now.utc - (group.time_zone * -1).hours
+		if group.time_zone <= 0
+			@midnight = 0.minutes.from_now.utc - (group.time_zone * -1).hours
+		else
+			@midnight = 0.minutes.from_now.utc + group.time_zone.hours
+		end
 		if @midnight.strftime("%H:%M") >= "00:00" && @midnight.strftime("%H:%M") <= "00:10"  
 			group.update(homework_assigned: nil, homework_assignment: nil)
 		end
@@ -47,7 +51,11 @@ end
 task :reset_user_homework => :environment do
 	@users = User.all
 	@users.each do |user|
-		@midnight = 0.minutes.from_now.utc - (user.time_zone * -1).hours
+		if group.time_zone <= 0
+			@midnight = 0.minutes.from_now.utc - (group.time_zone * -1).hours
+		else
+			@midnight = 0.minutes.from_now.utc + group.time_zone.hours
+		end
 		if @midnight.strftime("%H:%M") >= "00:00" && @midnight.strftime("%H:%M") <= "00:10"  
 			user.update(sentHomwork: false)
 		end
