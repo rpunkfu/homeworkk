@@ -37,7 +37,10 @@ end
 task :reset_classes => :environment do
 	@groups = Group.all.where("group_day = ?", 1.minutes.from_now.strftime("%A").downcase)
 	@groups.each do |group|
-		group.update(homework_assigned: nil, homework_assignment: nil)
+		@midnight = 0.minutes.from_now.utc - (group.time_zone * -1).hours
+		if @midnight.strftime("%H:%M") >= "00:00" && @midnight.strftime("%H:%M") <= "00:10"  
+			group.update(homework_assigned: nil, homework_assignment: nil)
+		end
 	end
 end
 
@@ -45,7 +48,7 @@ task :reset_user_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		@midnight = 0.minutes.from_now.utc - (user.time_zone * -1).hours
-		if @midnight.strftime("%H") == "00"
+		if @midnight.strftime("%H:%M") >= "00:00" && @midnight.strftime("%H:%M") <= "00:10"  
 			user.update(sentHomwork: false)
 		end
 	end
@@ -56,7 +59,7 @@ task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
 		puts "one"
-		if user.sentHomwork == false || user.sentHomwork == nil
+		if user.sentHomwork == false || user.sentHomwork == nil 
 			puts "two"
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time asc").limit(user.class_number.to_i).last.nil?
 			puts "three"
