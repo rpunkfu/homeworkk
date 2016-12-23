@@ -26,6 +26,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_password(params)
+    resource.groups.each do |group|
+      group.update(time_zone: params["time_zone"].to_i)
+    end
   end
 
   def sign_up_params
