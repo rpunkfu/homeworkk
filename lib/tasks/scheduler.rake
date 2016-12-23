@@ -44,7 +44,9 @@ end
 task :reset_user_homework => :environment do
 	@users = User.all
 	@users.each do |user|
-		user.update(sentHomwork: false)
+		if 0.minutes.from_now.utc.strftime("%H:%M:%S") - (user.time_zone * -1).hours == "00:00:00"
+			user.update(sentHomwork: false)
+		end
 	end
 end
 
