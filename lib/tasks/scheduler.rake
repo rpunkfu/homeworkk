@@ -34,6 +34,9 @@ task :message_task => :environment do
 	
 end
 
+#task :send_birthday_greeting do
+#end
+
 task :reset_classes => :environment do
 	@groups = Group.all.where("group_day = ?", 1.minutes.from_now.strftime("%A").downcase)
 	@groups.each do |group|
