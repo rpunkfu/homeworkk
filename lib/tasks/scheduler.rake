@@ -21,7 +21,9 @@ task :message_task => :environment do
 
 		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
 			#puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
+			puts 'sending...'
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
+			puts 'sent the message.'
 			@group = group.as_json
 			@group["id"] = nil
 			@group.delete("name")
@@ -54,10 +56,10 @@ end
 task :reset_user_homework => :environment do
 	@users = User.all
 	@users.each do |user|
-		if group.time_zone <= 0
-			@midnight = 0.minutes.from_now.utc - (group.time_zone * -1).hours
+		if user.time_zone <= 0
+			@midnight = 0.minutes.from_now.utc - (user.time_zone * -1).hours
 		else
-			@midnight = 0.minutes.from_now.utc + group.time_zone.hours
+			@midnight = 0.minutes.from_now.utc + user.time_zone.hours
 		end
 		if @midnight.strftime("%H:%M") >= "00:00" && @midnight.strftime("%H:%M") <= "00:10"  
 			user.update(sentHomwork: false)
