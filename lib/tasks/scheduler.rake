@@ -2,8 +2,8 @@ desc "This task is called by the Heroku scheduler add-on"
 require 'json'
 task :message_task => :environment do
 	@groups = Group.all.order("end_time ASC").where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("extra_class = ?", false)
-	@t = 0.minutes.from_now.utc.strftime("%H:%M:%S")
-	@timeten = 10.minutes.from_now.utc.strftime("%H:%M:%S")
+	@t = 0.minutes.from_now.utc.strftime("%H:%M")
+	@timeten = 10.minutes.from_now.utc.strftime("%H:%M")
 	puts "@t: " + @t.inspect
 	puts "@timeten: " + @timeten.inspect
 
@@ -19,7 +19,7 @@ task :message_task => :environment do
 		end
 		
 
-		if group.end_time.strftime("%H:%M:%S") >= @t && group.end_time.strftime("%H:%M:%S") <= @timeten
+		if group.end_time.strftime("%H:%M") >= @t && group.end_time.strftime("%H:%M") < @timeten
 			#puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			puts 'sending...'
 			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
