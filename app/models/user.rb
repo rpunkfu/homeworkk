@@ -17,14 +17,14 @@ class User < ActiveRecord::Base
     false
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, conversation_id)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.first_name = auth.info.first_name
       user.provider = auth.provider
       user.uid = auth.uid
       user.password = Devise.friendly_token[0,20]
       user.email = auth.info.email
-      
+      user.conversation_id = conversation_id
     end
   end
 
