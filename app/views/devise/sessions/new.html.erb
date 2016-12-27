@@ -6,8 +6,3 @@ if params.to_a[0][0] == "conversation_id"
  		end 
 %>
 <%= link_to image_tag("signin.png", style:'height:auto;max-width:90%;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
- <%= params.to_a.inspect %>
- <br>
- <%= params.to_a[0][0] == "conversation_id" %>
- <br>
- <%= $conversation_id.inspect %>
