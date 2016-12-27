@@ -5,10 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
     $timeZoneParam = params
   end
 
-  def new
-    redirect_to root_path, notice: 'something went wrong, please email me, the ceo, to help you'
-  end
-
   def destroy
     @user = User.find(current_user.id)
     @user.groups.each do |group| 
