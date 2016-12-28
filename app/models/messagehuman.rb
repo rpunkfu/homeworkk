@@ -111,7 +111,7 @@ class Messagehuman
       return false
     elsif @wordRating == -7
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
-      @group.update(homework_assigned: false)
+      @group.update(homework_assigned: false, homework_assignment: nil)
       return @wordRating
     else
       return nil
