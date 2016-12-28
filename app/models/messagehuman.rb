@@ -285,7 +285,6 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
     puts 'user send to: ' + user.first_name.to_s
     if !homeworkGroupsString.blank?
       Messagehuman.sendMessage(recipient, 'You have homework for... ' + "\n" + homeworkGroupsString)
-      Messagehuman.sendSummaryButton(recipient)
     else
       Messagehuman.sendMessage(recipient, 'Yay. You have no homework.')
     end
