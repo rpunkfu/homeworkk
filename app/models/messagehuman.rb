@@ -267,7 +267,6 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
 
   def sendUserHomework(recipient)
     user = User.find_by(conversation_id: recipient)
-    if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").limit(user.class_number.to_i).last.homework_assigned != nil
       homeworkGroups = Array.new
       homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
       homeworkGroupsTrue.each do |group|
@@ -290,8 +289,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
       else
         Messagehuman.sendMessage(user.groups.last.conversation_id, 'Yay. You have no homework.')
         user.update(sentHomwork: true)
-      end   
-    end
+      end
   end
 end
 
