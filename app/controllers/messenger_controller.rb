@@ -64,6 +64,7 @@ class MessengerController < ApplicationController
  			end
  			Messagehuman.sendMessage(@recipient, "YAY! You're back!")
  			@sentMessage = true
+ 			
  		else
  		end
 
