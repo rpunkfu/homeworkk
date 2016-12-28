@@ -85,6 +85,7 @@ class Messagehuman
     $textArray.each do |word|
       @wordRating += 1 if word == "have" || word == "homework"
       @wordRating += 5 if $userTodayGroups.include?(word)
+      $subject = word if $userTodayGroups.include?(word)
     end
     if $subject.nil?
       $possibleSubjects = Array.new
