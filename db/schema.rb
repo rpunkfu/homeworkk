@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228012638) do
+ActiveRecord::Schema.define(version: 20161228021513) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161228012638) do
     t.integer "user_id"
     t.integer "time_zone"
     t.boolean "extra_class"
+    t.boolean "paused"
   end
 
   create_table "groups", force: :cascade do |t|
