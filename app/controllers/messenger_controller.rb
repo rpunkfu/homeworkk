@@ -84,12 +84,12 @@ class MessengerController < ApplicationController
  				@sentMessage = true
  			end
  		end
-=begin
+
  		if @userText == "list"
  			Messagehuman.sendUserHomework(@recipient)
  			@sentMessage = true
  		end
-=end
+
  		# checking if the user says cancel
 		if @userText == "cancel"
 			# if true, then delete classes they might have to deal with
