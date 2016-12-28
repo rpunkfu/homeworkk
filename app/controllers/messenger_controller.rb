@@ -171,6 +171,9 @@ class MessengerController < ApplicationController
 							$groupsResponse.push(@group)
 						end
 					end
+				elsif $checkKeyWords < 0
+					Messagehuman.sendMessage(@recipient, "IT WORKED, HAHAH")
+					@sentMessage = true
 				else
 				end
 			end

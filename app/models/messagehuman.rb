@@ -86,6 +86,7 @@ class Messagehuman
       @wordRating += 1 if word == "have" || word == "homework"
       @wordRating += 5 if $userTodayGroups.include?(word)
       $subject = word if $userTodayGroups.include?(word)
+      @wordRating += -14 if word == "don't" || word == "dont"
     end
     if $subject.nil?
       $possibleSubjects = Array.new
@@ -108,6 +109,8 @@ class Messagehuman
       return true
     elsif @wordRating == 2 && !$possibleSubjects.empty?
       return false
+    elsif @wordRating == -7
+      return @wordRating
     else
       return nil
     end
