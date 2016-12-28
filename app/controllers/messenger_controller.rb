@@ -86,6 +86,7 @@ class MessengerController < ApplicationController
  		end
 
  		if @userText == "list"
+ 			@sentMessage = true
  			puts "IT IS ACTUALLY TRUE"
  			Messagehuman.sendUserHomework(@recipient)
  			@sentMessage = true
