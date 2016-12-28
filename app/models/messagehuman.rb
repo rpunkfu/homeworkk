@@ -77,17 +77,14 @@ class Messagehuman
 	def self.checkKeyWords(recipient, userText)
     $subject = nil
     $keyWords = Array.new
+    @wordRating = 0
     @user = User.find_by(conversation_id: recipient)
     $userTodayGroups = Array.new
     @user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).each do |group| $userTodayGroups.push(group.group_name.downcase) end
 		$textArray = userText.split(" ")
     $textArray.each do |word|
-      if word == "have" || word == "homework" || $userTodayGroups.include?(word)
-        if $userTodayGroups.include?(word)
-          $subject = word.downcase
-        end
-        $keyWords.push(word)
-      end
+      @wordRating += 1 if word == "have" || word == "homework"
+      @wordRating += 5 if $userTodayGroups.include?(word)
     end
     if $subject.nil?
       $possibleSubjects = Array.new
@@ -99,7 +96,7 @@ class Messagehuman
         end
       end
     end
-    if $keyWords.include?("have") && $keyWords.include?("homework") && !$subject.nil?
+    if @wordRating == 7
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
       @group.update(homework_assigned: true)
       @group = @group.as_json
@@ -108,7 +105,7 @@ class Messagehuman
       groupArrayNew = Grouparray.new(@group)
       groupArrayNew.save
       return true
-    elsif $keyWords.include?("have") && $keyWords.include?("homework") && !$possibleSubjects.empty?
+    elsif @wordRating == 2 && !$possibleSubjects.empty?
       return false
     else
       return nil
