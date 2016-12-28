@@ -64,7 +64,6 @@ class MessengerController < ApplicationController
  			end
  			Messagehuman.sendMessage(@recipient, "YAY! You're back!")
  			@sentMessage = true
- 			
  		else
  		end
 
@@ -72,8 +71,8 @@ class MessengerController < ApplicationController
  			@user = User.find_by(conversation_id: @recipient)
  			if @user.paused == true
  				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please.")
+ 				@sentMessage = true
  			end
- 			@sentMessage = true
  		end
 
  		# checking if the user says cancel
