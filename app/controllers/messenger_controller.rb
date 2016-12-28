@@ -72,6 +72,7 @@ class MessengerController < ApplicationController
  			if @user.paused == true
  				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please.")
  			end
+ 			@sentMessage = true
  		end
 
  		# checking if the user says cancel
