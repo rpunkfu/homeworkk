@@ -265,7 +265,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
     )
   end
 
-  def sendUserHomework(recipient)
+  def self.sendUserHomework(recipient)
     user = User.find_by(conversation_id: recipient)
     homeworkGroups = Array.new
     homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", recipient)
