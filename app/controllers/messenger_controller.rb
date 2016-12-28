@@ -48,6 +48,32 @@ class MessengerController < ApplicationController
  			@sentMessage = true
  		end
 
+ 		if @userText == "pause" && @sentMessage == false
+ 			@user = User.find_by(conversation_id: @recipient)
+ 			@user.update(paused: true)
+ 			@user.groups.each do |group|
+ 				group.update(paused: true)
+ 			end
+ 			Messagehuman.sendMessage(@recipient, "alright. please text me 'unpause' when you wish to continue recieve texts")
+ 			@sentMessage = true
+ 		elsif @userText == "unpause" && @sentMessage == false
+ 			@user = User.find_by(conversation_id: @recipient)
+ 			@user.update(paused: false)
+ 			@user.groups.each do |group|
+ 				group.update(paused: false)
+ 			end
+ 			Messagehuman.sendMessage(@recipient, "YAY! You're back!")
+ 			@sentMessage = true
+ 		else
+ 		end
+
+ 		if @sentMessage == false
+ 			@user = User.find_by(conversation_id: @recipient)
+ 			if @user.paused == true
+ 				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please.")
+ 			end
+ 		end
+
  		# checking if the user says cancel
 		if @userText == "cancel"
 			# if true, then delete classes they might have to deal with
