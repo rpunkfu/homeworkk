@@ -71,23 +71,17 @@ end
 task :send_homework => :environment do
 	@users = User.all
 	@users.each do |user|
-		puts "one"
 		if user.sentHomwork == false || user.sentHomwork == nil 
-			puts "two"
 		if !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).nil? && !user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time asc").limit(user.class_number.to_i).last.nil?
-			puts "three"
 			if user.groups.where("group_day = ?", 0.hours.ago.strftime("%A").downcase).order("end_time ASC").limit(user.class_number.to_i).last.homework_assigned != nil
-				puts "four"
 				homeworkGroups = Array.new
 				homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
 				homeworkGroupsTrue.each do |group|
 					homeworkGroups.push(group)
 				end
-				puts "five"
 				homeworkGroupsString = String.new
 				counter = 1
 				homeworkGroups.each do |group|
-					puts "six"
 					if counter != 1
 						homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n"
 					else
