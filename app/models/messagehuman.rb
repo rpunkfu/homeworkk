@@ -228,39 +228,49 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
     )
   end
 
-  def self.sendHelpButton(recipient)
-  url = "https://www.christopherbot.co/commands"
-  body = {
-    "recipient":{
-      id: recipient
-    },
-    message:{
-      attachment:{
-        type:"template",
-        payload: {
-          template_type:"generic",
-          elements:[
-          {
-            title:"help!",
-            subtitle:"forgot what to text me?",
-            buttons:[
-                    {
-                type:"web_url",
-                url:url,
-                title:"Get Help",
-                webview_height_ratio:"tall"
+    def self.sendHelpButton(recipient)
+    url = "https://www.christopherbot.co/commands"
+    body = {
+      "recipient":{
+        id: recipient
+      },
+      message:{
+        attachment:{
+          type:"template",
+          payload: {
+            template_type:"generic",
+            elements:[
+            {
+              title:"help!",
+              subtitle:"forgot what to text me?",
+              buttons:[
+                      {
+                  type:"web_url",
+                  url:url,
+                  title:"Get Help",
+                  webview_height_ratio:"tall"
+                }
+                ]
               }
-              ]
-            }
-          ]
-        }
-    }
-   } 
-  }.to_json
-	
-  response = HTTParty.post(
-    "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
-    body: body,
-    headers: { 'Content-Type' => 'application/json' }
-  )
+            ]
+          }
+      }
+     } 
+    }.to_json
+  	
+    response = HTTParty.post(
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
+      body: body,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
 end
+
+
+
+
+
+
+
+
+
