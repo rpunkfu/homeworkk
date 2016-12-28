@@ -51,16 +51,20 @@ class MessengerController < ApplicationController
  		if @userText == "pause" && @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
  			@user.update(paused: true)
- 			@user.groups.each do |group|
- 				group.update(paused: true)
+ 			if !@user.groups.last.nil?
+	 			@user.groups.each do |group|
+	 				group.update(paused: true)
+	 			end
  			end
  			Messagehuman.sendMessage(@recipient, "alright. please text me 'unpause' when you wish to continue recieve texts")
  			@sentMessage = true
  		elsif @userText == "unpause" && @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
  			@user.update(paused: false)
- 			@user.groups.each do |group|
- 				group.update(paused: false)
+ 			if !@user.groups.last.nil?
+	 			@user.groups.each do |group|
+	 				group.update(paused: false)
+	 			end
  			end
  			Messagehuman.sendMessage(@recipient, "YAY! You're back!")
  			@sentMessage = true
