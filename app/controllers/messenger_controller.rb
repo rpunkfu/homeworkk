@@ -5,6 +5,7 @@ class MessengerController < ApplicationController
 
 	def receive_message
 		checkFacebookToken()
+		$tester = request.raw_post
 		#array to keep tack of who got the welcome message
 		#variable with all the webhook data
  		$webhook = JSON.parse(request.raw_post)
