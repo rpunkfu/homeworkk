@@ -267,29 +267,28 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
 
   def sendUserHomework(recipient)
     user = User.find_by(conversation_id: recipient)
-      homeworkGroups = Array.new
-      homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", user.conversation_id)
-      homeworkGroupsTrue.each do |group|
-        homeworkGroups.push(group)
-      end
-      homeworkGroupsString = String.new
-      counter = 1
-      homeworkGroups.each do |group|
-        if counter != 1
-          homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n"
-        else
-          homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\n"
-        end
-      end
-      puts 'user send to: ' + user.first_name.to_s
-      if !homeworkGroupsString.blank?
-        Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for... ' + "\n" + homeworkGroupsString)
-        Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
-        user.update(sentHomwork: true)
+    homeworkGroups = Array.new
+    homeworkGroupsTrue = Group.where("homework_assigned = ?", true).where("group_day = ?", 0.hours.ago.strftime("%A").downcase).where("conversation_id = ?", recipient)
+    homeworkGroupsTrue.each do |group|
+      homeworkGroups.push(group)
+    end
+    homeworkGroupsString = String.new
+    puts "here"
+    counter = 1
+    homeworkGroups.each do |group|
+      if counter != 1
+        homeworkGroupsString = homeworkGroupsString + ", " + group.group_name + ": " + group.homework_assignment + "\n"
       else
-        Messagehuman.sendMessage(user.groups.last.conversation_id, 'Yay. You have no homework.')
-        user.update(sentHomwork: true)
+        homeworkGroupsString = homeworkGroupsString + group.group_name + ": " + group.homework_assignment + "\n"
       end
+    end
+    puts 'user send to: ' + user.first_name.to_s
+    if !homeworkGroupsString.blank?
+      Messagehuman.sendMessage(recipient, 'You have homework for... ' + "\n" + homeworkGroupsString)
+      Messagehuman.sendSummaryButton(recipient)
+    else
+      Messagehuman.sendMessage(recipient, 'Yay. You have no homework.')
+    end
   end
 end
 
