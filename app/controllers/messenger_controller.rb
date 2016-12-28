@@ -172,7 +172,7 @@ class MessengerController < ApplicationController
 						end
 					end
 				elsif $checkKeyWords < 0
-					Messagehuman.sendMessage(@recipient, "IT WORKED, HAHAH")
+					Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum])
 					@sentMessage = true
 				else
 				end
