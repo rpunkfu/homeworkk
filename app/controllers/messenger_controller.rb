@@ -50,6 +50,7 @@ class MessengerController < ApplicationController
 
  		if @userText == "help" && @sentMessage == false
  			Messagehuman.sendHelpButton(@recipient)
+ 			@sentMessage = true
  		end
 
  		if @userText == "pause" && @sentMessage == false
