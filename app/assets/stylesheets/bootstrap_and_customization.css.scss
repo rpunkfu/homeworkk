@@ -5,6 +5,7 @@ $btn-primary-bg: #3498db;
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 p {
 	font-family: 'Montserrat';
@@ -129,4 +130,7 @@ body {
   width: 33.3%;
 }
 
-
+.command-text {
+  color: #7f8c8d;
+  font-family: "Raleway";
+}

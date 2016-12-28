@@ -48,6 +48,10 @@ class MessengerController < ApplicationController
  			@sentMessage = true
  		end
 
+ 		if @userText == "help" && @sentMessage == false
+ 			Messagehuman.sendHelpButton(@recipient)
+ 		end
+
  		if @userText == "pause" && @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
  			@user.update(paused: true)

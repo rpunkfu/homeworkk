@@ -7,5 +7,8 @@ class PagesController < ApplicationController
 
   def talk_christopher
   end
+
+  def commands
+  end
   
 end
