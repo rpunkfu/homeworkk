@@ -62,19 +62,8 @@ class MessengerController < ApplicationController
 	 				group.update(paused: true)
 	 			end
  			end
- 			Messagehuman.sendMessage(@recipient, "alright. please text me 'unpause' when you wish to continue recieve texts")
+ 			Messagehuman.sendPauseDate(@recipient)
  			@sentMessage = true
- 		elsif @userText == "unpause" && @sentMessage == false
- 			@user = User.find_by(conversation_id: @recipient)
- 			@user.update(paused: false)
- 			if !@user.groups.last.nil?
-	 			@user.groups.each do |group|
-	 				group.update(paused: false)
-	 			end
- 			end
- 			Messagehuman.sendMessage(@recipient, "YAY! You're back!")
- 			@sentMessage = true
- 		else
  		end
 
  		if @sentMessage == false
@@ -172,6 +161,8 @@ class MessengerController < ApplicationController
 						end
 					end
 				elsif $checkKeyWords < 0
+					Messagehuman.sendMessageBubbles(@recipient)
+					sleep(1)
 					Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum])
 					@sentMessage = true
 				else

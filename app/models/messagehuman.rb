@@ -268,6 +268,44 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
     )
   end
 
+  def self.sendPauseDate(recipient)
+    url = "https://www.christopherbot.co/date_picker?conversation_id=" + recipient
+    body = {
+      "recipient":{
+        id: recipient
+      },
+      message:{
+        attachment:{
+          type:"template",
+          payload: {
+            template_type:"generic",
+            elements:[
+            {
+              title:"Select Pause Date!",
+              subtitle:"when you would like to resume getting texts",
+              buttons:[
+                {
+                "type":"web_url",
+                "url": url,
+                "title":"Select date",
+                "messenger_extensions": true,  
+                "webview_height_ratio": "compact"
+                }
+                ]
+              }
+            ]
+          }
+      }
+     } 
+    }.to_json
+    
+    response = HTTParty.post(
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
+      body: body,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
+
   def self.sendUserHomework(recipient)
     user = User.find_by(conversation_id: recipient)
     homeworkGroups = Array.new

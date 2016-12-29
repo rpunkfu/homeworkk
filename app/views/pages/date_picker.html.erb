@@ -1,0 +1,27 @@
+<% if params["conversation_id"].nil? %>
+	<% redirect_home() %>
+<% else %>
+	<% @user = User.find_by(conversation_id: params["conversation_id"]) %>
+	<% if @user.nil? || @user.paused == false || @user.paused == nil %>
+		<% redirect_home %>
+	<% else %>
+
+<div class="body-left">
+<%= form_for(@user, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f| %>
+      <%= devise_error_messages! %>
+
+	<%= f.text_field :paused_time, value: nil, class: 'datepicker form-control form-max-width-50' %>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.datepicker').datepicker();
+      });
+    </script>
+<br>
+  <div class="form-group">
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  </div>
+  </div>
+<% end %>
+<% end %>
+<% end %>
