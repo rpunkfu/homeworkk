@@ -288,8 +288,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
                   type:"web_url",
                   url:url,
                   title:"Select Date",
-                  messenger_extensions: true,
-                  webview_height_ratio:"tall"
+                  webview_height_ratio:"compact"
                 }
                 ]
               }
