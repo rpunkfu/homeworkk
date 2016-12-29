@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   #validations from form
   validates :class_number, presence: true, numericality: {:greater_than => 1, :less_than => 15}, :allow_blank => true
   validates :time_zone, presence: true, :numericality => true, :allow_blank => true
+  
   validates :paused_time, presence: true, :allow_blank => true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 

@@ -5,22 +5,36 @@
 	<% if @user.nil? || @user.paused == false || @user.paused == nil %>
 		<% redirect_home %>
 	<% else %>
+	<% $pausedTime = true %>
 		<script type="text/javascript">
+		
       $(document).ready(function(){
         $('.datepicker').datepicker({
-        	daysOfWeekDisabled: "0,6"
+        	autoclose: true,
+        	daysOfWeekDisabled: "0,6",
+        	todayHighlight: true,
+        	format: "dd/mm/yyyy"
         });
       });
-
-      document.activeElement.blur();
+/*
+      $('#datepicker').datepicker();
+			$('#datepicker').on("changeDate", function() {
+    		$('#my_hidden_input').val(
+       	  $('#datepicker').datepicker('getFormattedDate')
+    		);
+			});
+*/
     </script>
 
 	<div class="body-left">
-		<%= form_for(@user, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f| %>
-     <%= devise_error_messages! %>
-
-			<%= f.text_field :paused_time, :readonly => true, value: nil, class: 'datepicker form-control form-max-width-50' %>
+		<%= form_for(@user, url: date_picker_path, method: 'get',validate: true) do |f| %>
+   
+	
+    	<div class="datepicker">
+				<input type="hidden" name="paused_time">
+			</div>
 			<br>
+			<%= f.hidden_field :conversation_id, name: "conversation_id", value: @user.conversation_id %>
  			<div class="form-group">
     		<%= f.submit "Update", class: "btn btn-primary" %>
   		</div>

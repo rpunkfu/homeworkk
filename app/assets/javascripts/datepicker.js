@@ -1,3 +1,3 @@
 $('#sandbox-container div').datepicker({
-   daysOfWeekDisabled: "0,6"
+    daysOfWeekDisabled: "0,6"
 });

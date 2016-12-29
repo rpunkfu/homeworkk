@@ -12,6 +12,12 @@ class PagesController < ApplicationController
   end
   
   def date_picker
+  	@stuff = Hash.new
+  	if !params["paused_time"].nil?
+  		@user = User.find_by(conversation_id: params[:conversation_id])
+  		@user.update(paused_time: params["paused_time"])
+  		redirect_to root_path, notice: 'successfully paused'
+  	end
   end
 
   def redirect_home

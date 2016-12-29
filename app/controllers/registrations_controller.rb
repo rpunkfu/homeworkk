@@ -21,10 +21,6 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def update_resource(resource, params)
-    date = params["paused_time"]
-    split = date.split("/")
-    date = split[1] + "/" + split[0] + "/" + split[2]
-    params["paused_time"] = date
     resource.update_without_password(params)
     resource.groups.each do |group|
       group.update(time_zone: params["time_zone"].to_i)
