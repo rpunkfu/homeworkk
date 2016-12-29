@@ -24,7 +24,7 @@ gem 'omniauth-facebook'
 gem 'httparty'
 gem 'client_side_validations'
 gem 'bootstrap-datepicker-rails'
-require 'bootstrap-datepicker-rails'
+
 
 
 group :production, :test do
