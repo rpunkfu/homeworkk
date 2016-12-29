@@ -209,14 +209,19 @@ def self.sendSummaryButton(recipient)
   )
 end
 
-def self.sendGroupConfirmMessage(recipient, possibleClasses)
+def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
+    if charge == true
+      text = "sorry, which class do you have homework for?"
+    else
+      text = "sorry, which class do you not have homework for?"
+    end
     page_access_token = 'EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD'
     body = {
       recipient: {
         id: recipient
       },
       message: {
-        text: "sorry, which class do you have homework for?",
+        text: text,
         quick_replies: [
         {
           content_type: "text",

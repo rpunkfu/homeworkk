@@ -140,6 +140,7 @@ class MessengerController < ApplicationController
 			 				Messagehuman.sendMessageBubbles(@recipient) # send the message bubbles
 			 				sleep(1.5) # let the program sleep for 1 second
 			 				Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum]) # sending a negative response
+			 				@sentMessage = true
 			 			end
 					end
 				end
@@ -161,7 +162,7 @@ class MessengerController < ApplicationController
 				# on the other hand, if the subject hasn't been found
 				elsif $checkKeyWords == false && !$possibleSubjects.empty? && @sentConfirmation == false
 					# send the message of what they meant to type
-					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
+					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects, true)
 					#setting the gropus response
 					$groupsResponse = Array.new
 					# setting the markers that I've sent a message
@@ -184,7 +185,7 @@ class MessengerController < ApplicationController
 					Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum])
 					@sentMessage = true
 				elsif $checkKeyWords == -12
-					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
+					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects, false)
 					#setting the gropus response
 					$groupsResponse = Array.new
 					# setting the markers that I've sent a message
