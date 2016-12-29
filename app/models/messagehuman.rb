@@ -269,7 +269,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
   end
 
   def self.sendPauseDate(recipient)
-    url = "https://www.christopherbot.co/date_picker?conversation_id=" + recipient
+    url = "https://www.christopherbot.co/date_picker?conversation_id="+recipient
     body = {
       "recipient":{
         id: recipient
@@ -281,15 +281,14 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
             template_type:"generic",
             elements:[
             {
-              title:"Select Pause Date!",
-              subtitle:"when you would like to resume getting texts",
+              title:"Select Date",
+              subtitle:"what date would you like to unpause?",
               buttons:[
-                {
-                "type":"web_url",
-                "url": url,
-                "title":"Select date",
-                "messenger_extensions": true,  
-                "webview_height_ratio": "compact"
+                      {
+                  type:"web_url",
+                  url:url,
+                  title:"Select Date",
+                  webview_height_ratio:"tall"
                 }
                 ]
               }
