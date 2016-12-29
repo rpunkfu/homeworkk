@@ -23,6 +23,7 @@ gem 'omniauth-facebook'
 # allows me to send http request to facebook
 gem 'httparty'
 gem 'client_side_validations'
+gem 'bootstrap-datepicker-rails'
 require 'bootstrap-datepicker-rails'
 
 
