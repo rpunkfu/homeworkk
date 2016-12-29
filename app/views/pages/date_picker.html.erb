@@ -19,7 +19,7 @@
 		<%= form_for(@user, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f| %>
      <%= devise_error_messages! %>
 
-			<%= f.text_field :paused_time, value: nil, class: 'datepicker form-control form-max-width-50' %>
+			<%= f.text_field :paused_time, :readonly => true, value: nil, class: 'datepicker form-control form-max-width-50' %>
 			<br>
  			<div class="form-group">
     		<%= f.submit "Update", class: "btn btn-primary" %>
