@@ -64,12 +64,22 @@ class MessengerController < ApplicationController
  			end
  			Messagehuman.sendPauseDate(@recipient)
  			@sentMessage = true
+ 		elsif @userText == "unpause" && @sentMessage == false
+ 			@user = User.find_by(conversation_id: @recipient)
+ 			@user.update(paused: false)
+ 			if !@user.groups.last.nil?
+	 			@user.groups.each do |group|
+	 				group.update(paused: false)
+	 			end
+ 			end
+ 			Messagehuman.sendMessage(@recipient, "you have been unpaused, yay")
+ 			@sentMessage = true
  		end
 
  		if @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
  			if @user.paused == true
- 				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please.")
+ 				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please")
  				@sentMessage = true
  			end
  		end
