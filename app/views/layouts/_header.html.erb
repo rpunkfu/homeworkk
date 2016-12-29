@@ -16,12 +16,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="right-link"><%= link_to "Home", root_path %></li>
+        <li class="right-link"><%= link_to "Help", commands_path %></li>
         <li class="right-link"><a href="mailto:alecaej2002@gmail.com?Subject=Hey%20Alec" target="_top" class="right-link">Contact Me</a></li>
         <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="right-link"><%= link_to "Change Settings", edit_user_path %></li>
+            <li class="right-link"><%= link_to "Settings", edit_user_path %></li>
             <li class="right-link"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>

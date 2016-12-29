@@ -36,8 +36,22 @@ task :message_task => :environment do
 	
 end
 
-#task :send_birthday_greeting do
-#end
+task :check_pause do
+	@users = User.all.where("paused = ?", true)
+	@users.each do |user|
+		if user.time_zone <= 0
+			@midnight = 0.minutes.from_now.utc - (user.time_zone * -1).hours
+		else
+			@midnight = 0.minutes.from_now.utc + user.time_zone.hours
+		end
+		if user.paused_time.strftime("%e %b %Y") == @midnight.strftime("%e %b %Y")
+			user.update(paused: false)
+			user.groups.each do |group|
+				group.update(paused: false)
+			end
+		end
+	end
+end
 
 task :reset_classes => :environment do
 	@groups = Group.all.where("group_day = ?", 1.minutes.from_now.strftime("%A").downcase)
