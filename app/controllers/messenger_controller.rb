@@ -62,7 +62,7 @@ class MessengerController < ApplicationController
 	 				group.update(paused: true)
 	 			end
  			end
- 			Messagehuman.sendPauseDate(@recipient)
+ 			#Messagehuman.sendPauseDate(@recipient)
  			@sentMessage = true
  		elsif @userText == "unpause" && @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
