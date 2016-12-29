@@ -115,6 +115,7 @@ class MessengerController < ApplicationController
 					# if the group name matches to group the user said in the text
 					if group.group_name == @userText
 						# we know that the user has homework for that class
+						if $groupsResponse.include?("negative")
 						group.update(homework_assigned: true)
 						@group = group.as_json # convert the group to json
 						@group["id"] = nil # removing the id
@@ -134,6 +135,12 @@ class MessengerController < ApplicationController
 			 			# markers that I have sent messages
 			 			@sentMessage = true
 			 			@sentKeyWords = true
+			 			else
+			 				group.update(homework_assigned: false)
+			 				Messagehuman.sendMessageBubbles(@recipient) # send the message bubbles
+			 				sleep(1.5) # let the program sleep for 1 second
+			 				Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum]) # sending a negative response
+			 			end
 					end
 				end
 			end
@@ -169,12 +176,30 @@ class MessengerController < ApplicationController
 							# push it to the array
 							$groupsResponse.push(@group)
 						end
+						$groupsResponse.push("negative")
 					end
-				elsif $checkKeyWords < 0
+				elsif $checkKeyWords == -7
 					Messagehuman.sendMessageBubbles(@recipient)
 					sleep(1)
 					Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum])
 					@sentMessage = true
+				elsif $checkKeyWords == -12
+					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects)
+					#setting the gropus response
+					$groupsResponse = Array.new
+					# setting the markers that I've sent a message
+					@sentMessage = true
+					@sentKeyWords = true
+					@sentConfirmation = true
+					# foreach possible subject
+					$possibleSubjects.each do |group|
+						# find that group
+						@group = Group.find_by(group_name: group, conversation_id: @recipient, group_day: 0.hours.ago.strftime("%A").downcase)
+						if !@group.nil?
+							# push it to the array
+							$groupsResponse.push(@group)
+						end
+					end
 				else
 				end
 			end

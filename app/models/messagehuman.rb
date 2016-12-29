@@ -113,6 +113,8 @@ class Messagehuman
       @group = Group.find_by(conversation_id: recipient, group_day: 0.hours.ago.strftime("%A").downcase, group_name: $subject.downcase)
       @group.update(homework_assigned: false, homework_assignment: nil)
       return @wordRating
+    elsif @wordRating == -12 && !$possibleSubjects.empty?
+      return @wordRating
     else
       return nil
     end
@@ -288,7 +290,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses)
                   type:"web_url",
                   url:url,
                   title:"Select Date",
-                  webview_height_ratio:"compact"
+                  webview_height_ratio:"tall"
                 }
                 ]
               }
