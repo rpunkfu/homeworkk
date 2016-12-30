@@ -112,6 +112,7 @@ class MessengerController < ApplicationController
 			if !$groupsResponse.nil? && !$groupsResponse.empty? && @sentMessage == false
 				@charge = false
 				@charge = true if $groupsResponse.include?("8")
+				$groupsResponse.delete("8")
 				# for each group in group response
 				$groupsResponse.each do |group|
 					# if the group name matches to group the user said in the text
