@@ -46,6 +46,7 @@ task :check_pause => :environment do
 		end
 		if user.paused_time.to_date.to_s == @midnight.to_date.to_s
 			user.update(paused: false)
+			puts "User UNPAUSED: " + user.first_name
 			user.groups.each do |group|
 				group.update(paused: false)
 			end
