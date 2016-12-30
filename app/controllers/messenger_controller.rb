@@ -115,7 +115,7 @@ class MessengerController < ApplicationController
 					# if the group name matches to group the user said in the text
 					if group.group_name == @userText
 						# we know that the user has homework for that class
-						if $groupsResponse.include?("negative")
+						if !$groupsResponse.include?("8")
 						group.update(homework_assigned: true)
 						@group = group.as_json # convert the group to json
 						@group["id"] = nil # removing the id
@@ -177,7 +177,7 @@ class MessengerController < ApplicationController
 							# push it to the array
 							$groupsResponse.push(@group)
 						end
-						$groupsResponse.push("negative")
+						$groupsResponse.push("8")
 					end
 				elsif $checkKeyWords == -7
 					Messagehuman.sendMessageBubbles(@recipient)
