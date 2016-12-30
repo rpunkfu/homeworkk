@@ -110,12 +110,14 @@ class MessengerController < ApplicationController
 		else
 			# making sure that groups response is empty/nil
 			if !$groupsResponse.nil? && !$groupsResponse.empty? && @sentMessage == false
+				@charge = false
+				@charge = true if $groupsResponse.include?("8")
 				# for each group in group response
 				$groupsResponse.each do |group|
 					# if the group name matches to group the user said in the text
 					if group.group_name == @userText
 						# we know that the user has homework for that class
-						if !$groupsResponse.include?("8")
+						if @charge == true
 						group.update(homework_assigned: true)
 						@group = group.as_json # convert the group to json
 						@group["id"] = nil # removing the id
