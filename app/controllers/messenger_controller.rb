@@ -177,7 +177,7 @@ class MessengerController < ApplicationController
 							# push it to the array
 							$groupsResponse.push(@group)
 						end
-						$groupsResponse.push("8")
+						
 					end
 				elsif $checkKeyWords == -7
 					Messagehuman.sendMessageBubbles(@recipient)
@@ -190,6 +190,7 @@ class MessengerController < ApplicationController
 					$groupsResponse = Array.new
 					# setting the markers that I've sent a message
 					@sentMessage = true
+					$groupsResponse.push("8")
 					@sentKeyWords = true
 					@sentConfirmation = true
 					# foreach possible subject
