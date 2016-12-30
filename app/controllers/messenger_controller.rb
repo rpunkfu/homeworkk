@@ -177,14 +177,13 @@ class MessengerController < ApplicationController
 							# push it to the array
 							$groupsResponse.push(@group)
 						end
-						
 					end
-				elsif $checkKeyWords == -7
+				elsif $checkKeyWords == -7 && @sentConfirmation == false
 					Messagehuman.sendMessageBubbles(@recipient)
 					sleep(1)
 					Messagehuman.sendMessage(@recipient, @positiveResponses[randomNum])
 					@sentMessage = true
-				elsif $checkKeyWords == -12
+				elsif $checkKeyWords == -12 && @sentConfirmation == false
 					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects, false)
 					#setting the gropus response
 					$groupsResponse = Array.new
