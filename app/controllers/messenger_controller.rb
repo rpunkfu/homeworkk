@@ -118,7 +118,7 @@ class MessengerController < ApplicationController
 					# if the group name matches to group the user said in the text
 					if group.group_name == @userText
 						# we know that the user has homework for that class
-						if @charge == true
+						if @charge == false
 						group.update(homework_assigned: true)
 						@group = group.as_json # convert the group to json
 						@group["id"] = nil # removing the id
