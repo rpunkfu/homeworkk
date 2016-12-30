@@ -36,7 +36,7 @@ task :message_task => :environment do
 	
 end
 
-task :check_pause do
+task :check_pause => :environment do
 	@users = User.all.where("paused = ?", true)
 	@users.each do |user|
 		if user.time_zone <= 0
@@ -44,7 +44,7 @@ task :check_pause do
 		else
 			@midnight = 0.minutes.from_now.utc + user.time_zone.hours
 		end
-		if user.paused_time.strftime("%e %b %Y") == @midnight.strftime("%e %b %Y")
+		if user.paused_time.to_date.to_s == @midnight.to_date.to_s
 			user.update(paused: false)
 			user.groups.each do |group|
 				group.update(paused: false)
