@@ -18,7 +18,7 @@ class MessengerController < ApplicationController
 		# a list of negative responses if user has homework
 		@negativeResponses = ["booooo", "what a shame", "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died", "that's too bad, but try not to become a debby downer"].shuffle
 		# if user sends a text, but has nothing to do with homework and they're signed up
-		@defaultResponses = ["43 percent of statistics are made up", "out of my mind. back in 5 minutes", "borrow money from a pessimist–they don’t expect it back", "why is “abbreviation” such a long word?", "what happens if you get scared half to death twice?", "gravity always gets me down", "give a man a fish and he will eat for a day. teach him how to fish, and he will sit in a boat and drink beer all day.", "Change is inevitable, except from a vending machine.", "the shinbone is a device for finding furniture in a dark room."].shuffle
+		@defaultResponses = ["43 percent of statistics are made up", "out of my mind. back in 5 minutes", "borrow money from a pessimist – they don’t expect it back", "why is “abbreviation” such a long word?", "what happens if you get scared half to death twice?", "gravity always gets me down", "give a man a fish and he will eat for a day. teach him how to fish, and he will sit in a boat and drink beer all day.", "change is inevitable, except from a vending machine.", "the shinbone is a device for finding furniture in a dark room."].shuffle
 		# setting variables to false, to know what and if I sent a message
 		@sentMessage = false
 		@sentKeyWords = false
@@ -42,7 +42,7 @@ class MessengerController < ApplicationController
 	 	if @checkUserExists == false && @sentMessage == false
 	 		Messagehuman.sendMessageBubbles(@recipient)
 	 		sleep(1)
-	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet, you should, just click below")
+	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet - just click below")
 	 		sleep(1)
  			Messagehuman.sendButton(@recipient)
  			# marking that I did send a messsage
@@ -50,6 +50,8 @@ class MessengerController < ApplicationController
  		end
 
  		if @userText == "help" && @sentMessage == false
+ 			Messagehuman.sendMessageBubbles(@recipient)
+ 			sleep(1)
  			Messagehuman.sendHelpButton(@recipient)
  			@sentMessage = true
  		end
@@ -62,6 +64,8 @@ class MessengerController < ApplicationController
 	 				group.update(paused: true)
 	 			end
  			end
+ 			Messagehuman.sendMessageBubbles(@recipient)
+ 			sleep(1)
  			Messagehuman.sendPauseDate(@recipient)
  			@sentMessage = true
  		elsif @userText == "unpause" && @sentMessage == false
@@ -72,6 +76,8 @@ class MessengerController < ApplicationController
 	 				group.update(paused: false)
 	 			end
  			end
+ 			Messagehuman.sendMessageBubbles(@recipient)
+ 			sleep(1)
  			Messagehuman.sendMessage(@recipient, "you have been unpaused, yay")
  			@sentMessage = true
  		end
@@ -79,12 +85,16 @@ class MessengerController < ApplicationController
  		if @sentMessage == false
  			@user = User.find_by(conversation_id: @recipient)
  			if @user.paused == true
+ 				Messagehuman.sendMessageBubbles(@recipient)
+ 				sleep(1)
  				Messagehuman.sendMessage(@recipient, "before you can text me, you need to say 'unpause' please")
  				@sentMessage = true
  			end
  		end
 
  		if @userText == "list" && @sentMessage == false
+ 			Messagehuman.sendMessageBubbles(@recipient)
+ 			sleep(1)
  			Messagehuman.sendUserHomework(@recipient)
  			@sentMessage = true
  		end
@@ -103,8 +113,10 @@ class MessengerController < ApplicationController
 	 				group.destroy
 	 			end
 			end
+			Messagehuman.sendMessageBubbles(@recipient)
+			sleep(1)
 			# send a message confirming that you have done the previous
-			Messagehuman.sendMessage(@recipient, "ok, let me know if you need anything else")
+			Messagehuman.sendMessage(@recipient, "ok let me know if you need anything else")
 			# market that I did send a message
 			@sentMessage = true
 		else
@@ -130,10 +142,10 @@ class MessengerController < ApplicationController
 						groupArrayNew = Grouparray.new(@group)
 						groupArrayNew.save
 						Messagehuman.sendMessageBubbles(@recipient) # send the message bubbles
-			 			sleep(2) # let the program sleep for 1 second
+			 			sleep(1.5) # let the program sleep for 1 second
 			 			Messagehuman.sendMessage(@recipient, @negativeResponses[randomNum]) # sending a negative response
 			 			Messagehuman.sendMessageBubbles(@recipient) # send more message bubles
-			 			sleep(2) # let the program sleep for one second
+			 			sleep(1.5) # let the program sleep for one second
 			 			Messagehuman.sendMessage(@recipient, 'what homework do you have for ' + @group["group_name"] + '?')
 			 			# markers that I have sent messages
 			 			@sentMessage = true
@@ -164,6 +176,8 @@ class MessengerController < ApplicationController
 					@sentMessage = true
 				# on the other hand, if the subject hasn't been found
 				elsif $checkKeyWords == false && !$possibleSubjects.empty? && @sentConfirmation == false
+					Messagehuman.sendMessageBubbles(@recipient)
+					sleep(1)
 					# send the message of what they meant to type
 					Messagehuman.sendGroupConfirmMessage(@recipient, $possibleSubjects, true)
 					#setting the gropus response
@@ -191,7 +205,7 @@ class MessengerController < ApplicationController
 					#setting the gropus response
 					$groupsResponse = Array.new
 					# setting the markers that I've sent a message
-					@sentMessage = true
+					@sentMessage = true 
 					$groupsResponse.push("8")
 					@sentKeyWords = true
 					@sentConfirmation = true
@@ -249,9 +263,11 @@ class MessengerController < ApplicationController
 					elsif group.homework_assigned == true
 						# then update that group of the homework I have
 						@group = Group.find_by(conversation_id: group.conversation_id, group_name: group.group_name, group_day: group.group_day)
+						# updating the homework
 						@group.update(homework_assignment: @userText)
 						# find and destroy the group array
 						@groupArray = Grouparray.find_by(id: group.id)
+						# destroying
 						@groupArray.destroy
 						Messagehuman.sendMessageBubbles(group.conversation_id) # send more message bubbles
 						sleep(1) # sleep for 1 sec
@@ -265,6 +281,7 @@ class MessengerController < ApplicationController
 			end
 			# if there has been no message sent, then send a default response
 			if @sentMessage == false
+				#send the message bubbles
 				Messagehuman.sendMessageBubbles(@recipient)
 				sleep(1.5)
 				# sending the default response
