@@ -1,3 +1,4 @@
+<div class="white-container">
 <% 
 if params.to_a[0][0] == "conversation_id" 
 	 		$conversation_id = params.to_a[0][1] 
@@ -5,4 +6,6 @@ if params.to_a[0][0] == "conversation_id"
 			$conversation_id = nil 
  		end 
 %>
-<%= link_to image_tag("signin.png", style:'height:auto;max-width:90%;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
+<br>
+<%= link_to image_tag("facebook-login.png", style:'height:auto;max-width:90%;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
+</div>

@@ -5,41 +5,19 @@
 	<% if @user.nil? || @user.paused == false || @user.paused == nil %>
 		<% redirect_home %>
 	<% else %>
+	<script type="text/javascript">
+   </script>
 	<% $pausedTime = true %>
-		<script type="text/javascript">
-		
-      $(document).ready(function(){
-        $('.datepicker').datepicker({
-        	autoclose: true,
-        	daysOfWeekDisabled: "0,6",
-        	todayHighlight: true,
-        	format: "dd/mm/yyyy"
-        });
-      });
-/*
-      $('#datepicker').datepicker();
-			$('#datepicker').on("changeDate", function() {
-    		$('#my_hidden_input').val(
-       	  $('#datepicker').datepicker('getFormattedDate')
-    		);
-			});
-*/
-    </script>
-
+<div class="white-container">
 	<div class="body-left">
-		<%= form_for(@user, url: date_picker_path, method: 'get',validate: true) do |f| %>
-   
-	
-    	<div class="datepicker">
-				<input type="hidden" name="paused_time">
-			</div>
+		<%= form_for(@user, url: date_picker_path, method: 'get', validate: true) do |f| %>
 			<br>
 			<%= f.hidden_field :conversation_id, name: "conversation_id", value: @user.conversation_id %>
  			<div class="form-group">
     		<%= f.submit "Update", class: "btn btn-primary" %>
   		</div>
-  </div>
-
+	</div>
+</div>
 <% end %>
 <% end %>
 <% end %>

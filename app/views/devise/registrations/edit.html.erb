@@ -1,6 +1,7 @@
 <div class="body-left">
-    <h1>Change Settings</h1>
-    <% @timeZones = [["Pacific Time", -8], ["Eastern Time", -5], ["Greenwich Mean Time", 0], ["Mountain", -7],["Central Time", -6],["Atlantic Time", -4], ["Newfoundland Time", -3.5], ["European Central Time", 1], ["Eastern European Time", 2], ["Argentina Standard Time", -3], ["Brazil Eastern Time", -3], ["Central African Time", -1], ["Alaska Standard Time", -9], ["Hawaii Standard Time", -10], ["Midway Islands Time", -11]] %>
+    <br>
+    <h1 class="center">My Settings</h1>
+    <% @timeZones = [["Pacific Time", -8], ["Eastern Time", -5], ["Greenwich Mean Time", 0], ["Mountain Time", -7],["Central Time", -6],["Atlantic Time", -4], ["Newfoundland Time", -3.5], ["European Central Time", 1], ["Eastern European Time", 2], ["Argentina Standard Time", -3], ["Brazil Eastern Time", -3], ["Central African Time", -1], ["Alaska Standard Time", -9], ["Hawaii Standard Time", -10], ["Midway Islands Time", -11]] %>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f| %>
       <%= devise_error_messages! %>
@@ -10,7 +11,7 @@
       </div>
 
 		<div class="form-group">
-		<%= f.label "class number (the number of classes you have a day)" %>  <br />
+		<%= f.label "Number of classes you have each day" %>  <br />
     <%= f.text_field :class_number, value: current_user.class_number, class: "form-control form-max-width-50" %>
 		</div>
 
@@ -18,11 +19,12 @@
         <%= f.submit "Update", class: "btn btn-primary" %>
       </div>
     <% end %>
+    <br>
 
-    <h3>Cancel my account</h3>
+    <h4>Cancel account</h4>
 
-    <p>Unhappy? <%= button_to "Cancel", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %></p>
+    <p>Unhappy with Christopher Bot? <%= button_to "Cancel", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %></p>
 
     <%= link_to "Back", :back %>
- 
+ <br><br>
 </div>

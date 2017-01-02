@@ -4,12 +4,13 @@
 <% elsif current_user.class_number.nil? || current_user.class_number.to_s == "" || current_user.time_zone.nil? || current_user.time_zone.to_s == "" %>
 	<%= render 'pages/user_class_number' %>
 <% else %>
-
+<div class="white-container">
+<br>
 	<h1 class="center"><%= current_user.first_name + "'s" %> Classes</h1>
 
 <div class="body-left">
 	<% classDay = checkHomeworkDay %>
-	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn btn-primary center" if !classDay.nil? %>
+	<%= link_to 'Create Classes For ' + classDay.capitalize, new_group_path, class: "btn-custom" if !classDay.nil? %>
 	<br><br>
 	<% counter = 1 %>
 	<% if current_user.groups.where("group_day = ?", "monday").empty? %> <h2> Monday - <%= link_to 'No Classes Yet', new_group_path(:day => 'monday') if !classDay.nil? %> </h2> <% else %>
@@ -152,6 +153,7 @@
 	</div>
 	<% end %>
 	    <br>
+</div>
 </div>
 <% end %>
 

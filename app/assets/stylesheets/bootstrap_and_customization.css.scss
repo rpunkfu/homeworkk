@@ -6,12 +6,39 @@ $btn-primary-bg: #3498db;
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Muli');
 
 p {
 	font-family: 'Montserrat';
 }
 body {
 	font-family: 'Montserrat';
+}
+
+.alert-info {
+  background-color: #cef8ff;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.center-form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.plain-btn {
+  color: white;
+}
+
+.white-container {
+  background: white;
+  background-color: white;
+}
+
+.plain-text {
+  color: black
 }
 
 .message {
@@ -29,6 +56,10 @@ body {
 	font-size: 1.5em;
 }
 
+.command-p {
+  font-size: 1.5em;
+}
+
 .form-max-width-50 {
 	width: 50%;
 }
@@ -37,7 +68,8 @@ body {
 	background-color: #ffff00;
 }
 .body-left {
-	margin-left: 3%;
+	margin-left: 10%;
+  background-color: white;
 }
 .sub-heading {
 	font-size: 3.750em;
@@ -51,10 +83,6 @@ body {
 
 .p-tight {
 	max-width: 70%;
-}
-
-.center {
-	text-align: center
 }
 
 .center-media {
@@ -108,7 +136,7 @@ body {
 .row.header {
   font-weight: 900;
   color: #ffffff;
-  background: #ea6153;
+  background: #34495e;
 }
 .row.green {
   background: #27ae60;
