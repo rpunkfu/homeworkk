@@ -25,6 +25,7 @@ gem 'httparty'
 # client side validations gem
 gem 'client_side_validations'
 # nice font for the theme
+gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-rails'
 
 
