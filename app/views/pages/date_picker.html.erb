@@ -20,7 +20,9 @@
 	<div class="body-left">
 		<%= form_for(@user, url: date_picker_path, method: 'get', validate: true) do |f| %>
 			<br>
-			<input type="text" class='datepicker' >
+			<div class="datepicker">
+				<input type="hidden" name="paused_time">
+			</div>
 			<%= f.hidden_field :conversation_id, name: "conversation_id", value: @user.conversation_id %>
  			<div class="form-group">
     		<%= f.submit "Update", class: "btn btn-primary" %>
