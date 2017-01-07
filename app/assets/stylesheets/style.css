@@ -27,32 +27,25 @@ html {
 	-webkit-font-smoothing:antialiased;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio:1.25), only screen and (min-device-pixel-ratio:1.25), only screen and (min-resolution:200dpi), only screen and (min-resolution:1.25dppx) { -webkit-font-smoothing: subpixel-antialiased; }
+#back {
+	background:#50a2f6 url(base-header-overlay.png) repeat top left !important;
+}
 
 #pic-white {
 	background-color: white !important;
 }
 
-#back {
-	background:#50a2f6 url(base-header-overlay.png) !important; 
-	repeat: top left; 
+.white {
+	background-color: white !important;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio:1.25), only screen and (min-device-pixel-ratio:1.25), only screen and (min-resolution:200dpi), only screen and (min-resolution:1.25dppx) { -webkit-font-smoothing: subpixel-antialiased; }
 
 body {
 	font-family:'Noto Sans', Arial, sans-serif;
 	color:#707070;
 	font-size:14px;
 	line-height:24px;
-}
-
-.center {
-  text-align: center;
-}
-
-.white {
-	background-color: white !important;
-	repeat: top left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,7 +154,7 @@ video {
 .margin-bottom70 { margin-bottom:70px !important; }
 .margin-bottom80 { margin-bottom:80px !important; }
 
-.animation { visibility:visible; } 
+.animation { visibility:visible; }
 .animated, .ie .animation, .ie9 .animation { visibility:visible; }
 
 ul.list-icon {
@@ -566,7 +559,7 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 
 .bg-grey { background-color:#f4f5f9; }
 
-.bg-dark.bg-color, .bg-parallax { color:#FFF; }
+.bg-dark, .bg-color, .bg-parallax { color:#FFF; }
 .bg-dark { background-color:#2c3e50; }
 .bg-color { background-color:#50a2f6; }
 	.bg-dark h1, .bg-color h1, .bg-parallax h1, .bg-dark h2, .bg-color h2, .bg-parallax h2, .bg-dark h3, .bg-color h3, .bg-parallax h3, .bg-dark h4, .bg-color h4, .bg-parallax h4, .bg-dark h5, .bg-color h5, .bg-parallax h5, .bg-dark h6, .bg-color h6, .bg-parallax h6 { color:#FFF; }
@@ -710,7 +703,7 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 
 /* ========================= Header ========================= */
 
-#header { background:#50a2f6 url(base-header-overlay.png); repeat: top left; }
+#header { background:#50a2f6 url(base-header-overlay.png) repeat top left; }
 
 /* Navigation Menu */
 #header .navbar {
@@ -720,14 +713,11 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 	margin:0px;
 	border:0px;
 	border-radius:0px;
-	height: 100px;
 }
 	#header .navbar-brand, #navigation_affix .navbar-brand {
 		height:auto;
 		color:#FFF;
 		padding:0px;
-		font-family: 'Arial' !important;
-		font-size: 24px !important;
 	}
 	#header .navbar > .container .navbar-brand, #navigation_affix .navbar > .container .navbar-brand { margin:0px; }
 		#header .navbar-brand img, #navigation_affix .navbar-brand img { height:40px; }
@@ -736,7 +726,6 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 	float:right;
 	height:40px;
 }
-
 	#header .nav > li, #navigation_affix .nav > li { padding:10px 25px; }
 	#header .nav > li:last-child, #navigation_affix .nav > li:last-child { padding-right:0px; }
 		#header .nav > li > a, #navigation_affix .nav > li > a {
@@ -744,7 +733,7 @@ img.parallax-slider.loaded, .ie img.parallax-slider, .ie9 img.parallax-slider {
 			font-family:Montserrat, Arial, serif;
 			color:#c7e0fa;
 			font-size:15px;
-			line-height:0px;
+			line-height:20px;
 			background:none !important;
 			padding:0px;
 		}
