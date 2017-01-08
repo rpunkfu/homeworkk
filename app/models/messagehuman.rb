@@ -351,12 +351,12 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
             elements:[
             {
               title:"Do Me A Quick Favor?",
-              subtitle:"I'd really appreciate if you'd tell other people about me (promise I'll only ask you once)",
+              subtitle:"Can you tell your friends about me (promise I'll only ask you once)?",
               buttons:[
                       {
                   type:"web_url",
                   url:url,
-                  title:"Share On Facebook",
+                  title:"Share Christopher Bot On Facebook",
                   webview_height_ratio:"tall"
                 }
                 ]
