@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'commands' => 'pages#commands'
   get 'date_picker' => 'pages#date_picker'
 
+  get 'contact', to: 'messages#new', as: 'contact'
+  post 'contact', to: 'messages#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

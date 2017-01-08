@@ -313,13 +313,17 @@
             <!-- .row -->
             <div class="row white">
                 <div class="col-md-12 col-lg-12 col-md-offset-1 col-lg-offset-2 white"> 
-                	<form method="post" action="#" class="affa-form-contact">
-                    	<div class="submit-status"></div> <!-- submit status -->
-                        <input type="text" name="name" placeholder="Your Name" />
-                        <input type="text" name="email" placeholder="Email Address *" />
-                        <textarea name="message" placeholder="Message *"></textarea>
-                        <input type="submit" name="submit" value="Send Message" />
-                    </form>
+                	<%= form_for(@message, url: contact_path, method: 'post', html: {class: "affa-form-contact"}) do |f|%>
+                        <div class="submit-status"></div> <!-- submit status -->
+                        
+                        <%= f.text_field :name, placeholder: "Your Name *" %>
+                        
+                        <%= f.text_field :email, placeholder: "Email Address *" %>
+                        
+                        <%= f.text_area :content, placeholder: "Message *" %>
+                        
+                        <%= f.submit "Send Message" %>
+                <% end %>
                 </div>
             </div>
             <!-- .row end -->

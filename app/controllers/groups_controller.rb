@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
 
   def index
+    @message = Message.new
     $user = current_user
     @timeZones = [["Pacific Time", -8], ["Eastern Time", -5], ["Greenwich Mean Time", 0], ["Mountain", -7],["Central Time", -6],["Atlantic Time", -4], ["Newfoundland Time", -3.5], ["European Central Time", 1], ["Eastern European Time", 2], ["Argentina Standard Time", -3], ["Brazil Eastern Time", -3], ["Central African Time", -1], ["Alaska Standard Time", -9], ["Hawaii Standard Time", -10], ["Midway Islands Time", -11]] 
     if user_signed_in? && current_user.class_number.nil? && !params["user"].nil?

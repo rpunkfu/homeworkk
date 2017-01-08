@@ -336,6 +336,43 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
       Messagehuman.sendMessage(recipient, 'Yay. You have no homework.')
     end
   end
+
+  def self.sendShareButton(recipient)
+    url = "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fchristopherbot.co"
+    body = {
+      "recipient":{
+        id: recipient
+      },
+      message:{
+        attachment:{
+          type:"template",
+          payload: {
+            template_type:"generic",
+            elements:[
+            {
+              title:"Share Christopher Bot",
+              subtitle:"I'd really appreciate if you'd tell other people about me",
+              buttons:[
+                      {
+                  type:"web_url",
+                  url:url,
+                  title:"Share On Facebook",
+                  webview_height_ratio:"tall"
+                }
+                ]
+              }
+            ]
+          }
+      }
+     } 
+    }.to_json
+    
+    response = HTTParty.post(
+      "https://graph.facebook.com/v2.6/me/messages?access_token=#{$page_access_token}",
+      body: body,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
 end
 
 

@@ -99,6 +99,11 @@ class MessengerController < ApplicationController
  			@sentMessage = true
  		end
 
+ 		if @userText == "share" && @sentMessage == false
+ 			Messagehuman.sendShareButton(@recipient)
+ 			@sentMessage = true
+ 		end
+
  		# checking if the user says cancel
 		if @userText == "cancel"
 			# if true, then delete classes they might have to deal with
