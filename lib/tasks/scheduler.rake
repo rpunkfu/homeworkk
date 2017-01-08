@@ -153,3 +153,24 @@ task :send_homework => :environment do
 	end
 end
 end
+
+task :send_share_button => :environment do
+	# all of the users
+	@users = User.all
+	# for each of those users
+	@users.each do |user|
+		if user.time_zone <= 0
+			# find their current time
+			@midnight = 0.minutes.from_now.utc - (user.time_zone * -1).hours
+		else
+			# find their current time
+			@midnight = 0.minutes.from_now.utc + user.time_zone.hours
+		end
+		# if it is midnight then update they dont have homework
+		if @midnight.to_date == user.created_at.to_date
+			Messagehuman.sendShareButton(user.conversation_id)
+		end
+	end
+end
+
+
