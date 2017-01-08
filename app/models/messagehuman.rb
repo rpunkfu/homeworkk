@@ -351,7 +351,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
             elements:[
             {
               title:"Do Me A Quick Favor?",
-              subtitle:"Can you tell your friends about me (promise I'll only ask you once)?",
+              subtitle:"Tell your friends about me on Facebook (promise I'll only ask you once)?",
               buttons:[
                       {
                   type:"web_url",

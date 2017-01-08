@@ -18,7 +18,7 @@ class MessengerController < ApplicationController
 		# a list of negative responses if user has homework
 		@negativeResponses = ["booooo", "what a shame", "ugh, that stinks", "your teacher needs to chill out on the homework", "that's so sad to hear", "that sucks, at least you look good today", "that sucks more than a vacuum", "that's worse than when dumbledore died", "that's too bad, but try not to become a debby downer"].shuffle
 		# if user sends a text, but has nothing to do with homework and they're signed up
-		@defaultResponses = ["43 percent of statistics are made up", "out of my mind. back in 5 minutes", "borrow money from a pessimist – they don’t expect it back", "why is “abbreviation” such a long word?", "what happens if you get scared half to death twice?", "gravity always gets me down", "give a man a fish and he will eat for a day. teach him how to fish, and he will sit in a boat and drink beer all day.", "change is inevitable, except from a vending machine.", "the shinbone is a device for finding furniture in a dark room."].shuffle
+		@defaultResponses = ["43 percent of statistics are made up", "out of my mind - back in 5 minutes", "borrow money from a pessimist – they don’t expect it back", "why is “abbreviation” such a long word?", "what happens if you get scared half to death twice?", "gravity always gets me down", "give a man a fish and he will eat for a day - teach him how to fish, and he will sit in a boat and drink beer all day", "change is inevitable, except from a vending machine", "the shinbone is a device for finding furniture in a dark room"].shuffle
 		# setting variables to false, to know what and if I sent a message
 		@sentMessage = false
 		@sentKeyWords = false
@@ -285,7 +285,7 @@ class MessengerController < ApplicationController
 				end
 			end
 			# if there has been no message sent, then send a default response
-			if @sentMessage == false
+			if @sentMessage == false || @userText.blank?
 				#send the message bubbles
 				Messagehuman.sendMessageBubbles(@recipient)
 				sleep(1.5)

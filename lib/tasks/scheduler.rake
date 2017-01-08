@@ -22,7 +22,7 @@ task :message_task => :environment do
 		if group.end_time.strftime("%H:%M") >= @t && group.end_time.strftime("%H:%M") < @timeten
 			#puts "group: " + group.group_name.to_s + " " + group.conversation_id.to_s
 			puts 'sending...'
-			Messagehuman.sendBinaryMessage(group.conversation_id, 'Do you have homework for ' + group.group_name)
+			Messagehuman.sendBinaryMessage(group.conversation_id, 'do you have homework for ' + group.group_name)
 			puts 'sent the message.'
 			@group = group.as_json
 			@group["id"] = nil
@@ -138,13 +138,13 @@ task :send_homework => :environment do
 				puts 'user send to: ' + user.first_name.to_s
 				if !homeworkGroupsString.blank?
 					# send their homework
-					Messagehuman.sendMessage(user.groups.last.conversation_id, 'You have homework for... ' + "\n" + homeworkGroupsString)
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'you have homework for... ' + "\n" + homeworkGroupsString)
 					Messagehuman.sendSummaryButton(user.groups.last.conversation_id)
 					# update that they have been sent their homework
 					user.update(sentHomwork: true)
 				else
 					# send their homework
-					Messagehuman.sendMessage(user.groups.last.conversation_id, 'Yay. You have no homework.')
+					Messagehuman.sendMessage(user.groups.last.conversation_id, 'yay. you have no homework.')
 					# update that they have had their hoemwork sent to them
 					user.update(sentHomwork: true)
 				end		
