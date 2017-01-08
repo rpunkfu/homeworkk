@@ -356,7 +356,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
                       {
                   type:"web_url",
                   url:url,
-                  title:"Share Christopher Bot On Facebook",
+                  title:"Share CB On Facebook",
                   webview_height_ratio:"tall"
                 }
                 ]
