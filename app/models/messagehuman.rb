@@ -350,8 +350,8 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
             template_type:"generic",
             elements:[
             {
-              title:"Share Christopher Bot",
-              subtitle:"I'd really appreciate if you'd tell other people about me",
+              title:"Do Me A Quick Favor?",
+              subtitle:"I'd really appreciate if you'd tell other people about me (promise I'll only ask you once)",
               buttons:[
                       {
                   type:"web_url",

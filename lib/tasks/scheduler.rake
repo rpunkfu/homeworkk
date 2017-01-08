@@ -167,7 +167,7 @@ task :send_share_button => :environment do
 			@midnight = 0.minutes.from_now.utc + user.time_zone.hours
 		end
 		# if it is midnight then update they dont have homework
-		if @midnight.to_date == user.created_at.to_date
+		if (@midnight.to_date - 7.days) == user.created_at.to_date
 			Messagehuman.sendShareButton(user.conversation_id)
 		end
 	end
