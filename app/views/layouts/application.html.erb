@@ -27,6 +27,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
     <!-- Custom Colors -->
     <!--<link rel="stylesheet" href="css/colors/green.css">-->
     <!--<link rel="stylesheet" href="css/colors/orange.css">-->

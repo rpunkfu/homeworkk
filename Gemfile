@@ -27,6 +27,7 @@ gem 'client_side_validations'
 # nice font for the theme
 gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-rails'
+gem 'google-analytics-rails', '1.1.0'
 
 
 
