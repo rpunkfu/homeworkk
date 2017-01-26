@@ -1,4 +1,4 @@
-/*
+
 (function($) {
 	
 	'use strict';
@@ -7,7 +7,7 @@
 		
 		// Initialization the functions
 		init: function() {
-			Flatland.AffixMenu();
+			//Flatland.AffixMenu();
 			Flatland.ScrollSpy();
 			Flatland.SmoothScroll();
 			Flatland.FitVids();
@@ -23,6 +23,7 @@
 		},
 		
 		// Navigation menu affix
+		/*
 		AffixMenu: function() {
 			var navMenu	= '<nav id="navigation_affix">';
 			navMenu		+= '<div class="container">';
@@ -49,7 +50,7 @@
 				offset: -121
 			});
 		},
-		
+		*/
 		// Navigation menu scrollspy to anchor section
 		
 		ScrollSpy: function() {
@@ -367,4 +368,4 @@
 	});
 	
 })(window.jQuery);
-*/
+
