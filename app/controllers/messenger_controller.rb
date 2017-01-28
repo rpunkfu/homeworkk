@@ -39,7 +39,7 @@ class MessengerController < ApplicationController
  			$page_access_token = "EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD"
  		end
 
- 		if !@ifStart.nil?
+ 		if !@ifStart.nil? && @sentMessage == false
  			Messagehuman.sendMessageBubbles(@recipient)
 	 		sleep(1)
 	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet - just click below")
@@ -298,7 +298,7 @@ class MessengerController < ApplicationController
 				end
 			end
 			# if there has been no message sent, then send a default response
-			if @sentMessage == false || @userText.blank?
+			if @sentMessage == false
 				#send the message bubbles
 				Messagehuman.sendMessageBubbles(@recipient)
 				sleep(1.5)
