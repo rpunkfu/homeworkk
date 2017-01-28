@@ -11,6 +11,7 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		# person who sent the text; id
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
+ 		@ifStart = $webhook["entry"][0]["messaging"][0]["postback"]["payload"].inspect
  		# what text the user sent
  		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
  		# a list of positve responses to respond with if user doesn't have homework
@@ -35,6 +36,15 @@ class MessengerController < ApplicationController
  			$page_access_token = "EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD"
  		end
 
+ 		if !@ifStart.nil?
+ 			Messagehuman.sendMessageBubbles(@recipient)
+	 		sleep(1)
+	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet - just click below")
+	 		sleep(1)
+ 			Messagehuman.sendButton(@recipient)
+ 			# marking that I did send a messsage
+ 			@sentMessage = true
+ 		end
 
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
