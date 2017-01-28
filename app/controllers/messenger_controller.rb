@@ -39,20 +39,10 @@ class MessengerController < ApplicationController
  			$page_access_token = "EAAZAjj9YZAiZC0BAOFT4SiXhnIqinWdveXxBf8AvDMAGMXamAIQobjfYRIv9Iw85UcZBXOqla4XpWtUJ6fooeBpM4LtB9hUwOYeRsokcOKUa40gM9RpKgtCTxHiFde52R4i3PZAfMijyw3NZACCYILq3hWeCipeq5gCLuyZASBn6gZDZD"
  		end
 
- 		if !@ifStart.nil? && @sentMessage == false
- 			Messagehuman.sendMessageBubbles(@recipient)
-	 		sleep(1)
-	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet - just click below")
-	 		sleep(1)
- 			Messagehuman.sendButton(@recipient)
- 			# marking that I did send a messsage
- 			@sentMessage = true
- 		end
-
  		# function that checks if the user exists based on their text id
  		@checkUserExists = Messagehuman.checkUserExists(@recipient)
  		# if @checkUserExists return false, then send the sign up button 
-	 	if @checkUserExists == false && @sentMessage == false
+	 	if (@checkUserExists == false || (@checkUserExists == false && !@ifStart.nil?)) && @sentMessage == false
 	 		Messagehuman.sendMessageBubbles(@recipient)
 	 		sleep(1)
 	 		Messagehuman.sendMessage(@recipient, "hey, you haven't signed up yet - just click below")
