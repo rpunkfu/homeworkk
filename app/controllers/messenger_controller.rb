@@ -12,7 +12,7 @@ class MessengerController < ApplicationController
  		# person who sent the text; id
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
 
- 		@ifStart = $webhook["entry"][0]["messaging"][0]["postback"]["payload"].inspect
+ 		@ifStart = $webhook["entry"][0]["messaging"][0]["postback"]["payload"].inspect if !$webhook["entry"][0]["messaging"][0]["postback"].nil?
  		# what text the user sent
  		if @ifStart.nil?
  			@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
