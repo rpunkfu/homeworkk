@@ -11,9 +11,12 @@ class MessengerController < ApplicationController
  		$webhook = JSON.parse(request.raw_post)
  		# person who sent the text; id
  		@recipient = $webhook["entry"][0]["messaging"][0]["sender"]["id"]
+
  		@ifStart = $webhook["entry"][0]["messaging"][0]["postback"]["payload"].inspect
  		# what text the user sent
- 		@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
+ 		if @ifStart.nil?
+ 			@userText = $webhook["entry"][0]["messaging"][0]["message"]["text"].downcase unless $webhook["entry"][0]["messaging"][0]["message"].nil?
+ 		end
  		# a list of positve responses to respond with if user doesn't have homework
  		@positiveResponses = ["that's grrrreat", "that's awesome!", "yay! no homework!", "finally, a break from some homework", "awesome, just what i wanted to hear", "yay, some good news today", "that's almost better than harry potter", "time to celebrate, come on!", "ho ho ho! merry christmas!"].shuffle
 		# a list of negative responses if user has homework
