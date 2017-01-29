@@ -1,7 +1,7 @@
 
     <br>
     <h1 class="center">My Settings</h1>
-<div class="body-left"
+<div class="body-left">
     <% @timeZones = [["Pacific Time", -8], ["Eastern Time", -5], ["Greenwich Mean Time", 0], ["Mountain Time", -7],["Central Time", -6],["Atlantic Time", -4], ["Newfoundland Time", -3.5], ["European Central Time", 1], ["Eastern European Time", 2], ["Argentina Standard Time", -3], ["Brazil Eastern Time", -3], ["Central African Time", -1], ["Alaska Standard Time", -9], ["Hawaii Standard Time", -10], ["Midway Islands Time", -11]] %>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f| %>

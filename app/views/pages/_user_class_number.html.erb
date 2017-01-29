@@ -1,8 +1,8 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		
-    <%= form_for(@user, url: groups_path, method: 'get', :validate => true) do |f| %>
-     <%= devise_error_messages! %>
+    <%= form_for(@user, url: groups_path, method: 'get', validate: true) do |f| %>
+      <%= devise_error_messages! %>
 
       <div class="form-group">
         <%= "How many classes do you have a day?" %>
