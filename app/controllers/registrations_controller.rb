@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    @user = User.find(current_user.id)
+    @user = User.find_by(id: current_user.id)
     @user.groups.each do |group| 
       @group = Group.find_by(id: group.id)
       @group.destroy
