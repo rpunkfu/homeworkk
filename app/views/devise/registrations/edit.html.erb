@@ -24,7 +24,7 @@
 
     <h4>Cancel account</h4>
 
-    <p>No longer need Christopher Bot's help? <%= button_to "Delete Account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default" %></p>
+    <p>No longer need Christopher Bot's help? <br> <%= link_to "Delete Account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary white-text" %></p>
 
     <%= link_to "Back", :back %>
  <br><br>
