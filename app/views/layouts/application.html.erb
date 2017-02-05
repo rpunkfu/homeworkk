@@ -8,7 +8,22 @@
 <head>
     
     <!-- Your Basic Site Informations -->
-	<title>Christopher Bot</title>
+    <% if user_signed_in? %>
+    <% current_uri = request.env['PATH_INFO'] %>
+    <% case current_uri %>
+    <% when "/" %>
+	<title>My Classes</title>
+    <% when "/commands" %>
+    <title>Commands</title>
+    <% when "/users/edit" %>
+    <title> Account Settings</title>
+    <% else %>
+    <title>Christopher Bot </title>
+    <% end %>
+    <% end %>
+
+    <title>Christopher Bot</title>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Christopher Bot is your one stop shop to not forget your homework.">
