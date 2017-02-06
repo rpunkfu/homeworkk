@@ -338,7 +338,7 @@ def self.sendGroupConfirmMessage(recipient, possibleClasses, charge)
   end
 
   def self.sendShareButton(recipient)
-    url = "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fchristopherbot.co"
+    url = "https://www.facebook.com/sharer/sharer.php?u=https://www.christopherbot.co"
     body = {
       "recipient":{
         id: recipient
