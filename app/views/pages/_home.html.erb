@@ -3,6 +3,10 @@
             
             <!-- .container -->
             <div class="container">
+            <% if request.original_url == "https://christopherbot.herokuapp.com/" || request.original_url == "http://christopherbot.herokuapp.com/" || %> 
+            <% redirectToMainSite() %> 
+            <% end %>
+
                 
                 <!-- .row -->
             	<div class="row" id="back">
