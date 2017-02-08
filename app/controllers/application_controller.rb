@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirectCB(url)
-  	if url == "http://christohperbot.herokuapp.com/users/sign_in/" || url == "https://christopherbot.herokuapp.com/users/sign_in"
+  	if url == "http://christopherbot.herokuapp.com/users/sign_in/" || url == "https://christopherbot.herokuapp.com/users/sign_in/"
   		redirect_to "https://www.christopherbot.co/users/sign_in/"
   	end
   end
