@@ -10,7 +10,7 @@
 					<label for="group_name"> Class Name </label>
 					<%= f.text_field :group_name, name: "group[][group_name]", value: "", class: "form-control" %>
 					<label for="group_end_time"> Class End Time </label>
-					<%= f.time_field :end_time, as: :time, name: "group[][end_time]", value: "", class: "form-control" %>
+					<%= f.time_field :end_time, name: "group[][end_time]", value: "", class: "form-control" %>
 					<%= f.hidden_field :group_day, :value => @classSignUpDay, name: "group[][group_day]", class: "form-control" %>	
 					<%= f.hidden_field :conversation_id, :value => current_user.conversation_id, name: "group[][conversation_id]", class: "form-control" %>	
 				</div>

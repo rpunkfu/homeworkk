@@ -5,11 +5,6 @@ class GroupsController < ApplicationController
   include MessengerHelper
   # GET /groups
   # GET /groups.json
-  def redirectToMainSite
-    redirect_to "https://www.christopherbot.co"
-  end
-  helper_method :redirectToMainSite
-
   def index
     @message = Message.new
     $user = current_user

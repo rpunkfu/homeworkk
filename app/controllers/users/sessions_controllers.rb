@@ -4,6 +4,7 @@ class Users::SessionsController < Devise::SessionsController
 	 		$conversation_id = params.to_a[0][1] 
  		else 
 			$conversation_id = nil 
- 		end 
+ 		end
   end
+
 end
