@@ -10,6 +10,3 @@ end
 <br>
 <%= link_to image_tag("facebook-login.png", style:'height:auto;max-width:90%;'), user_omniauth_authorize_path(:facebook), class: "center-media center" %>
 </div>
-
-<%= @request = request.original_url %>
-<%= redirectCB(@request) %>
