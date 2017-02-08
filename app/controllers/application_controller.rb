@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	PREFERED_HOST = 'https://www.christopherbot.co/'
+	PREFERED_HOST = 'www.christopherbot.co'
 	before_filter :redirect_to_prefered_host
 
 
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_prefered_host
   	if Rails.env.production? && request.host != PREFERED_HOST
-    	redirect_to(PREFERED_HOST)
+    	redirect_to(host: PREFERED_HOST)
   	end
 	end
 
