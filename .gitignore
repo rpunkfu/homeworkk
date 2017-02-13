@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# ignore server keys
+/server.key
+/server.pass.key
+/server.csr
