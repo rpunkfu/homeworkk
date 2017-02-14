@@ -25,7 +25,7 @@
 *.pass.key
 *.key
 
-*.yml
+/config/*.yml
 
 /config/secrets.yml
 
