@@ -27,4 +27,6 @@
 
 *.yml
 
+/config/secrets.yml
+
 .env
