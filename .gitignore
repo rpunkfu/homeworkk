@@ -24,3 +24,7 @@
 *.csr
 *.pass.key
 *.key
+
+*.yml
+
+.env
