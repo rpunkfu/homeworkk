@@ -21,6 +21,6 @@
 /server.pass.key
 /server.csr
 
-server.key
-server.csr
-server.pass.key
+*.csr
+*.pass.key
+*.key
